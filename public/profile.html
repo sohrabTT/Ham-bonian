@@ -157,7 +157,6 @@ body{
     <div class="set-list">
       <button class="set-item" data-act="projects"><span class="ic-lead"><span class="ic" data-icon="folder"></span></span>پروژه‌های من<span class="ic ic-chev" data-icon="chevL"></span></button>
       <button class="set-item" data-act="saved"><span class="ic-lead"><span class="ic" data-icon="bmark"></span></span>ذخیره‌شده‌ها<span class="ic ic-chev" data-icon="chevL"></span></button>
-      <button class="set-item" data-act="sched"><span class="ic-lead"><span class="ic" data-icon="cal"></span></span>قرارها<span class="ic ic-chev" data-icon="chevL"></span></button>
       <button class="set-item" data-act="settings"><span class="ic-lead"><span class="ic" data-icon="sliders"></span></span>تنظیمات<span class="ic ic-chev" data-icon="chevL"></span></button>
       <button class="set-item" data-act="support"><span class="ic-lead"><span class="ic" data-icon="headset"></span></span>پشتیبانی<span class="ic ic-chev" data-icon="chevL"></span></button>
     </div>
@@ -220,12 +219,14 @@ let tt;function toastMsg(m){const t=$('#toast');t.textContent=m;t.classList.add(
 /* ---------- خواندن کاربر ---------- */
 function getAuth(){try{return JSON.parse(localStorage.getItem(HB_USER_KEY)||'null')}catch(e){return null}}
 let user=getAuth();
+
+/* اگه کاربر وارد نشده، مستقیم به لاگین بفرست و بقیه‌ی اسکریپت را اجرا نکن */
 if(!user){location.replace('login.html?next=profile.html')}
+else{
 
 /* ---------- رندر پروفایل ---------- */
 function faInit(name){return (name||'م').trim().charAt(0)}
 function renderProfile(){
-  if(!user)return;
   $('#pName').textContent=user.name||'کاربر هم‌بنیان';
   $('#pRole').textContent=(user.role||'هم‌بنیان‌گذار')+' · تهران';
   $('#pBio').textContent=user.bio||'عضو هم‌بنیان؛ دنبال پروژه‌هایی که یک مشکل واقعی را حل می‌کنند و تیمی که با هم رشد می‌کنند.';
@@ -237,7 +238,7 @@ renderProfile();
 $('#backBtn').onclick=()=>{location.href='ham-bonyan.html'};
 $$('.set-item').forEach(b=>b.onclick=()=>{
   const a=b.dataset.act;
-  if(a==='projects'||a==='saved'||a==='sched')location.href='ham-bonyan.html';
+  if(a==='projects'||a==='saved')location.href='ham-bonyan.html';
   else toastMsg('این بخش به‌زودی فعال می‌شود');
 });
 
@@ -271,6 +272,8 @@ $('#sheetEdit').addEventListener('submit',e=>{
 
 /* ---------- Escape ---------- */
 addEventListener('keydown',e=>{if(e.key==='Escape')closeSheet()});
+
+}/* پایان else (کاربر واردشده) */
 </script>
 </body>
 </html>
