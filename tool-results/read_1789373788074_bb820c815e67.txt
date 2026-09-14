@@ -1,0 +1,529 @@
+   561→      <label class="chip"><input type="radio" name="nprole" value="مدیر محصول"><span>مدیر محصول</span></label>
+   562→      <label class="chip"><input type="radio" name="nprole" value="سرمایه‌گذار"><span>سرمایه‌گذار</span></label>
+   563→    </div>
+   564→  </div>
+   565→  <div class="field">
+   566→    <label>وضعیت</label>
+   567→    <div class="seg">
+   568→      <label><input type="radio" name="npst" value="ongoing" checked><span>در جریان</span></label>
+   569→      <label><input type="radio" name="npst" value="future"><span>آینده</span></label>
+   570→    </div>
+   571→  </div>
+   572→  <div class="field frow">
+   573→    <label style="margin:0">اولویت بالا</label>
+   574→    <label class="switch"><input type="checkbox" id="npHigh"><i></i></label>
+   575→  </div>
+   576→  <button class="btn-primary" id="fSubmit" type="submit">ثبت پروژه</button>
+   577→</form>
+   578→
+   579→<!-- ═══════ شیت: فیلترها ═══════ -->
+   580→<form class="sheet" id="sheetFilter">
+   581→  <div class="grabber"></div>
+   582→  <div class="sheet-head"><h3>فیلتر پروژه‌ها</h3><button type="button" class="x-btn js-close"><span class="ic" data-icon="x"></span></button></div>
+   583→  <div class="field">
+   584→    <label>وضعیت</label>
+   585→    <div class="seg">
+   586→      <label><input type="radio" name="fst" value="all" checked><span>همه</span></label>
+   587→      <label><input type="radio" name="fst" value="ongoing"><span>در جریان</span></label>
+   588→      <label><input type="radio" name="fst" value="future"><span>آینده</span></label>
+   589→    </div>
+   590→  </div>
+   591→  <div class="field">
+   592→    <label>سازنده</label>
+   593→    <div class="chips">
+   594→      <label class="chip"><input type="radio" name="fown" value="all" checked><span>همه</span></label>
+   595→      <label class="chip"><input type="radio" name="fown" value="arman"><span>آرمان</span></label>
+   596→      <label class="chip"><input type="radio" name="fown" value="sara"><span>سارا</span></label>
+   597→    </div>
+   598→  </div>
+   599→  <div class="field frow">
+   600→    <label style="margin:0">فقط اولویت‌بالا</label>
+   601→    <label class="switch"><input type="checkbox" id="fHighF"><i></i></label>
+   602→  </div>
+   603→  <button class="btn-primary" type="submit">اعمال فیلتر</button>
+   604→</form>
+   605→
+   606→<!-- ═══════ شیت: اقدامات کارت ═══════ -->
+   607→<div class="sheet" id="sheetAction">
+   608→  <div class="grabber"></div>
+   609→  <div class="sheet-head"><h3>گزینه‌ها</h3><button type="button" class="x-btn js-close"><span class="ic" data-icon="x"></span></button></div>
+   610→  <p id="asTitle"></p>
+   611→  <button type="button" class="opt" id="asOpen"><span class="ic" data-icon="search"></span>مشاهدهٔ جزئیات پروژه</button>
+   612→  <button type="button" class="opt" id="asInvite"><span class="ic" data-icon="send"></span>دعوت هم‌بنیان‌گذار</button>
+   613→  <button type="button" class="opt" id="asEdit"><span class="ic" data-icon="pen"></span>ویرایش پروژه</button>
+   614→  <button type="button" class="opt danger" id="asDelete"><span class="ic" data-icon="trash"></span>حذف پروژه</button>
+   615→  <button type="button" class="opt cancel js-close">انصراف</button>
+   616→</div>
+   617→
+   618→<!-- ═══════ شیت: منو ═══════ -->
+   619→<div class="sheet" id="sheetMenu">
+   620→  <div class="grabber"></div>
+   621→  <div class="sheet-head"><h3>منو</h3><button type="button" class="x-btn js-close"><span class="ic" data-icon="x"></span></button></div>
+   622→  <div class="menu-grid">
+   623→    <button class="m-item" data-goto="profile"><span class="ic" data-icon="user"></span>پروفایل</button>
+   624→    <button class="m-item" data-goto="saved"><span class="ic" data-icon="bmark"></span>ذخیره‌شده‌ها</button>
+   625→    <button class="m-item" data-goto="stats"><span class="ic" data-icon="bars"></span>عملکرد</button>
+   626→    <button class="m-item" data-goto="settings"><span class="ic" data-icon="sliders"></span>تنظیمات</button>
+   627→    <button class="m-item" data-goto="support"><span class="ic" data-icon="headset"></span>پشتیبانی</button>
+   628→  </div>
+   629→</div>
+   630→
+   631→<!-- ═══════ شیت: پروفایل ═══════ -->
+   632→<div class="sheet" id="sheetProfile">
+   633→  <div class="grabber"></div>
+   634→  <div class="sheet-head"><h3>پروفایل من</h3><button type="button" class="x-btn js-close"><span class="ic" data-icon="x"></span></button></div>
+   635→  <div class="prof-top">
+   636→    <span class="ava" id="profAva" data-initial="م"><span class="ic ava-ic" data-icon="user" style="width:34px;height:34px"></span></span>
+   637→    <div class="prof-name" id="profName">کاربر هم‌بنیان</div>
+   638→    <div class="prof-sub" id="profSub">عضو هم‌بنیان · تهران</div>
+   639→    <p class="prof-bio" id="profBio">دنبال پروژه‌هایی که یک مشکل واقعی را حل می‌کنند و تیمی که با هم رشد می‌کنند.</p>
+   640→  </div>
+   641→  <div class="prof-stats">
+   642→    <div class="pstat"><b>۶</b><span>پروژهٔ فعال</span></div>
+   643→    <div class="pstat"><b>۳</b><span>هم‌تیمی</span></div>
+   644→    <div class="pstat"><b>۱۲</b><span>درخواست</span></div>
+   645→  </div>
+   646→  <button class="btn-primary" type="button" id="btnEditProfile">ویرایش پروفایل</button>
+   647→</div>
+   648→
+   649→<div class="toast" id="toast"></div>
+   650→
+   651→<script>
+   652→/* ---------- ابزارک ---------- */
+   653→const $=(s,c=document)=>c.querySelector(s);
+   654→const $$=(s,c=document)=>[...c.querySelectorAll(s)];
+   655→const toFa=n=>String(n).replace(/\d/g,d=>'۰۱۲۳۴۵۶۷۸۹'[d]);
+   656→
+   657→/* ---------- احراز هویت (سبک، مبتنی بر localStorage) ---------- */
+   658→const HB_USER_KEY='hb_user';
+   659→function getAuth(){try{return JSON.parse(localStorage.getItem(HB_USER_KEY)||'null')}catch(e){return null}}
+   660→function isAuthed(){return !!getAuth()}
+   661→function requireAuth(next,msg){
+   662→  if(isAuthed())return true;
+   663→  toastMsg(msg||'برای این کار باید وارد شوی');
+   664→  setTimeout(function(){location.href='login.html?next='+(next||'ham-bonyan.html')},750);
+   665→  return false;
+   666→}
+   667→
+   668→/* ---------- آیکون‌ها ---------- */
+   669→const I={
+   670→hour:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6.5 3h11M6.5 21h11M8 3v2.3c0 2.6 4 3.7 4 6.7s-4 4.1-4 6.7V21M16 3v2.3c0 2.6-4 3.7-4 6.7s4 4.1 4 6.7V21"/></svg>',
+   671→trend:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M3 16.5l5.2-5.2 3.8 3.8L19.5 7"/><path d="M14.5 7h5v5"/></svg>',
+   672→pen:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12.5 20h8"/><path d="M16.6 3.6a2.4 2.4 0 013.4 3.4L7.6 19.4 3 20.6l1.2-4.6L16.6 3.6z"/></svg>',
+   673→filter:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M4 6.5h16M7.5 12h9M10.5 17.5h3"/></svg>',
+   674→bell:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18.2 9.2a6.2 6.2 0 10-12.4 0c0 5.2-2.1 6.6-2.1 6.6h16.6s-2.1-1.4-2.1-6.6z"/><path d="M10 19.6a2.3 2.3 0 004 0"/></svg>',
+   675→grid:'<svg viewBox="0 0 24 24" fill="currentColor"><circle cx="5" cy="5" r="1.8"/><circle cx="12" cy="5" r="1.8"/><circle cx="19" cy="5" r="1.8"/><circle cx="5" cy="12" r="1.8"/><circle cx="12" cy="12" r="1.8"/><circle cx="19" cy="12" r="1.8"/><circle cx="5" cy="19" r="1.8"/><circle cx="12" cy="19" r="1.8"/><circle cx="19" cy="19" r="1.8"/></svg>',
+   676→dots:'<svg viewBox="0 0 24 24" fill="currentColor"><circle cx="5" cy="12" r="1.7"/><circle cx="12" cy="12" r="1.7"/><circle cx="19" cy="12" r="1.7"/></svg>',
+   677→plus:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round"><path d="M12 5.5v13M5.5 12h13"/></svg>',
+   678→bars:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M5.5 20v-6M12 20V5.5M18.5 20v-9.5"/></svg>',
+   679→folder:'<svg viewBox="0 0 24 24" fill="currentColor"><path d="M3.2 7.1c0-1.6 1.2-2.8 2.8-2.8h3.2c.8 0 1.5.3 2 .9l1 1.1h5.8c1.6 0 2.8 1.2 2.8 2.8v7.6c0 1.6-1.2 2.8-2.8 2.8H6c-1.6 0-2.8-1.2-2.8-2.8V7.1z"/></svg>',
+   680→handshake:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 17.5l-2 2a2.1 2.1 0 01-3-3l4.5-4.5a2.5 2.5 0 013.5 0l1.5 1.5a2.1 2.1 0 003-3l-4-4"/><path d="M3 8l4-4 4 3.5"/><path d="M17 4.5L21 8.5l-2.5 2.5"/><path d="M13.5 19l2 2a2.1 2.1 0 003-3l-.8-.8"/></svg>',
+   681→cal:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3.8" y="5.3" width="16.4" height="15" rx="3.2"/><path d="M3.8 10h16.4M8.3 3.3v3.4M15.7 3.3v3.4"/></svg>',
+   682→x:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M6.5 6.5l11 11M17.5 6.5l-11 11"/></svg>',
+   683→send:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 3.5L10.5 14M21 3.5l-6.8 17.2-3.7-6.7-6.9-3.6L21 3.5z"/></svg>',
+   684→trash:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7h16M9.7 7V5.2a1.7 1.7 0 011.7-1.7h1.2a1.7 1.7 0 011.7 1.7V7M6.3 7l.9 12.1c.1 1 .9 1.9 2 1.9h5.6c1.1 0 1.9-.9 2-1.9L17.7 7"/></svg>',
+   685→user:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="8" r="3.8"/><path d="M4.8 20.2c1.4-3.3 4-4.9 7.2-4.9s5.8 1.6 7.2 4.9"/></svg>',
+   686→bmark:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6.5 4.5h11V21l-5.5-3.8L6.5 21V4.5z"/></svg>',
+   687→bmarkF:'<svg viewBox="0 0 24 24" fill="currentColor"><path d="M6.5 4.5h11V21l-5.5-3.8L6.5 21V4.5z"/></svg>',
+   688→sliders:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 8h8.5M17 8h3M4 16h3M11.5 16h8.5"/><circle cx="14.7" cy="8" r="2.2"/><circle cx="8.7" cy="16" r="2.2"/></svg>',
+   689→headset:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 13.5a7.5 7.5 0 0115 0"/><rect x="3.2" y="13.2" width="4.2" height="6" rx="2.1"/><rect x="16.6" y="13.2" width="4.2" height="6" rx="2.1"/></svg>',
+   690→code:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M8.5 7.5L4 12l4.5 4.5M15.5 7.5L20 12l-4.5 4.5"/></svg>',
+   691→cart:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"><circle cx="9.5" cy="19.5" r="1.5"/><circle cx="17" cy="19.5" r="1.5"/><path d="M3.5 4.5h2l2.4 11h9.6l2-8H6.2"/></svg>',
+   692→play:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linejoin="round"><circle cx="12" cy="12" r="8.6"/><path d="M10.2 8.8l5.2 3.2-5.2 3.2V8.8z"/></svg>',
+   693→book:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 5.8A2.3 2.3 0 016.8 3.5H19.5v14.2H6.8a2.3 2.3 0 00-2.3 2.3V5.8z"/><path d="M4.5 17.7v.5a2.3 2.3 0 002.3 2.3h12.7"/></svg>',
+   694→layers:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3.5l8.5 4.7L12 12.9 3.5 8.2 12 3.5z"/><path d="M3.5 12.5L12 17.2l8.5-4.7"/></svg>',
+   695→check:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.8l4.3 4.3L19 7.5"/></svg>',
+   696→search:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round"><circle cx="11" cy="11" r="6.5"/><path d="M20.5 20.5l-4.8-4.8"/></svg>',
+   697→pin:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s7-5.3 7-11a7 7 0 10-14 0c0 5.7 7 11 7 11z"/><circle cx="12" cy="10" r="2.6"/></svg>',
+   698→pie:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.5A9 9 0 1111.5 3"/><path d="M12 3a9 9 0 019 9h-9V3z"/></svg>'
+   699→};
+   700→ $$('[data-icon]').forEach(el=>el.innerHTML=I[el.dataset.icon]);
+   701→
+   702→/* ---------- کاربران ---------- */
+   703→const USERS={
+   704→  arman:{name:'آرمان رضایی',initial:'آ',img:'https://i.pravatar.cc/96?img=12'},
+   705→  sara:{name:'سارا احمدی',initial:'س',img:'https://i.pravatar.cc/96?img=47'},
+   706→  negar:{name:'نگار محمدی',initial:'ن',img:'https://i.pravatar.cc/96?img=44'},
+   707→  amir:{name:'امیر کاظمی',initial:'ا',img:'https://i.pravatar.cc/96?img=59'},
+   708→  soheil:{name:'سهیل راد',initial:'س',img:'https://i.pravatar.cc/96?img=68'},
+   709→  maryam:{name:'مریم صالحی',initial:'م',img:'https://i.pravatar.cc/96?img=45'},
+   710→  arash:{name:'آرش کریمی',initial:'آ',img:'https://i.pravatar.cc/96?img=13'}
+   711→};
+   712→
+   713→/* ---------- پروژه‌ها ---------- */
+   714→let PROJECTS=[
+   715→  {id:1,title:'اپ رزرو فضای کار مشترک',role:'هم‌بنیان‌گذار فنی',status:'ongoing',priority:true,owner:'sara',progress:45,
+   716→   desc:'ظرفیت خالی کافه‌ها و کاورکینگ‌ها را لحظه‌ای رزرو کن؛ پلتفرمی که فضای بلااستفادهٔ شهر را به فریلنسرها می‌رساند. نسخهٔ آزمایشی با ۳ کافه در تهران در حال تست است و برای فاز رشد به یک هم‌بنیان‌گذار فنی تمام‌وقت نیاز داریم.',
+   717→   stage:'MVP آماده',skills:['React Native','Node.js','نقشه و GPS'],team:['sara','negar'],req:false,saved:false,
+   718→   thumb:{type:'icon',icon:'code',bg:'linear-gradient(135deg,#F6E6C1,#EBCE92)',fg:'#8A6423'}},
+   719→  {id:2,title:'تحلیل بازار آموزش آنلاین',role:'طراح محصول',status:'future',priority:false,owner:'arman',progress:12,
+   720→   desc:'پیش از شروع توسعه، بازار آموزش آنلاین ایران را برای یافتن شکاف واقعی بررسی می‌کنیم. گزارش رقبا و قیمت‌گذاری کامل شده و فاز بعدی مصاحبه با ۳۰ مدرس فعال است. دنبال کسی هستیم این تحقیق را به طراحی محصول تبدیل کند.',
+   721→   stage:'تحقیق بازار',skills:['تحقیق بازار','تحلیل داده','مصاحبهٔ کاربر'],team:['arman'],req:true,saved:false,
+   722→   thumb:{type:'letter',letter:'ت'}},
+   723→  {id:3,title:'لندینگ فروشگاه پوشاک',role:'متخصص رشد و فروش',status:'ongoing',priority:false,owner:'arman',progress:68,
+   724→   desc:'فروشگاه پوشاک با تمرکز بر تولید داخلی؛ لندینگ آماده است و کمپین اول این هفته اجرا می‌شود. دنبال متخصص رشد برای بهینه‌سازی نرخ تبدیل و مدیریت کمپین‌های گوگل و اینستاگرام هستیم.',
+   725→   stage:'آمادهٔ لانچ',skills:['SEO','کمپین تبلیغاتی','تحلیل قیف فروش'],team:['arman','soheil'],req:false,saved:true,
+   726→   thumb:{type:'icon',icon:'cart',bg:'linear-gradient(135deg,#DFEAD3,#BAD3A4)',fg:'#54713B'}},
+   727→  {id:4,title:'دستیار هوشمند برنامهٔ غذایی',role:'هم‌بنیان‌گذار فنی',status:'future',priority:false,owner:'sara',progress:8,
+   728→   desc:'برنامهٔ غذایی هفتگی بر اساس هدف سلامتی و بودجهٔ هر کاربر؛ هوش مصنوعی دستور پخت‌ها را با مواد موجود آشپزخانه هماهنگ می‌کند. در فاز ایده‌پردازی هستیم و به یک هم‌بنیان‌گذار فنی برای ساخت نمونهٔ اولیه نیاز داریم.',
+   729→   stage:'ایده',skills:['هوش مصنوعی','طراحی محصول'],team:['sara'],req:false,saved:false,
+   730→   thumb:{type:'icon',icon:'layers',bg:'linear-gradient(135deg,#F6DECF,#F0C0A0)',fg:'#A05A2E'}},
+   731→  {id:5,title:'پنل مدیریت صف مشتریان',role:'مدیر محصول',status:'ongoing',priority:true,owner:'arman',progress:30,
+   732→   desc:'صفِ حضوری مشتریان را دیجیتال می‌کنیم؛ مشتری از راه دور نوبت می‌گیرد و وقتش آزاد می‌شود. پایلوت در یک شعبهٔ بانک موفق بوده و برای بستن قراردادهای سازمانی به یک مدیر محصول باتجربه نیاز داریم.',
+   733→   stage:'پایلوت موفق',skills:['مدیریت محصول','فروش B2B'],team:['arman','sara'],req:false,saved:false,
+   734→   thumb:{type:'icon',icon:'play',bg:'linear-gradient(135deg,#E5DEF7,#CBBDF0)',fg:'#5E46A6'}},
+   735→  {id:6,title:'شبکهٔ اجتماعی کتاب‌خوان‌ها',role:'بازاریاب محتوا',status:'ongoing',priority:false,owner:'sara',progress:55,
+   736→   desc:'چالش کتاب‌خوانی با دوستان؛ ثبت پیشرفت مطالعه، نقل‌قول‌های محبوب و باشگاه کتاب آنلاین. ۵۰۰ کاربر اولیه از اینستاگرام آمده‌اند و برای ساخت اپ مستقل به بازاریاب محتوا و توسعه‌دهنده نیاز داریم.',
+   737→   stage:'MVP آماده',skills:['تولید محتوا','مدیریت کامیونیتی'],team:['sara','maryam'],req:false,saved:false,
+   738→   thumb:{type:'icon',icon:'book',bg:'linear-gradient(135deg,#F3E3D8,#E7C4B4)',fg:'#96543B'}}
+   739→];
+   740→
+   741→/* ---------- آگهی‌های هم‌بنیانی ---------- */
+   742→let ADS=[
+   743→  {id:1,uid:'negar',role:'طراح محصول',loc:'تهران / دورکاری',title:'هم‌درسی | مارکت‌پلیس کلاس خصوصی آنلاین',
+   744→   desc:'نسخهٔ اولیه بالا آمده و ۲۰۰ زبان‌آموز فعال داریم. برای رسیدن به نسخهٔ عمومی و بستن دور سرمایه، دنبال یک هم‌بنیان‌گذار فنی هستم که مالکیت بخش فنی را بپذیرد.',
+   745→   need:'هم‌بنیان‌گذار فنی (فول‌استک)',cat:'tech',stage:'MVP آماده',equity:'۲۵٪ سهام',skills:['React','Node.js','PostgreSQL'],time:'۲ ساعت پیش',saved:false,req:false},
+   746→  {id:2,uid:'amir',role:'مهندس نرم‌افزار',loc:'کاملاً دورکاری',title:'فایننس‌یار | مدیریت مالی استارتاپ‌های نوبنیاد',
+   747→   desc:'ایده‌ام را بارها با مدیران مالی چک کرده‌ام؛ درد واقعی بازار است. دنبال هم‌بنیان‌گذاری هستم که تجربهٔ طراحی محصول داشته باشد و کنارم ریسک کند.',
+   748→   need:'هم‌بنیان‌گذار طراحی محصول',cat:'design',stage:'ایده',equity:'۳۰٪ سهام',skills:['Figma','تحقیق کاربر'],time:'دیروز',saved:true,req:false},
+   749→  {id:3,uid:'soheil',role:'متخصص رشد',loc:'مشهد / دورکاری',title:'ترپ‌بازار | بلیت لحظهٔ آخری با قیمت منصفانه',
+   750→   desc:'ماهانه ۱۵ میلیون تومان فروش داریم و رشدمان ارگانیک است. برای ساخت اپ موبایل و مقیاس‌دادن، به یک شریک فنی جدی و بلندمدت نیاز دارم.',
+   751→   need:'هم‌بنیان‌گذار فنی (موبایل)',cat:'tech',stage:'درآمدزا',equity:'۲۰٪ سهام',skills:['Flutter','REST API'],time:'۲ روز پیش',saved:false,req:false},
+   752→  {id:4,uid:'maryam',role:'پژوهشگر بازار',loc:'اصفهان',title:'مِندلی | همراه سلامت روان، در دسترس همه',
+   753→   desc:'یک سال روی رفتار کاربران تحقیق کرده‌ام و نمونهٔ کاغذی را تست کرده‌ام. حالا برای تبدیل‌کردن به محصول واقعی، یک هم‌تیمی صبور و اهل داده می‌خواهم.',
+   754→   need:'هم‌بنیان‌گذار محصول',cat:'product',stage:'MVP آماده',equity:'۳۵٪ سهام',skills:['استراتژی محصول','مدیریت تیم'],time:'۳ روز پیش',saved:false,req:false},
+   755→  {id:5,uid:'arash',role:'بنیان‌گذار دومین استارتاپ',loc:'شیراز',title:'باکسِت | سفارش آنلاین غذای سالم سازمانی',
+   756→   desc:'با ۱۲ شرکت قرارداد B2B داریم؛ مشکل ما فروش بیشتر است نه ساخت محصول. اگر فروش سازمانی بلدی و حاضرى سهام بگیری، بیا شریک شویم.',
+   757→   need:'هم‌بنیان‌گذار رشد و فروش',cat:'growth',stage:'درآمدزا',equity:'۱۵٪ سهام',skills:['فروش سازمانی','کمپین'],time:'۴ روز پیش',saved:false,req:false}
+   758→];
+   759→const CAT_LABEL={tech:'فنی',design:'طراحی',product:'محصول',growth:'رشد و فروش'};
+   760→
+   761→/* ---------- رندر کارت‌های پروژه ---------- */
+   762→const cardsEl=$('#cards');let firstRender=true,lastNew=null;
+   763→const avaHTML=(a,extra='')=>`<span class="ava ${extra}" data-initial="${a.initial}"><img src="${a.img}" alt="" loading="lazy" onerror="this.remove()"></span>`;
+   764→const thumbHTML=t=>t.type==='letter'
+   765→  ?`<div class="thumb letter">${t.letter}</div>`
+   766→  :`<div class="thumb" style="background:${t.bg};color:${t.fg}"><span class="ic">${I[t.icon]}</span></div>`;
+   767→
+   768→function cardHTML(p,i){
+   769→  const o=USERS[p.owner];
+   770→  return `<article class="card${p.status==='future'?' dark':''}" data-id="${p.id}" tabindex="0" role="button" aria-label="جزئیات ${p.title}" style="animation-delay:${firstRender?i*80:0}ms">
+   771→    <div class="card-top">
+   772→      <div class="ct-s">
+   773→        <span class="badge"><span class="ic">${I.hour}</span><span>${p.status==='ongoing'?'در جریان':'آینده'}</span></span>
+   774→        <span class="mchart"><span class="ic">${I.trend}</span></span>
+   775→      </div>
+   776→      <div class="ct-e">
+   777→        <span class="owner">ساختهٔ <b>${o.name}</b></span>
+   778→        <span class="oava">${avaHTML(o)}<button class="invite" data-invite="${p.id}" aria-label="دعوت هم‌بنیان‌گذار"><span class="ic">${I.plus}</span></button></span>
+   779→      </div>
+   780→    </div>
+   781→    <div class="card-body">
+   782→      ${thumbHTML(p.thumb)}
+   783→      <div class="bmain">
+   784→        <div class="trow"><h3 class="ctitle">${p.title}</h3><button class="dots" data-menu="${p.id}" aria-label="گزینه‌ها"><span class="ic">${I.dots}</span></button></div>
+   785→        <div class="needline"><span class="ic">${I.user}</span>دنبالِ: ${p.role}</div>
+   786→        <div class="progress"><i style="width:${p.progress}%"></i></div>
+   787→      </div>
+   788→    </div>
+   789→  </article>`;
+   790→}
+   791→function render(){
+   792→  cardsEl.innerHTML=PROJECTS.map(cardHTML).join('');
+   793→  firstRender=false;
+   794→  if(lastNew){const el=cardsEl.querySelector(`[data-id="${lastNew}"]`);el&&el.classList.add('fresh');lastNew=null}
+   795→  applyFilters();
+   796→}
+   797→
+   798→/* ---------- فیلتر پروژه‌ها ---------- */
+   799→const state={status:'all',priority:false,owner:'all'};
+   800→function applyFilters(){
+   801→  let n=0;
+   802→  $$('.card',cardsEl).forEach(el=>{
+   803→    const p=PROJECTS.find(x=>x.id==el.dataset.id);
+   804→    const ok=(state.status==='all'||p.status===state.status)&&(!state.priority||p.priority)&&(state.owner==='all'||p.owner===state.owner);
+   805→    el.style.display=ok?'':'none';if(ok)n++;
+   806→  });
+   807→  $('#noProj').classList.toggle('show',n===0);
+   808→  $('#countNum').textContent=toFa(n);syncPills();
+   809→}
+   810→function syncPills(){
+   811→  $('#pillHigh').classList.toggle('active',state.priority);
+   812→  $('#pillOwner').classList.toggle('active',state.owner!=='all');
+   813→  $('#ownerLabel').textContent=state.owner==='all'?'ساختهٔ آرمان و سارا':'ساختهٔ '+USERS[state.owner].name;
+   814→  $('#pillAll').classList.toggle('active',state.status==='all'&&!state.priority&&state.owner==='all');
+   815→}
+   816→ $('#pillAll').onclick=()=>{state.status='all';state.priority=false;state.owner='all';applyFilters()};
+   817→ $('#pillHigh').onclick=()=>{state.priority=!state.priority;applyFilters()};
+   818→const ownerCycle=['all','arman','sara'];let oi=0;
+   819→ $('#pillOwner').onclick=()=>{oi=(oi+1)%3;state.owner=ownerCycle[oi];applyFilters()};
+   820→
+   821→/* ---------- رندر آگهی‌ها ---------- */
+   822→const adsEl=$('#adsList');
+   823→const adState={cat:'all',q:''};
+   824→function adHTML(a,i){
+   825→  const av=USERS[a.uid];
+   826→  return `<article class="ad" data-id="${a.id}" style="animation-delay:${i*60}ms">
+   827→    <div class="ad-head">
+   828→      ${avaHTML(av)}
+   829→      <div class="who"><b>${av.name}</b><span>${a.role} · ${a.loc}</span></div>
+   830→      <button class="bm ${a.saved?'saved':''}" data-bm="${a.id}" aria-label="ذخیرهٔ آگهی"><span class="ic">${a.saved?I.bmarkF:I.bmark}</span></button>
+   831→    </div>
+   832→    <h3 class="ad-title">${a.title}</h3>
+   833→    <p class="ad-desc">${a.desc}</p>
+   834→    <div class="ad-chips">
+   835→      <span class="chip-need"><span class="ic">${I.user}</span>${a.need}</span>
+   836→      <span class="chip-soft"><span class="ic">${I.trend}</span>${a.stage}</span>
+   837→      <span class="chip-soft"><span class="ic">${I.pie}</span>${a.equity}</span>
+   838→    </div>
+   839→    <div class="ad-foot">
+   840→      <span class="ad-time">${a.time} · نیاز: ${CAT_LABEL[a.cat]}</span>
+   841→      <button class="req ${a.req?'done':''}" data-req="${a.id}">${a.req?`<span class="ic">${I.check}</span>درخواست ارسال شد`:'ارسال درخواست همکاری'}</button>
+   842→    </div>
+   843→  </article>`;
+   844→}
+   845→function renderAds(){
+   846→  const q=adState.q.trim();
+   847→  const list=ADS.filter(a=>
+   848→    (adState.cat==='all'||a.cat===adState.cat)&&
+   849→    (!q||(a.title+a.desc+a.need+USERS[a.uid].name+a.skills.join()).includes(q))
+   850→  );
+   851→  adsEl.innerHTML=list.map(adHTML).join('');
+   852→  $('#adsCount').textContent=toFa(list.length);
+   853→  $('#noAds').classList.toggle('show',list.length===0);
+   854→}
+   855→ $('#adSearch').addEventListener('input',e=>{adState.q=e.target.value;renderAds()});
+   856→ $$('#adCats .fchip').forEach(c=>c.onclick=()=>{
+   857→  $$('#adCats .fchip').forEach(x=>x.classList.toggle('active',x===c));
+   858→  adState.cat=c.dataset.cat;renderAds();
+   859→});
+   860→
+   861→/* ---------- شیت‌ها ---------- */
+   862→const backdrop=$('#backdrop'),notifPanel=$('#notifPanel');let curSheet=null;
+   863→function openSheet(sel){notifPanel.classList.remove('show');curSheet=$(sel);backdrop.classList.add('show');curSheet.classList.add('show')}
+   864→function closeSheet(){if(curSheet){curSheet.classList.remove('show');curSheet=null}backdrop.classList.remove('show')}
+   865→backdrop.onclick=closeSheet;
+   866→ $$('.js-close').forEach(b=>b.onclick=closeSheet);
+   867→
+   868→/* ═══════ مودال جزئیات پروژه ═══════ */
+   869→function openProj(id){
+   870→  const p=PROJECTS.find(x=>x.id==id);if(!p)return;
+   871→  const o=USERS[p.owner];
+   872→  const mine=p.owner==='arman';
+   873→  $('#pjHead').innerHTML=`${avaHTML(o)}<div class="who"><b>${o.name}</b><span>سازندهٔ پروژه${mine?' · پروژهٔ خودت':''}</span></div>`;
+   874→  $('#pjBody').innerHTML=`
+   875→    <h3 class="d-title">${p.title}</h3>
+   876→    <p class="d-desc">${p.desc}</p>
+   877→    <div class="ad-chips">${p.skills.map(s=>`<span class="chip-soft">${s}</span>`).join('')}</div>
+   878→    <div class="meta">
+   879→      <div class="mrow"><span class="ic">${I.hour}</span><span class="ml">وضعیت</span><b>${p.status==='ongoing'?'در جریان':'آینده'}</b></div>
+   880→      <div class="mrow"><span class="ic">${I.user}</span><span class="ml">نقش موردنیاز</span><b>${p.role}</b></div>
+   881→      <div class="mrow"><span class="ic">${I.trend}</span><span class="ml">مرحله</span><b>${p.stage}</b></div>
+   882→      <div class="mrow"><span class="ic">${I.grid}</span><span class="ml">تیم</span><span class="tava">${p.team.map(u=>avaHTML(USERS[u])).join('')}</span></div>
+   883→    </div>
+   884→    <div class="pwrap"><div class="progress"><i style="width:${p.progress}%"></i></div></div>
+   885→    <p style="font-size:11.5px;color:var(--txt2);font-weight:600">پیشرفت پروژه: ${toFa(p.progress)}٪</p>`;
+   886→  const act=$('#pjActions');
+   887→  if(mine){
+   888→    act.innerHTML=`
+   889→      <button type="button" class="btn-primary" id="pjEdit"><span class="ic">${I.pen}</span>ویرایش پروژه</button>
+   890→      <button type="button" class="btn-ghost danger" id="pjDel"><span class="ic">${I.trash}</span>حذف پروژه</button>`;
+   891→    $('#pjEdit').onclick=()=>{closeSheet();setTimeout(()=>openEdit(id),160)};
+   892→    $('#pjDel').onclick=()=>deleteProj(id);
+   893→  }else{
+   894→    act.innerHTML=`
+   895→      <button type="button" class="btn-primary ${p.req?'done':''}" id="pjReq">${p.req?`<span class="ic">${I.check}</span>درخواست همکاری ارسال شد`:`<span class="ic">${I.send}</span>ارسال درخواست همکاری`}</button>
+   896→      <button type="button" class="btn-ghost ${p.saved?'saved':''}" id="pjSave">${p.saved?`<span class="ic">${I.bmarkF}</span>ذخیره شد`:`<span class="ic">${I.bmark}</span>ذخیرهٔ پروژه`}</button>`;
+   897→    $('#pjReq').onclick=()=>{
+   898→      if(!requireAuth('ham-bonyan.html','برای ارسال درخواست همکاری باید وارد شوی'))return;
+   899→      if(p.req){toastMsg('قبلاً درخواستت را فرستادی');return}
+   900→      p.req=true;openProj(id);
+   901→      toastMsg(`درخواست همکاری‌ات برای ${o.name} ارسال شد ✉️`);
+   902→    };
+   903→    $('#pjSave').onclick=()=>{
+   904→      p.saved=!p.saved;openProj(id);
+   905→      toastMsg(p.saved?'پروژه در ذخیره‌شده‌ها ثبت شد':'پروژه از ذخیره‌شده‌ها حذف شد');
+   906→    };
+   907→  }
+   908→  openSheet('#sheetProj');
+   909→}
+   910→function deleteProj(id){
+   911→  closeSheet();
+   912→  const el=cardsEl.querySelector(`[data-id="${id}"]`);el&&el.classList.add('removing');
+   913→  setTimeout(()=>{PROJECTS.splice(PROJECTS.findIndex(x=>x.id==id),1);render();toastMsg('پروژه حذف شد')},280);
+   914→}
+   915→cardsEl.addEventListener('click',e=>{
+   916→  const inv=e.target.closest('[data-invite]');
+   917→  if(inv){e.stopPropagation();if(!requireAuth('ham-bonyan.html','برای دعوت هم‌بنیان‌گذار باید وارد شوی'))return;toastMsg('لینک دعوت کپی شد؛ با دوستانت به اشتراک بگذار');return}
+   918→  const m=e.target.closest('[data-menu]');
+   919→  if(m){e.stopPropagation();actId=+m.dataset.menu;const p=PROJECTS.find(x=>x.id==actId);$('#asTitle').textContent='«'+p.title+'»';openSheet('#sheetAction');return}
+   920→  const card=e.target.closest('.card');
+   921→  if(card)openProj(card.dataset.id);
+   922→});
+   923→cardsEl.addEventListener('keydown',e=>{
+   924→  if(e.key==='Enter'){const c=e.target.closest('.card');if(c)openProj(c.dataset.id)}
+   925→});
+   926→
+   927→/* ═══════ مودال جزئیات آگهی ═══════ */
+   928→let curAd=null;
+   929→function syncAdButtons(a){
+   930→  const r=$('#adReqBtn'),s=$('#adSaveBtn');
+   931→  r.classList.toggle('done',a.req);
+   932→  r.innerHTML=a.req?`${I.check}درخواست ارسال شده`:`${I.send}ارسال درخواست همکاری`;
+   933→  s.classList.toggle('saved',a.saved);
+   934→  s.innerHTML=a.saved?`${I.bmarkF}ذخیره شد`:`${I.bmark}ذخیرهٔ آگهی`;
+   935→}
+   936→function openAd(id){
+   937→  const a=ADS.find(x=>x.id==id);curAd=a;const av=USERS[a.uid];
+   938→  $('#adHead').innerHTML=`${avaHTML(av)}<div class="who"><b>${av.name}</b><span>${a.role} · ${a.loc} · ${a.time}</span></div>`;
+   939→  $('#adBody').innerHTML=`
+   940→    <h3 class="d-title">${a.title}</h3>
+   941→    <p class="d-desc">${a.desc}</p>
+   942→    <div class="meta">
+   943→      <div class="mrow"><span class="ic">${I.user}</span><span class="ml">نقش موردنیاز</span><b>${a.need}</b></div>
+   944→      <div class="mrow"><span class="ic">${I.trend}</span><span class="ml">مرحلهٔ پروژه</span><b>${a.stage}</b></div>
+   945→      <div class="mrow"><span class="ic">${I.pie}</span><span class="ml">سهم پیشنهادی</span><b>${a.equity}</b></div>
+   946→      <div class="mrow"><span class="ic">${I.pin}</span><span class="ml">موقعیت</span><b>${a.loc}</b></div>
+   947→    </div>
+   948→    <div class="skchips">${a.skills.map(s=>`<span>${s}</span>`).join('')}</div>`;
+   949→  syncAdButtons(a);openSheet('#sheetAd');
+   950→}
+   951→ $('#adReqBtn').onclick=()=>{
+   952→  if(!curAd)return;
+   953→  if(!requireAuth('ham-bonyan.html','برای ارسال درخواست همکاری باید وارد شوی'))return;
+   954→  if(curAd.req){toastMsg('قبلاً درخواستت را فرستادی');return}
+   955→  curAd.req=true;renderAds();syncAdButtons(curAd);
+   956→  toastMsg(`درخواست همکاری‌ات برای ${USERS[curAd.uid].name} ارسال شد ✉️`);
+   957→};
+   958→ $('#adSaveBtn').onclick=()=>{
+   959→  if(!curAd)return;
+   960→  curAd.saved=!curAd.saved;renderAds();syncAdButtons(curAd);
+   961→  toastMsg(curAd.saved?'آگهی در ذخیره‌شده‌ها ثبت شد':'آگهی از ذخیره‌شده‌ها حذف شد');
+   962→};
+   963→adsEl.addEventListener('click',e=>{
+   964→  const bm=e.target.closest('[data-bm]');
+   965→  if(bm){const a=ADS.find(x=>x.id==bm.dataset.bm);a.saved=!a.saved;renderAds();toastMsg(a.saved?'آگهی ذخیره شد':'از ذخیره‌شده‌ها حذف شد');return}
+   966→  const rq=e.target.closest('[data-req]');
+   967→  if(rq){const a=ADS.find(x=>x.id==rq.dataset.req);if(!requireAuth('ham-bonyan.html','برای ارسال درخواست همکاری باید وارد شوی'))return;if(a.req){toastMsg('قبلاً درخواستت را فرستادی');return}a.req=true;renderAds();toastMsg(`درخواست برای ${USERS[a.uid].name} ارسال شد ✉️`);return}
+   968→  const card=e.target.closest('.ad');
+   969→  if(card)openAd(card.dataset.id);
+   970→});
+   971→
+   972→/* ---------- ساخت / ویرایش پروژه ---------- */
+   973→let editId=null;
+   974→ $('#btnNew').onclick=()=>{
+   975→  if(!requireAuth('ham-bonyan.html','برای ساخت پروژه باید وارد شوی'))return;
+   976→  editId=null;$('#npTitleH').textContent='پروژهٔ جدید';$('#fSubmit').textContent='ثبت پروژه';
+   977→  $('#fTitle').value='';$('#fDesc').value='';
+   978→  $('input[name=npst][value=ongoing]').checked=true;
+   979→  $$('input[name=nprole]').forEach(r=>r.checked=false);$('#npHigh').checked=false;
+   980→  openSheet('#sheetNew');setTimeout(()=>$('#fTitle').focus(),420);
+   981→};
+   982→function openEdit(id){
+   983→  const p=PROJECTS.find(x=>x.id==id);editId=id;
+   984→  $('#npTitleH').textContent='ویرایش پروژه';$('#fSubmit').textContent='ذخیرهٔ تغییرات';
+   985→  $('#fTitle').value=p.title;$('#fDesc').value=p.desc||'';
+   986→  $(`input[name=npst][value=${p.status}]`).checked=true;$('#npHigh').checked=p.priority;
+   987→  openSheet('#sheetNew');
+   988→}
+   989→ $('#sheetNew').onsubmit=e=>{
+   990→  e.preventDefault();
+   991→  const title=$('#fTitle').value.trim();if(!title)return;
+   992→  const status=$('input[name=npst]:checked').value;
+   993→  const roleEl=$('input[name=nprole]:checked');
+   994→  const role=roleEl?roleEl.value:'هم‌بنیان‌گذار';
+   995→  const desc=$('#fDesc').value.trim();
+   996→  if(editId){
+   997→    Object.assign(PROJECTS.find(x=>x.id==editId),{title,role,status,desc,priority:$('#npHigh').checked});
+   998→    toastMsg('تغییرات پروژه ذخیره شد');
+   999→  }else{
+  1000→    const icons=['code','cart','play','book','layers'];
+  1001→    PROJECTS.unshift({id:Date.now(),title,role,status,desc,priority:$('#npHigh').checked,owner:'arman',progress:0,
+  1002→      stage:'تازه شروع شده',skills:[role],team:['arman'],req:false,saved:false,
+  1003→      thumb:{type:'icon',icon:icons[Math.floor(Math.random()*5)],bg:'linear-gradient(135deg,#EFE9DF,#DDD2BF)',fg:'#6E6250'}});
+  1004→    lastNew=PROJECTS[0].id;toastMsg('پروژه ثبت شد؛ حالا منتظر پیشنهادها بمان');
+  1005→  }
+  1006→  render();closeSheet();
+  1007→};
+  1008→
+  1009→/* ---------- اقدامات کارت (منوی ⋯) ---------- */
+  1010→let actId=null;
+  1011→ $('#asOpen').onclick=()=>{closeSheet();setTimeout(()=>openProj(actId),160)};
+  1012→ $('#asInvite').onclick=()=>{closeSheet();if(!requireAuth('ham-bonyan.html','برای دعوت هم‌بنیان‌گذار باید وارد شوی'))return;toastMsg('درخواست هم‌بنیان‌گذاری برای این پروژه ارسال شد')};
+  1013→ $('#asEdit').onclick=()=>{closeSheet();setTimeout(()=>openEdit(actId),160)};
+  1014→ $('#asDelete').onclick=()=>deleteProj(actId);
+  1015→
+  1016→/* ---------- فیلتر پیشرفته ---------- */
+  1017→ $('#btnFilter').onclick=()=>{
+  1018→  $(`input[name=fst][value=${state.status}]`).checked=true;
+  1019→  $(`input[name=fown][value=${state.owner}]`).checked=true;
+  1020→  $('#fHighF').checked=state.priority;openSheet('#sheetFilter');
+  1021→};
+  1022→ $('#sheetFilter').onsubmit=e=>{
+  1023→  e.preventDefault();
+  1024→  state.status=$('input[name=fst]:checked').value;
+  1025→  state.owner=$('input[name=fown]:checked').value;
+  1026→  state.priority=$('#fHighF').checked;
+  1027→  applyFilters();closeSheet();toastMsg('فیلترها اعمال شد');
+  1028→};
+  1029→
+  1030→/* ---------- اعلان‌ها ---------- */
+  1031→ $('#btnBell').onclick=e=>{e.stopPropagation();notifPanel.classList.toggle('show')};
+  1032→ $('#markRead').onclick=()=>{$$('.n-item').forEach(n=>n.classList.remove('unread'));$('#bellDot').style.display='none'};
+  1033→document.addEventListener('click',e=>{
+  1034→  if(!notifPanel.contains(e.target)&&!$('#btnBell').contains(e.target))notifPanel.classList.remove('show');
+  1035→});
+  1036→
+  1037→/* ---------- ناوبری ---------- */
+  1038→function setView(id){
+  1039→  $$('.view').forEach(v=>v.classList.toggle('active',v.id===id));
+  1040→  $$('[data-view]').forEach(b=>b.classList.toggle('active',b.dataset.view===id));
+  1041→  notifPanel.classList.remove('show');scrollTo({top:0,behavior:'smooth'});
+  1042→}
+  1043→ $$('[data-view]').forEach(b=>b.onclick=()=>setView(b.dataset.view));
+  1044→
+  1045→/* ---------- منو و پروفایل ---------- */
+  1046→ const btnMenu=$('#btnMenu');if(btnMenu)btnMenu.onclick=()=>openSheet('#sheetMenu');
+  1047→ const dockMenu=$('#dockMenu');if(dockMenu)dockMenu.onclick=()=>openSheet('#sheetMenu');
+  1048→ $$('.m-item').forEach(m=>m.onclick=()=>{
+  1049→  const g=m.dataset.goto;closeSheet();
+  1050→  if(g==='stats')setView('view-stats');
+  1051→  else if(g==='saved'){setView('view-home');setTimeout(()=>{const h=$('#oppsHead');if(h)h.scrollIntoView({behavior:'smooth',block:'start'})},120)}
+  1052→  else if(g==='profile'){if(requireAuth('profile.html','برای دیدن پروفایلت باید وارد شوی'))location.href='profile.html'}
+  1053→  else toastMsg('این بخش به‌زودی اضافه می‌شود');
+  1054→});
+  1055→ $('#btnProfile').onclick=()=>{if(requireAuth('profile.html','برای دیدن پروفایلت باید وارد شوی'))location.href='profile.html'};
+  1056→ $('#btnEditProfile').onclick=()=>{closeSheet();toastMsg('ویرایش پروفایل به‌زودی فعال می‌شود')};
+  1057→ $$('.js-invite').forEach(b=>b.onclick=()=>{
+  1058→  if(!requireAuth('ham-bonyan.html','برای دعوت به گفتگو باید وارد شوی'))return;
+  1059→  b.classList.add('done');b.textContent='دعوت‌نامه رفت ✓';toastMsg('دعوت‌نامه برایش ارسال شد');
+  1060→});
+  1061→
+  1062→/* ---------- توست ---------- */
+  1063→let tt;function toastMsg(m){const t=$('#toast');t.textContent=m;t.classList.add('show');clearTimeout(tt);tt=setTimeout(()=>t.classList.remove('show'),2600)}
+  1064→
+  1065→/* ---------- Escape ---------- */
+  1066→addEventListener('keydown',e=>{if(e.key==='Escape'){closeSheet();notifPanel.classList.remove('show')}});
+  1067→
+  1068→/* ---------- شروع ---------- */
+  1069→render();renderAds();
+  1070→
+  1071→/* ---------- اعمال وضعیت کاربرِ واردشده ---------- */
+  1072→(function applyUser(){
+  1073→  const u=getAuth();if(!u)return;
+  1074→  const g=document.querySelector('#view-home .greet');
+  1075→  const s=document.querySelector('#view-home .sub');
+  1076→  const a=document.querySelector('#btnProfile .ava');
+  1077→  if(g)g.innerHTML='سلام، <b>'+u.name+'</b>!';
+  1078→  if(s)s.textContent='۲ درخواست همکاری منتظر پاسخ توست؛ یک نگاه به پروژه‌هات بنداز.';
+  1079→  if(a)a.setAttribute('data-initial',(u.name||'م').trim().charAt(0));
+  1080→  const pn=document.getElementById('profName'),ps=document.getElementById('profSub'),
+  1081→        pb=document.getElementById('profBio'),pa=document.getElementById('profAva');
+  1082→  if(pn)pn.textContent=u.name||'کاربر هم‌بنیان';
+  1083→  if(ps)ps.textContent=(u.role||'هم‌بنیان‌گذار')+' · تهران';
+  1084→  if(pb)pb.textContent=u.bio||'دنبال پروژه‌هایی که یک مشکل واقعی را حل می‌کنند و تیمی که با هم رشد می‌کنند.';
+  1085→  if(pa)pa.setAttribute('data-initial',(u.name||'م').trim().charAt(0));
+  1086→})();
+  1087→</script>
+  1088→</body>
+  1089→</html>
