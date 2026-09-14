@@ -1,0 +1,1114 @@
+     1→<!DOCTYPE html>
+     2→<html lang="fa" dir="rtl">
+     3→<head>
+     4→<meta charset="UTF-8"/>
+     5→<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"/>
+     6→<meta name="theme-color" content="#F3F1ED"/>
+     7→<title>هم‌بنیان | هم‌بنیان‌گذار پروژه‌ات را پیدا کن</title>
+     8→<link rel="preconnect" href="https://reza-talks.com" crossorigin>
+     9→<link rel="preconnect" href="https://fonts.googleapis.com">
+    10→<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    11→<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+    12→<style>
+    13→/* ═══════ فونت فرهنگ (هر ۵ وزن) — اول پوشهٔ محلی fonts/ ، بعد سرور ═══════ */
+    14→@font-face{
+    15→  font-family:'Farhang';font-weight:400;font-display:swap;
+    16→  src:url('fonts/Farhang-RegularSharp.woff2') format('woff2'),
+    17→      url('https://reza-talks.com/wp-content/themes/rezatalks/design/fonts/woff2/Farhang-RegularSharp.woff2') format('woff2');
+    18→}
+    19→@font-face{
+    20→  font-family:'Farhang';font-weight:600;font-display:swap;
+    21→  src:url('fonts/Farhang-DemiBoldSharp.woff2') format('woff2'),
+    22→      url('https://reza-talks.com/wp-content/themes/rezatalks/design/fonts/woff2/Farhang-DemiBoldSharp.woff2') format('woff2');
+    23→}
+    24→@font-face{
+    25→  font-family:'Farhang';font-weight:700;font-display:swap;
+    26→  src:url('fonts/Farhang-BoldSharp.woff2') format('woff2'),
+    27→      url('https://reza-talks.com/wp-content/themes/rezatalks/design/fonts/woff2/Farhang-BoldSharp.woff2') format('woff2');
+    28→}
+    29→@font-face{
+    30→  font-family:'Farhang';font-weight:800;font-display:swap;
+    31→  src:url('fonts/Farhang-ExtraBoldSharp.woff2') format('woff2'),
+    32→      url('https://reza-talks.com/wp-content/themes/rezatalks/design/fonts/woff2/Farhang-ExtraBoldSharp.woff2') format('woff2');
+    33→}
+    34→@font-face{
+    35→  font-family:'Farhang';font-weight:900;font-display:swap;
+    36→  src:url('fonts/Farhang-BlackSharp.woff2') format('woff2'),
+    37→      url('https://reza-talks.com/wp-content/themes/rezatalks/design/fonts/woff2/Farhang-BlackSharp.woff2') format('woff2');
+    38→}
+    39→
+    40→/* ---------- پایه ---------- */
+    41→:root{
+    42→  --bg:#F3F1ED; --card:#E8E5E0; --headL:#FAF9F6;
+    43→  --dark:#2B2A27; --dark-head:#3A3833;
+    44→  --line:#DBD7D0; --txt:#232220; --txt2:#8D897F;
+    45→  --purple:#7A5AF8; --red:#F0435C; --green:#2E7D43;
+    46→}
+    47→*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+    48→button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+    49→input,textarea{font:inherit}
+    50→:focus-visible{outline:2px solid var(--purple);outline-offset:2px}
+    51→body{
+    52→  font-family:'Farhang','Vazirmatn',Tahoma,sans-serif;color:var(--txt);
+    53→  min-height:100vh;min-height:100dvh;
+    54→  background:radial-gradient(1100px 500px at 85% -5%,#F8F5F0,transparent 55%),
+    55→             radial-gradient(900px 500px at 0% 100%,#ECE7DF,transparent 55%),var(--bg);
+    56→}
+    57→.ic{display:block}
+    58→.ic svg{width:100%;height:100%;display:block}
+    59→
+    60→/* ---------- هدر ---------- */
+    61→.hdr{position:sticky;top:0;z-index:50;background:rgba(243,241,237,.82);
+    62→  backdrop-filter:blur(20px) saturate(1.4);-webkit-backdrop-filter:blur(20px) saturate(1.4);
+    63→  box-shadow:0 1px 0 var(--line)}
+    64→.hdr-in{max-width:1080px;margin:0 auto;padding:13px 20px;display:flex;align-items:center;gap:16px}
+    65→.brand{display:flex;align-items:center;gap:11px}
+    66→.logo{width:42px;height:42px;border-radius:50%;background:var(--dark);color:#F4F1ED;display:grid;place-items:center;box-shadow:0 8px 18px -6px rgba(25,22,18,.4)}
+    67→.logo .ic{width:19px;height:19px}
+    68→.brand-t b{display:block;font-size:17px;font-weight:900;line-height:1.4}
+    69→.brand-t small{display:block;font-size:11px;color:var(--txt2);font-weight:600;margin-top:-2px}
+    70→.tabs{display:none;gap:6px;margin-inline:auto}
+    71→.tab{padding:10px 17px;border-radius:999px;font-size:13.5px;font-weight:700;color:#57534B;transition:.2s;position:relative}
+    72→.tab:hover{background:#EBE7E0}
+    73→.tab.active{background:var(--dark);color:#F4F1ED}
+    74→.hdr-actions{display:flex;gap:10px;margin-inline-start:auto}
+    75→.icon-btn{position:relative;width:44px;height:44px;border-radius:50%;display:grid;place-items:center;
+    76→  background:var(--headL);box-shadow:inset 0 0 0 1px var(--line);color:#3A3833;transition:.2s}
+    77→.icon-btn.ghost{background:#E8E4DE;box-shadow:none}
+    78→.icon-btn:active{transform:scale(.92)}
+    79→.bell-dot{position:absolute;top:9px;left:11px;width:9.5px;height:9.5px;border-radius:50%;background:var(--red);box-shadow:0 0 0 2.5px var(--headL)}
+    80→.ava{position:relative;display:grid;place-items:center;overflow:hidden;border-radius:50%;
+    81→  background:linear-gradient(135deg,#D8CBBB,#B39F83);color:#fff;font-weight:800;flex-shrink:0}
+    82→.ava::before{content:attr(data-initial);position:absolute}
+    83→.ava img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+    84→.avatar-btn .ava{width:44px;height:44px;box-shadow:0 0 0 2.5px #fff,0 4px 10px rgba(40,35,28,.12)}
+    85→
+    86→/* ---------- بدنه ---------- */
+    87→.wrap{max-width:680px;margin:0 auto;padding:0 20px 60px}
+    88→@media (max-width:759px){.wrap{padding-bottom:140px}}
+    89→.view{display:none;padding-top:26px}
+    90→.view.active{display:block;animation:viewIn .35s}
+    91→@keyframes viewIn{from{opacity:0;transform:translateY(8px)}}
+    92→
+    93→/* خوش‌آمد */
+    94→.greet{font-size:36px;font-weight:400;letter-spacing:-.4px;line-height:1.3}
+    95→.greet b{font-weight:900}
+    96→.sub{color:var(--txt2);font-size:15px;margin-top:8px;font-weight:400;line-height:1.9}
+    97→
+    98→/* قرص‌ها */
+    99→.pills{margin-top:22px;display:flex;flex-wrap:wrap;gap:10px;justify-content:flex-end}
+   100→.pill{display:inline-flex;align-items:center;gap:8px;padding:12px 17px;border-radius:999px;
+   101→  background:var(--headL);box-shadow:inset 0 0 0 1px var(--line);
+   102→  font-size:13.5px;font-weight:600;color:#3B3934;transition:.2s}
+   103→.pill:hover{background:#fff}
+   104→.pill:active{transform:scale(.96)}
+   105→.pill.active{background:var(--dark);color:#F4F1ED;box-shadow:none}
+   106→.spark{width:15px;height:15px;color:var(--purple)}
+   107→.pill.active .spark{color:#B9A5FF}
+   108→.ava-mini{display:flex}
+   109→.ava-mini .ava{width:24px;height:24px;box-shadow:0 0 0 2px var(--headL);font-size:10px}
+   110→.pill.active .ava-mini .ava{box-shadow:0 0 0 2px var(--dark)}
+   111→.ava-mini .ava+.ava{margin-inline-start:-9px}
+   112→.toolbar{margin-top:18px;display:flex;justify-content:space-between;align-items:center}
+   113→.btn-new{font-weight:800;padding:13px 21px}
+   114→.btn-new .ic{width:16px;height:16px}
+   115→
+   116→/* ---------- کارت پروژه ---------- */
+   117→.cards{display:flex;flex-direction:column;gap:14px;margin-top:18px}
+   118→.card{--hd:var(--headL);position:relative;background:var(--card);border-radius:30px;transition:transform .25s,box-shadow .25s;animation:cardIn .55s backwards;cursor:pointer}
+   119→@keyframes cardIn{from{opacity:0;transform:translateY(16px)}}
+   120→.card:hover{transform:translateY(-2px);box-shadow:0 18px 38px -22px rgba(35,30,24,.4)}
+   121→.card.fresh{animation:freshIn .6s cubic-bezier(.22,1,.36,1)}
+   122→@keyframes freshIn{from{opacity:0;transform:translateY(22px) scale(.95)}}
+   123→.card.removing{transition:.3s;opacity:0;transform:scale(.92) translateY(8px)}
+   124→.card-top{position:relative;background:var(--hd);border-radius:30px 30px 30px 0;padding:10px 12px;
+   125→  display:flex;align-items:center;justify-content:space-between;gap:8px}
+   126→.card-top::after{content:"";position:absolute;top:calc(100% - 1px);left:0;width:24px;height:24px;
+   127→  background:radial-gradient(circle at 100% 0,transparent 23px,var(--hd) 23.6px)}
+   128→.ct-s{display:flex;align-items:center;gap:8px}
+   129→.badge{display:inline-flex;align-items:center;gap:6px;padding:7.5px 13px;border-radius:999px;
+   130→  background:#FDFCFA;box-shadow:inset 0 0 0 1px #D8D4CD;font-size:12.5px;font-weight:700;color:#3A3833}
+   131→.badge .ic{width:13.5px;height:13.5px}
+   132→.mchart{width:34px;height:34px;border-radius:50%;background:var(--dark);color:#8F6CF8;display:grid;place-items:center}
+   133→.mchart .ic{width:16px;height:16px}
+   134→.ct-e{display:flex;align-items:center;gap:9px}
+   135→.owner{font-size:12.5px;color:var(--txt2);font-weight:400;white-space:nowrap}
+   136→.owner b{font-weight:700;color:#57534B}
+   137→.oava{display:flex;align-items:center}
+   138→.oava .ava{width:30px;height:30px;font-size:12px}
+   139→.invite{width:21px;height:21px;margin-inline-start:-8px;border-radius:50%;background:#F7F5F1;color:#2B2A27;
+   140→  display:grid;place-items:center;box-shadow:0 0 0 2.5px var(--hd);transition:.2s}
+   141→.invite:hover{background:#fff}
+   142→.invite .ic{width:11px;height:11px}
+   143→.card.dark{--hd:var(--dark-head);background:var(--dark)}
+   144→.card.dark .badge{background:var(--dark);color:#ECEAE5;box-shadow:inset 0 0 0 1px #57534C}
+   145→.card.dark .mchart{background:#F4F1ED;color:#2B2A27}
+   146→.card.dark .owner{color:#A9A59D}.card.dark .owner b{color:#E8E5DF}
+   147→.card.dark .invite{background:#F4F1ED;box-shadow:0 0 0 2.5px var(--dark-head)}
+   148→.card-body{display:flex;align-items:center;gap:14px;padding:15px 16px 18px}
+   149→.thumb{flex-shrink:0;width:66px;height:66px;border-radius:50%;display:grid;place-items:center}
+   150→.thumb .ic{width:27px;height:27px}
+   151→.thumb.letter{background:#F4F1ED;color:#2B2A27;font-weight:900;font-size:27px}
+   152→.bmain{flex:1;min-width:0}
+   153→.trow{display:flex;align-items:flex-start;gap:8px}
+   154→.ctitle{flex:1;min-width:0;font-size:16.5px;font-weight:800;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;line-height:1.6}
+   155→.card.dark .ctitle{color:#F4F1ED}
+   156→.dots{color:#8D897F;flex-shrink:0;padding:2px}
+   157→.dots .ic{width:20px;height:20px}
+   158→.card.dark .dots{color:#A9A59D}
+   159→.needline{display:flex;align-items:center;gap:6px;font-size:12px;color:var(--txt2);font-weight:600;margin-top:3px}
+   160→.needline .ic{width:13px;height:13px}
+   161→.card.dark .needline{color:#A9A59D}
+   162→.progress{margin-top:12px;height:4px;border-radius:99px;background:#D2CEC7;overflow:hidden}
+   163→.progress i{display:block;height:100%;border-radius:99px;background:var(--dark);animation:grow 1.1s .25s backwards cubic-bezier(.22,1,.36,1)}
+   164→@keyframes grow{from{width:0}}
+   165→.card.dark .progress{background:rgba(255,255,255,.16)}
+   166→.card.dark .progress i{background:#F4F1ED}
+   167→.empty{display:none;text-align:center;padding:44px 20px;color:var(--txt2);font-weight:600;font-size:14px}
+   168→.empty.show{display:block;animation:viewIn .3s}
+   169→
+   170→/* ---------- عنوان بخش ---------- */
+   171→.vhead{display:flex;align-items:flex-start;justify-content:space-between;gap:12px}
+   172→.vtitle{font-size:26px;font-weight:900;letter-spacing:-.3px}
+   173→.vsub{color:var(--txt2);font-size:13.5px;margin-top:5px;font-weight:400}
+   174→.vcount{flex-shrink:0;background:var(--headL);box-shadow:inset 0 0 0 1px var(--line);border-radius:999px;
+   175→  padding:9px 15px;font-size:12px;font-weight:800;color:#57534B;white-space:nowrap}
+   176→
+   177→/* ---------- فرصت‌ها (آگهی‌ها) ---------- */
+   178→.ads-tools{display:flex;gap:10px;margin:20px 0 12px}
+   179→.searchbox{flex:1;display:flex;align-items:center;gap:9px;background:var(--headL);box-shadow:inset 0 0 0 1px var(--line);border-radius:999px;padding:12px 17px}
+   180→.searchbox .ic{width:17px;height:17px;color:var(--txt2);flex-shrink:0}
+   181→.searchbox input{flex:1;border:0;background:none;outline:none;font-size:13.5px;color:var(--txt);min-width:0}
+   182→.searchbox input::placeholder{color:#A9A49A}
+   183→.fchips{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:16px}
+   184→.fchip{padding:9.5px 15px;border-radius:999px;background:var(--headL);box-shadow:inset 0 0 0 1px var(--line);font-size:12.5px;font-weight:700;color:#57534B;transition:.2s}
+   185→.fchip:active{transform:scale(.95)}
+   186→.fchip.active{background:var(--dark);color:#F4F1ED;box-shadow:none}
+   187→.ad{background:var(--headL);border-radius:28px;box-shadow:inset 0 0 0 1px var(--line);padding:18px;margin-bottom:14px;animation:cardIn .5s backwards;transition:box-shadow .25s,transform .25s}
+   188→.ad:hover{box-shadow:inset 0 0 0 1px #C9C4BB,0 14px 30px -18px rgba(35,30,24,.35);transform:translateY(-2px)}
+   189→.ad-head{display:flex;align-items:center;gap:11px}
+   190→.ad-head .ava{width:46px;height:46px;font-size:16px}
+   191→.who{flex:1;min-width:0}
+   192→.who b{font-size:14.5px;font-weight:800;display:block}
+   193→.who span{font-size:12px;color:var(--txt2);display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin-top:1px}
+   194→.bm{width:38px;height:38px;border-radius:50%;background:#F1EDE7;display:grid;place-items:center;color:#7A756B;transition:.2s;flex-shrink:0}
+   195→.bm .ic{width:16px;height:16px}
+   196→.bm:active{transform:scale(.9)}
+   197→.bm.saved{background:var(--dark);color:#F4F1ED}
+   198→.ad-title{font-size:17px;font-weight:800;margin-top:14px;line-height:1.7}
+   199→.ad-desc{font-size:13.5px;line-height:2.1;color:#6E6A62;margin-top:5px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+   200→.ad-chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:13px}
+   201→.chip-need,.chip-soft{display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:700;padding:8px 13px;border-radius:99px}
+   202→.chip-need{background:var(--dark);color:#F4F1ED}
+   203→.chip-need .ic{width:13px;height:13px}
+   204→.chip-soft{background:#F1EDE7;color:#57534B}
+   205→.chip-soft .ic{width:13px;height:13px;color:#8D897F}
+   206→.ad-foot{display:flex;justify-content:space-between;align-items:center;margin-top:15px;gap:10px}
+   207→.ad-time{font-size:11.5px;color:var(--txt2);font-weight:600}
+   208→.req{display:inline-flex;align-items:center;gap:7px;padding:10.5px 18px;border-radius:999px;background:var(--dark);color:#F4F1ED;font-size:12.5px;font-weight:800;transition:.2s}
+   209→.req .ic{width:14px;height:14px}
+   210→.req:hover{transform:translateY(-1px)}
+   211→.req.done{background:#E7F2E7;color:var(--green);pointer-events:none}
+   212→
+   213→/* ---------- عملکرد ---------- */
+   214→.stat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:22px}
+   215→.stat{background:var(--headL);box-shadow:inset 0 0 0 1px var(--line);border-radius:22px;padding:15px 12px;display:flex;flex-direction:column;gap:3px}
+   216→.stat .num{font-size:23px;font-weight:900}
+   217→.stat .lbl{font-size:11.5px;color:var(--txt2);font-weight:600;line-height:1.7}
+   218→.stat .up{font-size:10.5px;font-weight:800;color:var(--green)}
+   219→.panel{background:var(--headL);box-shadow:inset 0 0 0 1px var(--line);border-radius:26px;padding:18px;margin-top:14px}
+   220→.panel>h3{font-size:15px;font-weight:800;margin-bottom:6px}
+   221→.panel-sub{font-size:12px;color:var(--txt2);margin-top:-2px}
+   222→.panel-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:6px}
+   223→.tag{font-size:11.5px;font-weight:800;color:var(--green);background:#E7F2E7;padding:4px 11px;border-radius:99px}
+   224→.chart{display:flex;gap:10px;align-items:flex-end;height:132px;padding-top:12px}
+   225→.bar{flex:1;height:100%;display:flex;flex-direction:column;justify-content:flex-end;align-items:center;gap:8px}
+   226→.bar i{width:100%;max-width:24px;border-radius:8px;background:#E6E2DB;height:var(--h)}
+   227→.bar.hot i{background:var(--purple)}
+   228→.bar span{font-size:11px;color:var(--txt2);font-weight:700}
+   229→.person{display:flex;align-items:center;gap:12px;padding:13px 0;border-bottom:1px dashed var(--line)}
+   230→.person:last-child{border:0;padding-bottom:2px}
+   231→.person .ava{width:46px;height:46px;font-size:16px}
+   232→.p-info{flex:1;min-width:0}
+   233→.p-name{font-size:14.5px;font-weight:800}
+   234→.p-role{font-size:12px;color:var(--txt2);margin-top:2px}
+   235→.btn-invite{padding:9px 17px;border-radius:999px;background:var(--dark);color:#F4F1ED;font-size:12.5px;font-weight:700;transition:.2s;flex-shrink:0}
+   236→.btn-invite:active{transform:scale(.94)}
+   237→.btn-invite.done{background:#E7F2E7;color:var(--green);pointer-events:none}
+   238→
+   239→/* ---------- قرارها ---------- */
+   240→.week{display:flex;gap:7px;margin:22px 0 16px}
+   241→.day{flex:1;display:flex;flex-direction:column;align-items:center;gap:5px;padding:11px 0;border-radius:18px;background:var(--headL);box-shadow:inset 0 0 0 1px var(--line);font-size:11.5px;font-weight:700;color:var(--txt2)}
+   242→.day b{font-size:15px;font-weight:800;color:var(--txt)}
+   243→.day.active{background:var(--dark);box-shadow:none}
+   244→.day.active,.day.active b{color:#fff}
+   245→.meet{display:flex;align-items:center;gap:13px;background:var(--headL);box-shadow:inset 0 0 0 1px var(--line);border-radius:24px;padding:14px 15px;margin-bottom:11px}
+   246→.time-chip{min-width:58px;text-align:center;background:#F0EBE4;border-radius:15px;padding:9px 6px}
+   247→.time-chip b{display:block;font-size:14px;font-weight:800}
+   248→.time-chip span{font-size:10.5px;color:var(--txt2);font-weight:600}
+   249→.meet-info{flex:1;min-width:0}
+   250→.meet-info b{display:block;font-size:14px;font-weight:800}
+   251→.meet-info span{font-size:12px;color:var(--txt2)}
+   252→.meet .ava{width:38px;height:38px;font-size:13px}
+   253→
+   254→/* ---------- داک پایین (موبایل) ---------- */
+   255→.dock{position:fixed;bottom:18px;left:50%;transform:translateX(-50%);z-index:60;
+   256→  display:flex;align-items:center;gap:8px;padding:8px 11px;border-radius:999px;
+   257→  background:rgba(233,229,223,.72);backdrop-filter:blur(22px) saturate(1.4);-webkit-backdrop-filter:blur(22px) saturate(1.4);
+   258→  box-shadow:0 18px 44px -10px rgba(35,30,24,.35),inset 0 0 0 1px rgba(255,255,255,.55)}
+   259→.nbtn{width:50px;height:50px;border-radius:50%;display:grid;place-items:center;color:#4A4740;transition:.2s}
+   260→.nbtn .ic{width:22px;height:22px}
+   261→.nbtn:active{transform:scale(.9)}
+   262→.nbtn.active{background:#fff;color:#232220;box-shadow:0 6px 16px rgba(30,26,20,.14)}
+   263→.nbtn.primary{width:60px;height:60px;background:var(--dark);color:#F4F1ED;box-shadow:0 12px 26px -6px rgba(20,18,15,.5)}
+   264→.nbtn.primary .ic{width:25px;height:25px}
+   265→@media (min-width:760px){.dock{display:none}.tabs{display:flex}}
+   266→
+   267→/* ---------- اعلان‌ها ---------- */
+   268→.notif{position:fixed;top:72px;left:20px;width:min(360px,calc(100vw - 40px));z-index:70;
+   269→  background:var(--headL);border-radius:26px;padding:16px;
+   270→  box-shadow:0 26px 60px -12px rgba(25,22,18,.35);
+   271→  opacity:0;transform:translateY(-10px) scale(.97);transform-origin:top left;pointer-events:none;transition:.25s}
+   272→.notif.show{opacity:1;transform:none;pointer-events:auto}
+   273→.notif-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;padding:0 6px}
+   274→.notif-head h3{font-size:15.5px;font-weight:800}
+   275→#markRead{font-size:12.5px;font-weight:800;color:var(--purple)}
+   276→.n-item{display:flex;gap:11px;align-items:flex-start;padding:11px 10px;border-radius:18px;margin-top:4px}
+   277→.n-item.unread{background:#F2EEE8}
+   278→.n-item .ava{width:36px;height:36px;font-size:13px}
+   279→.n-item p{font-size:12.8px;line-height:1.9;color:#3B3934}
+   280→.n-item time{font-size:11px;color:var(--txt2)}
+   281→.ndot{width:8px;height:8px;border-radius:50%;background:var(--red);margin:7px 2px 0 auto;flex-shrink:0}
+   282→
+   283→/* ---------- شیت‌ها ---------- */
+   284→.backdrop{position:fixed;inset:0;background:rgba(28,26,22,.4);z-index:80;opacity:0;pointer-events:none;transition:.3s}
+   285→.backdrop.show{opacity:1;pointer-events:auto}
+   286→.sheet{position:fixed;left:0;right:0;bottom:0;margin:0 auto;z-index:85;background:var(--headL);
+   287→  width:100%;max-width:560px;border-radius:34px 34px 0 0;padding:14px 22px 24px;max-height:86vh;overflow-y:auto;scrollbar-width:none;
+   288→  transform:translateY(calc(100% + 24px));transition:transform .4s cubic-bezier(.32,.72,.24,1);
+   289→  box-shadow:0 -12px 44px rgba(25,22,18,.22)}
+   290→.sheet::-webkit-scrollbar{display:none}
+   291→.sheet.show{transform:none}
+   292→.grabber{width:44px;height:5px;border-radius:99px;background:#DEDAD3;margin:0 auto 14px}
+   293→.sheet-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;gap:10px}
+   294→.sheet-head h3{font-size:18px;font-weight:800}
+   295→.x-btn{width:34px;height:34px;border-radius:50%;background:#EFEAE3;display:grid;place-items:center;color:#55524C;flex-shrink:0}
+   296→.x-btn .ic{width:14px;height:14px}
+   297→.field{margin-bottom:15px}
+   298→.field>label{display:block;font-size:13px;font-weight:700;color:#55524C;margin-bottom:8px}
+   299→.input{width:100%;background:#F1EDE7;border:1.5px solid transparent;border-radius:16px;padding:13px 15px;font-size:14.5px;outline:none;transition:.2s;color:var(--txt)}
+   300→.input:focus{border-color:var(--dark);background:#fff}
+   301→.chips{display:flex;flex-wrap:wrap;gap:8px}
+   302→.chip input{display:none}
+   303→.chip span{display:inline-block;padding:9.5px 15px;border-radius:999px;background:#F1EDE7;font-size:13px;font-weight:600;color:#57534B;cursor:pointer;transition:.2s}
+   304→.chip input:checked+span{background:var(--dark);color:#F4F1ED}
+   305→.seg{display:flex;background:#ECE7E0;padding:4px;border-radius:16px}
+   306→.seg label{flex:1}
+   307→.seg input{display:none}
+   308→.seg span{display:block;text-align:center;padding:10px;border-radius:12px;font-size:13.5px;font-weight:700;color:#8A857C;cursor:pointer;transition:.2s}
+   309→.seg input:checked+span{background:#fff;color:var(--txt);box-shadow:0 2px 8px rgba(30,26,20,.1)}
+   310→.frow{display:flex;justify-content:space-between;align-items:center}
+   311→.switch{position:relative;width:50px;height:30px;flex-shrink:0;cursor:pointer}
+   312→.switch input{opacity:0;position:absolute;inset:0}
+   313→.switch i{position:absolute;inset:0;background:#D7D3CC;border-radius:99px;transition:.25s}
+   314→.switch i::after{content:"";position:absolute;top:3px;inset-inline-start:3px;width:24px;height:24px;border-radius:50%;background:#fff;box-shadow:0 2px 6px rgba(0,0,0,.2);transition:.25s}
+   315→.switch input:checked+i{background:var(--dark)}
+   316→.switch input:checked+i::after{transform:translateX(-20px)}
+   317→.btn-primary{width:100%;padding:15px;border-radius:18px;background:var(--dark);color:#F4F1ED;font-weight:800;font-size:15px;transition:.2s;margin-top:4px;display:inline-flex;align-items:center;justify-content:center;gap:8px}
+   318→.btn-primary .ic{width:16px;height:16px}
+   319→.btn-primary:active{transform:scale(.98)}
+   320→.btn-primary.done{background:#E7F2E7;color:var(--green);pointer-events:none}
+   321→.btn-ghost{width:100%;padding:14px;border-radius:18px;background:#F1EDE7;color:#3B3934;font-weight:800;font-size:14px;margin-top:10px;display:inline-flex;align-items:center;justify-content:center;gap:8px;transition:.2s}
+   322→.btn-ghost .ic{width:16px;height:16px}
+   323→.btn-ghost.saved{background:var(--dark);color:#F4F1ED}
+   324→.btn-ghost.danger{color:#E5484D}
+   325→.btn-ghost.danger .ic{color:#E5484D}
+   326→
+   327→/* شیت اقدامات */
+   328→#asTitle{font-size:13.5px;font-weight:600;color:var(--txt2);margin:-6px 0 12px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+   329→.opt{display:flex;align-items:center;gap:12px;width:100%;padding:14px;border-radius:16px;font-size:14.5px;font-weight:700;transition:.15s}
+   330→.opt:hover{background:#F1EDE7}
+   331→.opt .ic{width:20px;height:20px;color:#57534B}
+   332→.opt.danger{color:#E5484D}.opt.danger .ic{color:#E5484D}
+   333→.opt.cancel{justify-content:center;background:#F1EDE7;margin-top:8px}
+   334→
+   335→/* منو */
+   336→.menu-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+   337→.m-item{display:flex;flex-direction:column;align-items:center;gap:9px;padding:17px 8px;border-radius:22px;background:#F3EFE9;font-size:12.5px;font-weight:700;color:#3B3934;transition:.15s}
+   338→.m-item:active{transform:scale(.94)}
+   339→.m-item .ic{width:22px;height:22px;color:#57534B}
+   340→
+   341→/* پروفایل */
+   342→.prof-top{display:flex;flex-direction:column;align-items:center;gap:10px;padding:4px 0 6px;text-align:center}
+   343→.prof-top .ava{width:84px;height:84px;box-shadow:0 0 0 4px #fff,0 8px 20px rgba(40,35,28,.15);font-size:30px}
+   344→.prof-name{font-size:19px;font-weight:800;margin-top:4px}
+   345→.prof-sub{font-size:13px;color:var(--txt2);margin-top:-5px}
+   346→.prof-bio{font-size:12.5px;color:#6E6A62;line-height:2;max-width:280px}
+   347→.prof-stats{display:flex;gap:10px;margin:14px 0}
+   348→.pstat{flex:1;text-align:center;background:#F3EFE9;border-radius:18px;padding:12px 6px}
+   349→.pstat b{display:block;font-size:19px;font-weight:900}
+   350→.pstat span{font-size:11.5px;color:var(--txt2);font-weight:600}
+   351→
+   352→/* جزئیات (آگهی و پروژه) */
+   353→.d-head{display:flex;align-items:center;gap:12px;margin-bottom:14px}
+   354→.d-head .ava{width:52px;height:52px;font-size:18px}
+   355→.d-title{font-size:19px;font-weight:900;line-height:1.7}
+   356→.d-desc{font-size:13.5px;line-height:2.15;color:#57534B;margin-top:8px}
+   357→.meta{margin:14px 0 6px}
+   358→.mrow{display:flex;align-items:center;gap:10px;padding:12px 2px;border-bottom:1px dashed var(--line);font-size:13px}
+   359→.mrow:last-child{border:0}
+   360→.mrow .ic{width:16px;height:16px;color:var(--txt2);flex-shrink:0}
+   361→.mrow .ml{color:var(--txt2);font-weight:600}
+   362→.mrow b{margin-inline-start:auto;font-weight:800;text-align:left}
+   363→.tava{margin-inline-start:auto;display:flex;flex-direction:row-reverse}
+   364→.tava .ava{width:28px;height:28px;font-size:11px;box-shadow:0 0 0 2px var(--headL)}
+   365→.tava .ava+.ava{margin-inline-start:-10px}
+   366→.skchips{display:flex;flex-wrap:wrap;gap:8px;margin:6px 0 16px}
+   367→.skchips span{background:#F1EDE7;border-radius:99px;padding:8px 14px;font-size:12px;font-weight:700;color:#57534B}
+   368→.pwrap{margin:10px 0 4px}
+   369→
+   370→/* توست */
+   371→.toast{position:fixed;bottom:96px;left:50%;transform:translate(-50%,16px);z-index:95;
+   372→  background:var(--dark);color:#F4F1ED;padding:12px 22px;border-radius:999px;font-size:13.5px;font-weight:700;
+   373→  opacity:0;transition:.3s;pointer-events:none;white-space:nowrap;box-shadow:0 14px 30px rgba(0,0,0,.28);max-width:calc(100vw - 32px);overflow:hidden;text-overflow:ellipsis}
+   374→.toast.show{opacity:1;transform:translate(-50%,0)}
+   375→@media (min-width:760px){.toast{bottom:30px}}
+   376→</style>
+   377→</head>
+   378→<body>
+   379→
+   380→<!-- ═══════ هدر ═══════ -->
+   381→<header class="hdr">
+   382→  <div class="hdr-in">
+   383→    <div class="brand">
+   384→      <span class="logo"><span class="ic" data-icon="handshake"></span></span>
+   385→      <div class="brand-t"><b>هم‌بنیان</b><small>هم‌بنیان‌گذار پروژه‌ات را پیدا کن</small></div>
+   386→    </div>
+   387→    <nav class="tabs">
+   388→      <button class="tab active" data-view="view-home">پروژه‌های من</button>
+   389→      <button class="tab" data-view="view-ads">فرصت‌ها</button>
+   390→      <button class="tab" data-view="view-stats">عملکرد</button>
+   391→      <button class="tab" data-view="view-sched">قرارها</button>
+   392→    </nav>
+   393→    <div class="hdr-actions">
+   394→      <button class="icon-btn" id="btnBell" aria-label="اعلان‌ها">
+   395→        <span class="ic" data-icon="bell" style="width:20px;height:20px"></span><i class="bell-dot" id="bellDot"></i>
+   396→      </button>
+   397→      <button class="avatar-btn" id="btnProfile" aria-label="پروفایل">
+   398→        <span class="ava" data-initial="آ"><img src="https://i.pravatar.cc/96?img=12" alt="آرمان" onerror="this.remove()"></span>
+   399→      </button>
+   400→      <button class="icon-btn ghost" id="btnMenu" aria-label="منو">
+   401→        <span class="ic" data-icon="grid" style="width:19px;height:19px"></span>
+   402→      </button>
+   403→    </div>
+   404→  </div>
+   405→</header>
+   406→
+   407→<main class="wrap">
+   408→
+   409→  <!-- ═══════ پروژه‌های من ═══════ -->
+   410→  <section class="view active" id="view-home">
+   411→    <h1 class="greet">سلام، <b>آرمان</b>!</h1>
+   412→    <p class="sub">۲ درخواست همکاری منتظر پاسخ توست؛ یک نگاه به پروژه‌هات بنداز.</p>
+   413→
+   414→    <div class="pills">
+   415→      <button class="pill" id="pillAll">در جریان و آینده (<span id="countNum">۶</span>)</button>
+   416→      <button class="pill" id="pillHigh">اولویت بالا <span class="ic spark" data-icon="trend"></span></button>
+   417→      <button class="pill" id="pillOwner">
+   418→        <span id="ownerLabel">ساختهٔ آرمان و سارا</span>
+   419→        <span class="ava-mini">
+   420→          <span class="ava" data-initial="آ"><img src="https://i.pravatar.cc/48?img=12" alt="" onerror="this.remove()"></span>
+   421→          <span class="ava" data-initial="س"><img src="https://i.pravatar.cc/48?img=47" alt="" onerror="this.remove()"></span>
+   422→        </span>
+   423→      </button>
+   424→    </div>
+   425→
+   426→    <div class="toolbar">
+   427→      <button class="pill btn-new" id="btnNew"><span class="ic" data-icon="pen"></span>پروژه جدید</button>
+   428→      <button class="icon-btn ghost" id="btnFilter" aria-label="فیلترها"><span class="ic" data-icon="filter" style="width:19px;height:19px"></span></button>
+   429→    </div>
+   430→
+   431→    <section class="cards" id="cards"></section>
+   432→    <div class="empty" id="noProj">پروژه‌ای با این فیلترها پیدا نشد؛ فیلترها را ساده‌تر کن.</div>
+   433→  </section>
+   434→
+   435→  <!-- ═══════ فرصت‌ها ═══════ -->
+   436→  <section class="view" id="view-ads">
+   437→    <div class="vhead">
+   438→      <div>
+   439→        <h2 class="vtitle">فرصت‌های هم‌بنیانی</h2>
+   440→        <p class="vsub">آدم‌هایی که همین حالا دنبال هم‌تیمی برای پروژه‌شان هستند.</p>
+   441→      </div>
+   442→      <span class="vcount"><span id="adsCount">۵</span> آگهی فعال</span>
+   443→    </div>
+   444→
+   445→    <div class="ads-tools">
+   446→      <div class="searchbox">
+   447→        <span class="ic" data-icon="search"></span>
+   448→        <input type="text" id="adSearch" placeholder="جستجو در آگهی‌ها؛ مثلاً «فین‌تک» یا «فلاتر»…">
+   449→      </div>
+   450→    </div>
+   451→    <div class="fchips" id="adCats">
+   452→      <button class="fchip active" data-cat="all">همه</button>
+   453→      <button class="fchip" data-cat="tech">فنی</button>
+   454→      <button class="fchip" data-cat="design">طراحی</button>
+   455→      <button class="fchip" data-cat="product">محصول</button>
+   456→      <button class="fchip" data-cat="growth">رشد و فروش</button>
+   457→    </div>
+   458→
+   459→    <section id="adsList"></section>
+   460→    <div class="empty" id="noAds">آگهی‌ای مطابق جستجوی تو پیدا نشد؛ عبارت دیگری را امتحان کن.</div>
+   461→  </section>
+   462→
+   463→  <!-- ═══════ عملکرد ═══════ -->
+   464→  <section class="view" id="view-stats">
+   465→    <div class="vhead">
+   466→      <div>
+   467→        <h2 class="vtitle">عملکرد تو</h2>
+   468→        <p class="vsub">پروژه‌هات چطور دیده می‌شوند و چه کسانی سراغشان آمده‌اند.</p>
+   469→      </div>
+   470→    </div>
+   471→    <div class="stat-grid">
+   472→      <div class="stat"><span class="num">۱۲</span><span class="lbl">درخواست هم‌بنیانی</span><span class="up">+۲ این هفته</span></div>
+   473→      <div class="stat"><span class="num">۱۲۴</span><span class="lbl">بازدید پروژه‌ها</span><span class="up">+۱۴٪</span></div>
+   474→      <div class="stat"><span class="num">۸۶٪</span><span class="lbl">نرخ پاسخ‌گویی</span><span class="up">عالی</span></div>
+   475→    </div>
+   476→    <div class="panel">
+   477→      <div class="panel-head"><h3>درخواست‌های این هفته</h3><span class="tag">+۲۲٪</span></div>
+   478→      <div class="chart">
+   479→        <div class="bar"><i style="--h:35%"></i><span>ش</span></div>
+   480→        <div class="bar"><i style="--h:55%"></i><span>ی</span></div>
+   481→        <div class="bar"><i style="--h:40%"></i><span>د</span></div>
+   482→        <div class="bar"><i style="--h:70%"></i><span>س</span></div>
+   483→        <div class="bar"><i style="--h:45%"></i><span>چ</span></div>
+   484→        <div class="bar hot"><i style="--h:85%"></i><span>پ</span></div>
+   485→        <div class="bar"><i style="--h:60%"></i><span>ج</span></div>
+   486→      </div>
+   487→    </div>
+   488→    <div class="panel">
+   489→      <h3>هم‌تیمی‌های پیشنهادی</h3>
+   490→      <p class="panel-sub">بر اساس مهارت‌ها و پروژه‌های فعال تو</p>
+   491→      <div class="person">
+   492→        <span class="ava" data-initial="ا"><img src="https://i.pravatar.cc/96?img=59" alt="" onerror="this.remove()"></span>
+   493→        <div class="p-info"><div class="p-name">امیر کاظمی</div><div class="p-role">مهندس نرم‌افزار · Rust و Web3</div></div>
+   494→        <button class="btn-invite js-invite">دعوت به گفتگو</button>
+   495→      </div>
+   496→      <div class="person">
+   497→        <span class="ava" data-initial="ن"><img src="https://i.pravatar.cc/96?img=44" alt="" onerror="this.remove()"></span>
+   498→        <div class="p-info"><div class="p-name">نگار محمدی</div><div class="p-role">طراح محصول · Figma و تحقیق کاربر</div></div>
+   499→        <button class="btn-invite js-invite">دعوت به گفتگو</button>
+   500→      </div>
+   501→      <div class="person">
+   502→        <span class="ava" data-initial="س"><img src="https://i.pravatar.cc/96?img=68" alt="" onerror="this.remove()"></span>
+   503→        <div class="p-info"><div class="p-name">سهیل راد</div><div class="p-role">متخصص رشد · SEO و کمپین‌سازی</div></div>
+   504→        <button class="btn-invite js-invite">دعوت به گفتگو</button>
+   505→      </div>
+   506→    </div>
+   507→  </section>
+   508→
+   509→  <!-- ═══════ قرارها ═══════ -->
+   510→  <section class="view" id="view-sched">
+   511→    <div class="vhead">
+   512→      <div>
+   513→        <h2 class="vtitle">قرارهای هفته</h2>
+   514→        <p class="vsub">کال‌های آشنایی و جلسات هم‌تیمی‌هایت را از دست نده.</p>
+   515→      </div>
+   516→    </div>
+   517→    <div class="week">
+   518→      <div class="day">ش<b>۱۲</b></div><div class="day">ی<b>۱۳</b></div>
+   519→      <div class="day active">د<b>۱۴</b></div><div class="day">س<b>۱۵</b></div>
+   520→      <div class="day">چ<b>۱۶</b></div><div class="day">پ<b>۱۷</b></div><div class="day">ج<b>۱۸</b></div>
+   521→    </div>
+   522→    <div class="meet">
+   523→      <div class="time-chip"><b>۱۸:۳۰</b><span>امروز</span></div>
+   524→      <div class="meet-info"><b>کال آشنایی با نگار محمدی</b><span>درباره آگهی «هم‌درسی»</span></div>
+   525→      <span class="ava" data-initial="ن"><img src="https://i.pravatar.cc/76?img=44" alt="" onerror="this.remove()"></span>
+   526→    </div>
+   527→    <div class="meet">
+   528→      <div class="time-chip"><b>۱۰:۰۰</b><span>فردا</span></div>
+   529→      <div class="meet-info"><b>جلسه محصول با سارا</b><span>بررسی نقشه راه فصل پیش‌رو</span></div>
+   530→      <span class="ava" data-initial="س"><img src="https://i.pravatar.cc/76?img=47" alt="" onerror="this.remove()"></span>
+   531→    </div>
+   532→    <div class="meet">
+   533→      <div class="time-chip"><b>۲۱:۰۰</b><span>پنج‌شنبه</span></div>
+   534→      <div class="meet-info"><b>دموی هفتگی تیم</b><span>مرور پیشرفت هر سه پروژه</span></div>
+   535→      <span class="ava" data-initial="ا"><img src="https://i.pravatar.cc/76?img=59" alt="" onerror="this.remove()"></span>
+   536→    </div>
+   537→  </section>
+   538→</main>
+   539→
+   540→<!-- ═══════ داک پایین ═══════ -->
+   541→<nav class="dock">
+   542→  <button class="nbtn" data-view="view-stats" aria-label="عملکرد"><span class="ic" data-icon="bars"></span></button>
+   543→  <button class="nbtn" data-view="view-ads" aria-label="فرصت‌ها"><span class="ic" data-icon="search"></span></button>
+   544→  <button class="nbtn primary active" data-view="view-home" aria-label="پروژه‌ها"><span class="ic" data-icon="folder"></span></button>
+   545→  <button class="nbtn" data-view="view-sched" aria-label="قرارها"><span class="ic" data-icon="cal"></span></button>
+   546→</nav>
+   547→
+   548→<!-- ═══════ اعلان‌ها ═══════ -->
+   549→<div class="notif" id="notifPanel">
+   550→  <div class="notif-head"><h3>اعلان‌ها</h3><button id="markRead">خواندم</button></div>
+   551→  <div class="n-item unread">
+   552→    <span class="ava" data-initial="س"><img src="https://i.pravatar.cc/72?img=47" alt="" onerror="this.remove()"></span>
+   553→    <div><p><b>سارا احمدی</b> برای پروژهٔ «اپ رزرو فضای کار مشترک» درخواست هم‌بنیان‌گذاری فرستاد.</p><time>۲ ساعت پیش</time></div>
+   554→    <i class="ndot"></i>
+   555→  </div>
+   556→  <div class="n-item unread">
+   557→    <span class="ava" data-initial="ا"><img src="https://i.pravatar.cc/72?img=59" alt="" onerror="this.remove()"></span>
+   558→    <div><p><b>امیر کاظمی</b> پروژهٔ «لندینگ فروشگاه پوشاک» را در لیست علاقه‌مندی‌هایش ذخیره کرد.</p><time>۵ ساعت پیش</time></div>
+   559→    <i class="ndot"></i>
+   560→  </div>
+   561→  <div class="n-item unread">
+   562→    <span class="ava" data-initial="ن"><img src="https://i.pravatar.cc/72?img=44" alt="" onerror="this.remove()"></span>
+   563→    <div><p>پیام جدید از <b>نگار محمدی</b>: «وقتشه جلسهٔ هفتگی را برای هفتهٔ بعد بگذاریم؟»</p><time>دیروز</time></div>
+   564→    <i class="ndot"></i>
+   565→  </div>
+   566→  <div class="n-item">
+   567→    <span class="ava" data-initial="ه"><span style="position:absolute;font-size:14px">ه</span></span>
+   568→    <div><p>پروژهٔ «تحلیل بازار آموزش آنلاین» این هفته <b>۴۸ بازدید</b> خورد.</p><time>۳ روز پیش</time></div>
+   569→  </div>
+   570→</div>
+   571→
+   572→<div class="backdrop" id="backdrop"></div>
+   573→
+   574→<!-- ═══════ شیت: جزئیات پروژه ═══════ -->
+   575→<div class="sheet" id="sheetProj">
+   576→  <div class="grabber"></div>
+   577→  <div class="sheet-head"><h3>جزئیات پروژه</h3><button type="button" class="x-btn js-close"><span class="ic" data-icon="x"></span></button></div>
+   578→  <div class="d-head" id="pjHead"></div>
+   579→  <div id="pjBody"></div>
+   580→  <div id="pjActions"></div>
+   581→</div>
+   582→
+   583→<!-- ═══════ شیت: جزئیات آگهی ═══════ -->
+   584→<div class="sheet" id="sheetAd">
+   585→  <div class="grabber"></div>
+   586→  <div class="sheet-head"><h3>آگهی هم‌بنیانی</h3><button type="button" class="x-btn js-close"><span class="ic" data-icon="x"></span></button></div>
+   587→  <div class="d-head" id="adHead"></div>
+   588→  <div id="adBody"></div>
+   589→  <button type="button" class="btn-primary" id="adReqBtn"></button>
+   590→  <button type="button" class="btn-ghost" id="adSaveBtn"></button>
+   591→</div>
+   592→
+   593→<!-- ═══════ شیت: پروژه جدید / ویرایش ═══════ -->
+   594→<form class="sheet" id="sheetNew">
+   595→  <div class="grabber"></div>
+   596→  <div class="sheet-head"><h3 id="npTitleH">پروژهٔ جدید</h3><button type="button" class="x-btn js-close"><span class="ic" data-icon="x"></span></button></div>
+   597→  <div class="field">
+   598→    <label for="fTitle">نام پروژه</label>
+   599→    <input class="input" id="fTitle" placeholder="مثلاً: مارکت‌پلیس تجهیزات کافه‌ها" required>
+   600→  </div>
+   601→  <div class="field">
+   602→    <label>به چه نقشی نیاز داری؟</label>
+   603→    <div class="chips">
+   604→      <label class="chip"><input type="radio" name="nprole" value="هم‌بنیان‌گذار فنی"><span>هم‌بنیان‌گذار فنی</span></label>
+   605→      <label class="chip"><input type="radio" name="nprole" value="طراح محصول"><span>طراح محصول</span></label>
+   606→      <label class="chip"><input type="radio" name="nprole" value="متخصص رشد و فروش"><span>متخصص رشد و فروش</span></label>
+   607→      <label class="chip"><input type="radio" name="nprole" value="مدیر محصول"><span>مدیر محصول</span></label>
+   608→      <label class="chip"><input type="radio" name="nprole" value="سرمایه‌گذار"><span>سرمایه‌گذار</span></label>
+   609→    </div>
+   610→  </div>
+   611→  <div class="field">
+   612→    <label>وضعیت</label>
+   613→    <div class="seg">
+   614→      <label><input type="radio" name="npst" value="ongoing" checked><span>در جریان</span></label>
+   615→      <label><input type="radio" name="npst" value="future"><span>آینده</span></label>
+   616→    </div>
+   617→  </div>
+   618→  <div class="field frow">
+   619→    <label style="margin:0">اولویت بالا</label>
+   620→    <label class="switch"><input type="checkbox" id="npHigh"><i></i></label>
+   621→  </div>
+   622→  <button class="btn-primary" id="fSubmit" type="submit">ثبت پروژه</button>
+   623→</form>
+   624→
+   625→<!-- ═══════ شیت: فیلترها ═══════ -->
+   626→<form class="sheet" id="sheetFilter">
+   627→  <div class="grabber"></div>
+   628→  <div class="sheet-head"><h3>فیلتر پروژه‌ها</h3><button type="button" class="x-btn js-close"><span class="ic" data-icon="x"></span></button></div>
+   629→  <div class="field">
+   630→    <label>وضعیت</label>
+   631→    <div class="seg">
+   632→      <label><input type="radio" name="fst" value="all" checked><span>همه</span></label>
+   633→      <label><input type="radio" name="fst" value="ongoing"><span>در جریان</span></label>
+   634→      <label><input type="radio" name="fst" value="future"><span>آینده</span></label>
+   635→    </div>
+   636→  </div>
+   637→  <div class="field">
+   638→    <label>سازنده</label>
+   639→    <div class="chips">
+   640→      <label class="chip"><input type="radio" name="fown" value="all" checked><span>همه</span></label>
+   641→      <label class="chip"><input type="radio" name="fown" value="arman"><span>آرمان</span></label>
+   642→      <label class="chip"><input type="radio" name="fown" value="sara"><span>سارا</span></label>
+   643→    </div>
+   644→  </div>
+   645→  <div class="field frow">
+   646→    <label style="margin:0">فقط اولویت‌بالا</label>
+   647→    <label class="switch"><input type="checkbox" id="fHighF"><i></i></label>
+   648→  </div>
+   649→  <button class="btn-primary" type="submit">اعمال فیلتر</button>
+   650→</form>
+   651→
+   652→<!-- ═══════ شیت: اقدامات کارت ═══════ -->
+   653→<div class="sheet" id="sheetAction">
+   654→  <div class="grabber"></div>
+   655→  <div class="sheet-head"><h3>گزینه‌ها</h3><button type="button" class="x-btn js-close"><span class="ic" data-icon="x"></span></button></div>
+   656→  <p id="asTitle"></p>
+   657→  <button type="button" class="opt" id="asOpen"><span class="ic" data-icon="search"></span>مشاهدهٔ جزئیات پروژه</button>
+   658→  <button type="button" class="opt" id="asInvite"><span class="ic" data-icon="send"></span>دعوت هم‌بنیان‌گذار</button>
+   659→  <button type="button" class="opt" id="asEdit"><span class="ic" data-icon="pen"></span>ویرایش پروژه</button>
+   660→  <button type="button" class="opt danger" id="asDelete"><span class="ic" data-icon="trash"></span>حذف پروژه</button>
+   661→  <button type="button" class="opt cancel js-close">انصراف</button>
+   662→</div>
+   663→
+   664→<!-- ═══════ شیت: منو ═══════ -->
+   665→<div class="sheet" id="sheetMenu">
+   666→  <div class="grabber"></div>
+   667→  <div class="sheet-head"><h3>منو</h3><button type="button" class="x-btn js-close"><span class="ic" data-icon="x"></span></button></div>
+   668→  <div class="menu-grid">
+   669→    <button class="m-item" data-goto="profile"><span class="ic" data-icon="user"></span>پروفایل</button>
+   670→    <button class="m-item" data-goto="saved"><span class="ic" data-icon="bmark"></span>ذخیره‌شده‌ها</button>
+   671→    <button class="m-item" data-goto="sched"><span class="ic" data-icon="cal"></span>قرارها</button>
+   672→    <button class="m-item" data-goto="stats"><span class="ic" data-icon="bars"></span>عملکرد</button>
+   673→    <button class="m-item" data-goto="settings"><span class="ic" data-icon="sliders"></span>تنظیمات</button>
+   674→    <button class="m-item" data-goto="support"><span class="ic" data-icon="headset"></span>پشتیبانی</button>
+   675→  </div>
+   676→</div>
+   677→
+   678→<!-- ═══════ شیت: پروفایل ═══════ -->
+   679→<div class="sheet" id="sheetProfile">
+   680→  <div class="grabber"></div>
+   681→  <div class="sheet-head"><h3>پروفایل من</h3><button type="button" class="x-btn js-close"><span class="ic" data-icon="x"></span></button></div>
+   682→  <div class="prof-top">
+   683→    <span class="ava" data-initial="آ"><img src="https://i.pravatar.cc/168?img=12" alt="" onerror="this.remove()"></span>
+   684→    <div class="prof-name">آرمان رضایی</div>
+   685→    <div class="prof-sub">بنیان‌گذار محصول · تهران</div>
+   686→    <p class="prof-bio">سه سال تجربهٔ محصول؛ دنبال پروژه‌هایی هستم که یک مشکل واقعی را حل می‌کنند. فعلاً روی دو پروژهٔ فین‌تک و مارکت‌پلیس کار می‌کنم.</p>
+   687→  </div>
+   688→  <div class="prof-stats">
+   689→    <div class="pstat"><b>۶</b><span>پروژهٔ فعال</span></div>
+   690→    <div class="pstat"><b>۳</b><span>هم‌تیمی</span></div>
+   691→    <div class="pstat"><b>۱۲</b><span>درخواست</span></div>
+   692→  </div>
+   693→  <button class="btn-primary" type="button" id="btnEditProfile">ویرایش پروفایل</button>
+   694→</div>
+   695→
+   696→<div class="toast" id="toast"></div>
+   697→
+   698→<script>
+   699→/* ---------- ابزارک ---------- */
+   700→const $=(s,c=document)=>c.querySelector(s);
+   701→const $$=(s,c=document)=>[...c.querySelectorAll(s)];
+   702→const toFa=n=>String(n).replace(/\d/g,d=>'۰۱۲۳۴۵۶۷۸۹'[d]);
+   703→
+   704→/* ---------- آیکون‌ها ---------- */
+   705→const I={
+   706→hour:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6.5 3h11M6.5 21h11M8 3v2.3c0 2.6 4 3.7 4 6.7s-4 4.1-4 6.7V21M16 3v2.3c0 2.6-4 3.7-4 6.7s4 4.1 4 6.7V21"/></svg>',
+   707→trend:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M3 16.5l5.2-5.2 3.8 3.8L19.5 7"/><path d="M14.5 7h5v5"/></svg>',
+   708→pen:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12.5 20h8"/><path d="M16.6 3.6a2.4 2.4 0 013.4 3.4L7.6 19.4 3 20.6l1.2-4.6L16.6 3.6z"/></svg>',
+   709→filter:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M4 6.5h16M7.5 12h9M10.5 17.5h3"/></svg>',
+   710→bell:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18.2 9.2a6.2 6.2 0 10-12.4 0c0 5.2-2.1 6.6-2.1 6.6h16.6s-2.1-1.4-2.1-6.6z"/><path d="M10 19.6a2.3 2.3 0 004 0"/></svg>',
+   711→grid:'<svg viewBox="0 0 24 24" fill="currentColor"><circle cx="5" cy="5" r="1.8"/><circle cx="12" cy="5" r="1.8"/><circle cx="19" cy="5" r="1.8"/><circle cx="5" cy="12" r="1.8"/><circle cx="12" cy="12" r="1.8"/><circle cx="19" cy="12" r="1.8"/><circle cx="5" cy="19" r="1.8"/><circle cx="12" cy="19" r="1.8"/><circle cx="19" cy="19" r="1.8"/></svg>',
+   712→dots:'<svg viewBox="0 0 24 24" fill="currentColor"><circle cx="5" cy="12" r="1.7"/><circle cx="12" cy="12" r="1.7"/><circle cx="19" cy="12" r="1.7"/></svg>',
+   713→plus:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round"><path d="M12 5.5v13M5.5 12h13"/></svg>',
+   714→bars:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M5.5 20v-6M12 20V5.5M18.5 20v-9.5"/></svg>',
+   715→folder:'<svg viewBox="0 0 24 24" fill="currentColor"><path d="M3.2 7.1c0-1.6 1.2-2.8 2.8-2.8h3.2c.8 0 1.5.3 2 .9l1 1.1h5.8c1.6 0 2.8 1.2 2.8 2.8v7.6c0 1.6-1.2 2.8-2.8 2.8H6c-1.6 0-2.8-1.2-2.8-2.8V7.1z"/></svg>',
+   716→handshake:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 17.5l-2 2a2.1 2.1 0 01-3-3l4.5-4.5a2.5 2.5 0 013.5 0l1.5 1.5a2.1 2.1 0 003-3l-4-4"/><path d="M3 8l4-4 4 3.5"/><path d="M17 4.5L21 8.5l-2.5 2.5"/><path d="M13.5 19l2 2a2.1 2.1 0 003-3l-.8-.8"/></svg>',
+   717→cal:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3.8" y="5.3" width="16.4" height="15" rx="3.2"/><path d="M3.8 10h16.4M8.3 3.3v3.4M15.7 3.3v3.4"/></svg>',
+   718→x:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M6.5 6.5l11 11M17.5 6.5l-11 11"/></svg>',
+   719→send:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 3.5L10.5 14M21 3.5l-6.8 17.2-3.7-6.7-6.9-3.6L21 3.5z"/></svg>',
+   720→trash:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7h16M9.7 7V5.2a1.7 1.7 0 011.7-1.7h1.2a1.7 1.7 0 011.7 1.7V7M6.3 7l.9 12.1c.1 1 .9 1.9 2 1.9h5.6c1.1 0 1.9-.9 2-1.9L17.7 7"/></svg>',
+   721→user:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="8" r="3.8"/><path d="M4.8 20.2c1.4-3.3 4-4.9 7.2-4.9s5.8 1.6 7.2 4.9"/></svg>',
+   722→bmark:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6.5 4.5h11V21l-5.5-3.8L6.5 21V4.5z"/></svg>',
+   723→bmarkF:'<svg viewBox="0 0 24 24" fill="currentColor"><path d="M6.5 4.5h11V21l-5.5-3.8L6.5 21V4.5z"/></svg>',
+   724→sliders:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 8h8.5M17 8h3M4 16h3M11.5 16h8.5"/><circle cx="14.7" cy="8" r="2.2"/><circle cx="8.7" cy="16" r="2.2"/></svg>',
+   725→headset:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 13.5a7.5 7.5 0 0115 0"/><rect x="3.2" y="13.2" width="4.2" height="6" rx="2.1"/><rect x="16.6" y="13.2" width="4.2" height="6" rx="2.1"/></svg>',
+   726→code:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M8.5 7.5L4 12l4.5 4.5M15.5 7.5L20 12l-4.5 4.5"/></svg>',
+   727→cart:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"><circle cx="9.5" cy="19.5" r="1.5"/><circle cx="17" cy="19.5" r="1.5"/><path d="M3.5 4.5h2l2.4 11h9.6l2-8H6.2"/></svg>',
+   728→play:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linejoin="round"><circle cx="12" cy="12" r="8.6"/><path d="M10.2 8.8l5.2 3.2-5.2 3.2V8.8z"/></svg>',
+   729→book:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 5.8A2.3 2.3 0 016.8 3.5H19.5v14.2H6.8a2.3 2.3 0 00-2.3 2.3V5.8z"/><path d="M4.5 17.7v.5a2.3 2.3 0 002.3 2.3h12.7"/></svg>',
+   730→layers:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3.5l8.5 4.7L12 12.9 3.5 8.2 12 3.5z"/><path d="M3.5 12.5L12 17.2l8.5-4.7"/></svg>',
+   731→check:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.8l4.3 4.3L19 7.5"/></svg>',
+   732→search:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round"><circle cx="11" cy="11" r="6.5"/><path d="M20.5 20.5l-4.8-4.8"/></svg>',
+   733→pin:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s7-5.3 7-11a7 7 0 10-14 0c0 5.7 7 11 7 11z"/><circle cx="12" cy="10" r="2.6"/></svg>',
+   734→pie:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.5A9 9 0 1111.5 3"/><path d="M12 3a9 9 0 019 9h-9V3z"/></svg>'
+   735→};
+   736→ $$('[data-icon]').forEach(el=>el.innerHTML=I[el.dataset.icon]);
+   737→
+   738→/* ---------- کاربران ---------- */
+   739→const USERS={
+   740→  arman:{name:'آرمان رضایی',initial:'آ',img:'https://i.pravatar.cc/96?img=12'},
+   741→  sara:{name:'سارا احمدی',initial:'س',img:'https://i.pravatar.cc/96?img=47'},
+   742→  negar:{name:'نگار محمدی',initial:'ن',img:'https://i.pravatar.cc/96?img=44'},
+   743→  amir:{name:'امیر کاظمی',initial:'ا',img:'https://i.pravatar.cc/96?img=59'},
+   744→  soheil:{name:'سهیل راد',initial:'س',img:'https://i.pravatar.cc/96?img=68'},
+   745→  maryam:{name:'مریم صالحی',initial:'م',img:'https://i.pravatar.cc/96?img=45'}
+   746→};
+   747→
+   748→/* ---------- پروژه‌ها ---------- */
+   749→let PROJECTS=[
+   750→  {id:1,title:'اپ رزرو فضای کار مشترک',role:'هم‌بنیان‌گذار فنی',status:'ongoing',priority:true,owner:'sara',progress:45,
+   751→   desc:'ظرفیت خالی کافه‌ها و کاورکینگ‌ها را لحظه‌ای رزرو کن؛ پلتفرمی که فضای بلااستفادهٔ شهر را به فریلنسرها می‌رساند. نسخهٔ آزمایشی با ۳ کافه در تهران در حال تست است و برای فاز رشد به یک هم‌بنیان‌گذار فنی تمام‌وقت نیاز داریم.',
+   752→   stage:'MVP آماده',skills:['React Native','Node.js','نقشه و GPS'],team:['sara','negar'],req:false,saved:false,
+   753→   thumb:{type:'icon',icon:'code',bg:'linear-gradient(135deg,#F6E6C1,#EBCE92)',fg:'#8A6423'}},
+   754→  {id:2,title:'تحلیل بازار آموزش آنلاین',role:'طراح محصول',status:'future',priority:false,owner:'arman',progress:12,
+   755→   desc:'پیش از شروع توسعه، بازار آموزش آنلاین ایران را برای یافتن شکاف واقعی بررسی می‌کنیم. گزارش رقبا و قیمت‌گذاری کامل شده و فاز بعدی مصاحبه با ۳۰ مدرس فعال است. دنبال کسی هستیم این تحقیق را به طراحی محصول تبدیل کند.',
+   756→   stage:'تحقیق بازار',skills:['تحقیق بازار','تحلیل داده','مصاحبهٔ کاربر'],team:['arman'],req:true,saved:false,
+   757→   thumb:{type:'letter',letter:'ت'}},
+   758→  {id:3,title:'لندینگ فروشگاه پوشاک',role:'متخصص رشد و فروش',status:'ongoing',priority:false,owner:'arman',progress:68,
+   759→   desc:'فروشگاه پوشاک با تمرکز بر تولید داخلی؛ لندینگ آماده است و کمپین اول این هفته اجرا می‌شود. دنبال متخصص رشد برای بهینه‌سازی نرخ تبدیل و مدیریت کمپین‌های گوگل و اینستاگرام هستیم.',
+   760→   stage:'آمادهٔ لانچ',skills:['SEO','کمپین تبلیغاتی','تحلیل قیف فروش'],team:['arman','soheil'],req:false,saved:true,
+   761→   thumb:{type:'icon',icon:'cart',bg:'linear-gradient(135deg,#DFEAD3,#BAD3A4)',fg:'#54713B'}},
+   762→  {id:4,title:'دستیار هوشمند برنامهٔ غذایی',role:'هم‌بنیان‌گذار فنی',status:'future',priority:false,owner:'sara',progress:8,
+   763→   desc:'برنامهٔ غذایی هفتگی بر اساس هدف سلامتی و بودجهٔ هر کاربر؛ هوش مصنوعی دستور پخت‌ها را با مواد موجود آشپزخانه هماهنگ می‌کند. در فاز ایده‌پردازی هستیم و به یک هم‌بنیان‌گذار فنی برای ساخت نمونهٔ اولیه نیاز داریم.',
+   764→   stage:'ایده',skills:['هوش مصنوعی','طراحی محصول'],team:['sara'],req:false,saved:false,
+   765→   thumb:{type:'icon',icon:'layers',bg:'linear-gradient(135deg,#F6DECF,#F0C0A0)',fg:'#A05A2E'}},
+   766→  {id:5,title:'پنل مدیریت صف مشتریان',role:'مدیر محصول',status:'ongoing',priority:true,owner:'arman',progress:30,
+   767→   desc:'صفِ حضوری مشتریان را دیجیتال می‌کنیم؛ مشتری از راه دور نوبت می‌گیرد و وقتش آزاد می‌شود. پایلوت در یک شعبهٔ بانک موفق بوده و برای بستن قراردادهای سازمانی به یک مدیر محصول باتجربه نیاز داریم.',
+   768→   stage:'پایلوت موفق',skills:['مدیریت محصول','فروش B2B'],team:['arman','sara'],req:false,saved:false,
+   769→   thumb:{type:'icon',icon:'play',bg:'linear-gradient(135deg,#E5DEF7,#CBBDF0)',fg:'#5E46A6'}},
+   770→  {id:6,title:'شبکهٔ اجتماعی کتاب‌خوان‌ها',role:'بازاریاب محتوا',status:'ongoing',priority:false,owner:'sara',progress:55,
+   771→   desc:'چالش کتاب‌خوانی با دوستان؛ ثبت پیشرفت مطالعه، نقل‌قول‌های محبوب و باشگاه کتاب آنلاین. ۵۰۰ کاربر اولیه از اینستاگرام آمده‌اند و برای ساخت اپ مستقل به بازاریاب محتوا و توسعه‌دهنده نیاز داریم.',
+   772→   stage:'MVP آماده',skills:['تولید محتوا','مدیریت کامیونیتی'],team:['sara','maryam'],req:false,saved:false,
+   773→   thumb:{type:'icon',icon:'book',bg:'linear-gradient(135deg,#F3E3D8,#E7C4B4)',fg:'#96543B'}}
+   774→];
+   775→
+   776→/* ---------- آگهی‌های هم‌بنیانی ---------- */
+   777→let ADS=[
+   778→  {id:1,uid:'negar',role:'طراح محصول',loc:'تهران / دورکاری',title:'هم‌درسی | مارکت‌پلیس کلاس خصوصی آنلاین',
+   779→   desc:'نسخهٔ اولیه بالا آمده و ۲۰۰ زبان‌آموز فعال داریم. برای رسیدن به نسخهٔ عمومی و بستن دور سرمایه، دنبال یک هم‌بنیان‌گذار فنی هستم که مالکیت بخش فنی را بپذیرد.',
+   780→   need:'هم‌بنیان‌گذار فنی (فول‌استک)',cat:'tech',stage:'MVP آماده',equity:'۲۵٪ سهام',skills:['React','Node.js','PostgreSQL'],time:'۲ ساعت پیش',saved:false,req:false},
+   781→  {id:2,uid:'amir',role:'مهندس نرم‌افزار',loc:'کاملاً دورکاری',title:'فایننس‌یار | مدیریت مالی استارتاپ‌های نوبنیاد',
+   782→   desc:'ایده‌ام را بارها با مدیران مالی چک کرده‌ام؛ درد واقعی بازار است. دنبال هم‌بنیان‌گذاری هستم که تجربهٔ طراحی محصول داشته باشد و کنارم ریسک کند.',
+   783→   need:'هم‌بنیان‌گذار طراحی محصول',cat:'design',stage:'ایده',equity:'۳۰٪ سهام',skills:['Figma','تحقیق کاربر'],time:'دیروز',saved:true,req:false},
+   784→  {id:3,uid:'soheil',role:'متخصص رشد',loc:'مشهد / دورکاری',title:'ترپ‌بازار | بلیت لحظهٔ آخری با قیمت منصفانه',
+   785→   desc:'ماهانه ۱۵ میلیون تومان فروش داریم و رشدمان ارگانیک است. برای ساخت اپ موبایل و مقیاس‌دادن، به یک شریک فنی جدی و بلندمدت نیاز دارم.',
+   786→   need:'هم‌بنیان‌گذار فنی (موبایل)',cat:'tech',stage:'درآمدزا',equity:'۲۰٪ سهام',skills:['Flutter','REST API'],time:'۲ روز پیش',saved:false,req:false},
+   787→  {id:4,uid:'maryam',role:'پژوهشگر بازار',loc:'اصفهان',title:'مِندلی | همراه سلامت روان، در دسترس همه',
+   788→   desc:'یک سال روی رفتار کاربران تحقیق کرده‌ام و نمونهٔ کاغذی را تست کرده‌ام. حالا برای تبدیل‌کردن به محصول واقعی، یک هم‌تیمی صبور و اهل داده می‌خواهم.',
+   789→   need:'هم‌بنیان‌گذار محصول',cat:'product',stage:'MVP آماده',equity:'۳۵٪ سهام',skills:['استراتژی محصول','مدیریت تیم'],time:'۳ روز پیش',saved:false,req:false},
+   790→  {id:5,uid:'arash',role:'بنیان‌گذار دومین استارتاپ',loc:'شیراز',title:'باکسِت | سفارش آنلاین غذای سالم سازمانی',
+   791→   desc:'با ۱۲ شرکت قرارداد B2B داریم؛ مشکل ما فروش بیشتر است نه ساخت محصول. اگر فروش سازمانی بلدی و حاضرى سهام بگیری، بیا شریک شویم.',
+   792→   need:'هم‌بنیان‌گذار رشد و فروش',cat:'growth',stage:'درآمدزا',equity:'۱۵٪ سهام',skills:['فروش سازمانی','کمپین'],time:'۴ روز پیش',saved:false,req:false}
+   793→];
+   794→const CAT_LABEL={tech:'فنی',design:'طراحی',product:'محصول',growth:'رشد و فروش'};
+   795→
+   796→/* ---------- رندر کارت‌های پروژه ---------- */
+   797→const cardsEl=$('#cards');let firstRender=true,lastNew=null;
+   798→const avaHTML=(a,extra='')=>`<span class="ava ${extra}" data-initial="${a.initial}"><img src="${a.img}" alt="" loading="lazy" onerror="this.remove()"></span>`;
+   799→const thumbHTML=t=>t.type==='letter'
+   800→  ?`<div class="thumb letter">${t.letter}</div>`
+   801→  :`<div class="thumb" style="background:${t.bg};color:${t.fg}"><span class="ic">${I[t.icon]}</span></div>`;
+   802→
+   803→function cardHTML(p,i){
+   804→  const o=USERS[p.owner];
+   805→  return `<article class="card${p.status==='future'?' dark':''}" data-id="${p.id}" tabindex="0" role="button" aria-label="جزئیات ${p.title}" style="animation-delay:${firstRender?i*80:0}ms">
+   806→    <div class="card-top">
+   807→      <div class="ct-s">
+   808→        <span class="badge"><span class="ic">${I.hour}</span><span>${p.status==='ongoing'?'در جریان':'آینده'}</span></span>
+   809→        <span class="mchart"><span class="ic">${I.trend}</span></span>
+   810→      </div>
+   811→      <div class="ct-e">
+   812→        <span class="owner">ساختهٔ <b>${o.name}</b></span>
+   813→        <span class="oava">${avaHTML(o)}<button class="invite" data-invite="${p.id}" aria-label="دعوت هم‌بنیان‌گذار"><span class="ic">${I.plus}</span></button></span>
+   814→      </div>
+   815→    </div>
+   816→    <div class="card-body">
+   817→      ${thumbHTML(p.thumb)}
+   818→      <div class="bmain">
+   819→        <div class="trow"><h3 class="ctitle">${p.title}</h3><button class="dots" data-menu="${p.id}" aria-label="گزینه‌ها"><span class="ic">${I.dots}</span></button></div>
+   820→        <div class="needline"><span class="ic">${I.user}</span>دنبالِ: ${p.role}</div>
+   821→        <div class="progress"><i style="width:${p.progress}%"></i></div>
+   822→      </div>
+   823→    </div>
+   824→  </article>`;
+   825→}
+   826→function render(){
+   827→  cardsEl.innerHTML=PROJECTS.map(cardHTML).join('');
+   828→  firstRender=false;
+   829→  if(lastNew){const el=cardsEl.querySelector(`[data-id="${lastNew}"]`);el&&el.classList.add('fresh');lastNew=null}
+   830→  applyFilters();
+   831→}
+   832→
+   833→/* ---------- فیلتر پروژه‌ها ---------- */
+   834→const state={status:'all',priority:false,owner:'all'};
+   835→function applyFilters(){
+   836→  let n=0;
+   837→  $$('.card',cardsEl).forEach(el=>{
+   838→    const p=PROJECTS.find(x=>x.id==el.dataset.id);
+   839→    const ok=(state.status==='all'||p.status===state.status)&&(!state.priority||p.priority)&&(state.owner==='all'||p.owner===state.owner);
+   840→    el.style.display=ok?'':'none';if(ok)n++;
+   841→  });
+   842→  $('#noProj').classList.toggle('show',n===0);
+   843→  $('#countNum').textContent=toFa(n);syncPills();
+   844→}
+   845→function syncPills(){
+   846→  $('#pillHigh').classList.toggle('active',state.priority);
+   847→  $('#pillOwner').classList.toggle('active',state.owner!=='all');
+   848→  $('#ownerLabel').textContent=state.owner==='all'?'ساختهٔ آرمان و سارا':'ساختهٔ '+USERS[state.owner].name;
+   849→  $('#pillAll').classList.toggle('active',state.status==='all'&&!state.priority&&state.owner==='all');
+   850→}
+   851→ $('#pillAll').onclick=()=>{state.status='all';state.priority=false;state.owner='all';applyFilters()};
+   852→ $('#pillHigh').onclick=()=>{state.priority=!state.priority;applyFilters()};
+   853→const ownerCycle=['all','arman','sara'];let oi=0;
+   854→ $('#pillOwner').onclick=()=>{oi=(oi+1)%3;state.owner=ownerCycle[oi];applyFilters()};
+   855→
+   856→/* ---------- رندر آگهی‌ها ---------- */
+   857→const adsEl=$('#adsList');
+   858→const adState={cat:'all',q:''};
+   859→function adHTML(a,i){
+   860→  const av=USERS[a.uid];
+   861→  return `<article class="ad" data-id="${a.id}" style="animation-delay:${i*60}ms">
+   862→    <div class="ad-head">
+   863→      ${avaHTML(av)}
+   864→      <div class="who"><b>${av.name}</b><span>${a.role} · ${a.loc}</span></div>
+   865→      <button class="bm ${a.saved?'saved':''}" data-bm="${a.id}" aria-label="ذخیرهٔ آگهی"><span class="ic">${a.saved?I.bmarkF:I.bmark}</span></button>
+   866→    </div>
+   867→    <h3 class="ad-title">${a.title}</h3>
+   868→    <p class="ad-desc">${a.desc}</p>
+   869→    <div class="ad-chips">
+   870→      <span class="chip-need"><span class="ic">${I.user}</span>${a.need}</span>
+   871→      <span class="chip-soft"><span class="ic">${I.trend}</span>${a.stage}</span>
+   872→      <span class="chip-soft"><span class="ic">${I.pie}</span>${a.equity}</span>
+   873→    </div>
+   874→    <div class="ad-foot">
+   875→      <span class="ad-time">${a.time} · نیاز: ${CAT_LABEL[a.cat]}</span>
+   876→      <button class="req ${a.req?'done':''}" data-req="${a.id}">${a.req?`<span class="ic">${I.check}</span>درخواست ارسال شد`:'ارسال درخواست همکاری'}</button>
+   877→    </div>
+   878→  </article>`;
+   879→}
+   880→function renderAds(){
+   881→  const q=adState.q.trim();
+   882→  const list=ADS.filter(a=>
+   883→    (adState.cat==='all'||a.cat===adState.cat)&&
+   884→    (!q||(a.title+a.desc+a.need+USERS[a.uid].name+a.skills.join()).includes(q))
+   885→  );
+   886→  adsEl.innerHTML=list.map(adHTML).join('');
+   887→  $('#adsCount').textContent=toFa(list.length);
+   888→  $('#noAds').classList.toggle('show',list.length===0);
+   889→}
+   890→ $('#adSearch').addEventListener('input',e=>{adState.q=e.target.value;renderAds()});
+   891→ $$('#adCats .fchip').forEach(c=>c.onclick=()=>{
+   892→  $$('#adCats .fchip').forEach(x=>x.classList.toggle('active',x===c));
+   893→  adState.cat=c.dataset.cat;renderAds();
+   894→});
+   895→
+   896→/* ---------- شیت‌ها ---------- */
+   897→const backdrop=$('#backdrop'),notifPanel=$('#notifPanel');let curSheet=null;
+   898→function openSheet(sel){notifPanel.classList.remove('show');curSheet=$(sel);backdrop.classList.add('show');curSheet.classList.add('show')}
+   899→function closeSheet(){if(curSheet){curSheet.classList.remove('show');curSheet=null}backdrop.classList.remove('show')}
+   900→backdrop.onclick=closeSheet;
+   901→ $$('.js-close').forEach(b=>b.onclick=closeSheet);
+   902→
+   903→/* ═══════ مودال جزئیات پروژه ═══════ */
+   904→function openProj(id){
+   905→  const p=PROJECTS.find(x=>x.id==id);if(!p)return;
+   906→  const o=USERS[p.owner];
+   907→  const mine=p.owner==='arman';
+   908→  $('#pjHead').innerHTML=`${avaHTML(o)}<div class="who"><b>${o.name}</b><span>سازندهٔ پروژه${mine?' · پروژهٔ خودت':''}</span></div>`;
+   909→  $('#pjBody').innerHTML=`
+   910→    <h3 class="d-title">${p.title}</h3>
+   911→    <p class="d-desc">${p.desc}</p>
+   912→    <div class="ad-chips">${p.skills.map(s=>`<span class="chip-soft">${s}</span>`).join('')}</div>
+   913→    <div class="meta">
+   914→      <div class="mrow"><span class="ic">${I.hour}</span><span class="ml">وضعیت</span><b>${p.status==='ongoing'?'در جریان':'آینده'}</b></div>
+   915→      <div class="mrow"><span class="ic">${I.user}</span><span class="ml">نقش موردنیاز</span><b>${p.role}</b></div>
+   916→      <div class="mrow"><span class="ic">${I.trend}</span><span class="ml">مرحله</span><b>${p.stage}</b></div>
+   917→      <div class="mrow"><span class="ic">${I.grid}</span><span class="ml">تیم</span><span class="tava">${p.team.map(u=>avaHTML(USERS[u])).join('')}</span></div>
+   918→    </div>
+   919→    <div class="pwrap"><div class="progress"><i style="width:${p.progress}%"></i></div></div>
+   920→    <p style="font-size:11.5px;color:var(--txt2);font-weight:600">پیشرفت پروژه: ${toFa(p.progress)}٪</p>`;
+   921→  const act=$('#pjActions');
+   922→  if(mine){
+   923→    act.innerHTML=`
+   924→      <button type="button" class="btn-primary" id="pjEdit"><span class="ic">${I.pen}</span>ویرایش پروژه</button>
+   925→      <button type="button" class="btn-ghost danger" id="pjDel"><span class="ic">${I.trash}</span>حذف پروژه</button>`;
+   926→    $('#pjEdit').onclick=()=>{closeSheet();setTimeout(()=>openEdit(id),160)};
+   927→    $('#pjDel').onclick=()=>deleteProj(id);
+   928→  }else{
+   929→    act.innerHTML=`
+   930→      <button type="button" class="btn-primary ${p.req?'done':''}" id="pjReq">${p.req?`<span class="ic">${I.check}</span>درخواست همکاری ارسال شد`:`<span class="ic">${I.send}</span>ارسال درخواست همکاری`}</button>
+   931→      <button type="button" class="btn-ghost ${p.saved?'saved':''}" id="pjSave">${p.saved?`<span class="ic">${I.bmarkF}</span>ذخیره شد`:`<span class="ic">${I.bmark}</span>ذخیرهٔ پروژه`}</button>`;
+   932→    $('#pjReq').onclick=()=>{
+   933→      if(p.req){toastMsg('قبلاً درخواستت را فرستادی');return}
+   934→      p.req=true;openProj(id);
+   935→      toastMsg(`درخواست همکاری‌ات برای ${o.name} ارسال شد ✉️`);
+   936→    };
+   937→    $('#pjSave').onclick=()=>{
+   938→      p.saved=!p.saved;openProj(id);
+   939→      toastMsg(p.saved?'پروژه در ذخیره‌شده‌ها ثبت شد':'پروژه از ذخیره‌شده‌ها حذف شد');
+   940→    };
+   941→  }
+   942→  openSheet('#sheetProj');
+   943→}
+   944→function deleteProj(id){
+   945→  closeSheet();
+   946→  const el=cardsEl.querySelector(`[data-id="${id}"]`);el&&el.classList.add('removing');
+   947→  setTimeout(()=>{PROJECTS.splice(PROJECTS.findIndex(x=>x.id==id),1);render();toastMsg('پروژه حذف شد')},280);
+   948→}
+   949→cardsEl.addEventListener('click',e=>{
+   950→  const inv=e.target.closest('[data-invite]');
+   951→  if(inv){e.stopPropagation();toastMsg('لینک دعوت کپی شد؛ با دوستانت به اشتراک بگذار');return}
+   952→  const m=e.target.closest('[data-menu]');
+   953→  if(m){e.stopPropagation();actId=+m.dataset.menu;const p=PROJECTS.find(x=>x.id==actId);$('#asTitle').textContent='«'+p.title+'»';openSheet('#sheetAction');return}
+   954→  const card=e.target.closest('.card');
+   955→  if(card)openProj(card.dataset.id);
+   956→});
+   957→cardsEl.addEventListener('keydown',e=>{
+   958→  if(e.key==='Enter'){const c=e.target.closest('.card');if(c)openProj(c.dataset.id)}
+   959→});
+   960→
+   961→/* ═══════ مودال جزئیات آگهی ═══════ */
+   962→let curAd=null;
+   963→function syncAdButtons(a){
+   964→  const r=$('#adReqBtn'),s=$('#adSaveBtn');
+   965→  r.classList.toggle('done',a.req);
+   966→  r.innerHTML=a.req?`${I.check}درخواست ارسال شده`:`${I.send}ارسال درخواست همکاری`;
+   967→  s.classList.toggle('saved',a.saved);
+   968→  s.innerHTML=a.saved?`${I.bmarkF}ذخیره شد`:`${I.bmark}ذخیرهٔ آگهی`;
+   969→}
+   970→function openAd(id){
+   971→  const a=ADS.find(x=>x.id==id);curAd=a;const av=USERS[a.uid];
+   972→  $('#adHead').innerHTML=`${avaHTML(av)}<div class="who"><b>${av.name}</b><span>${a.role} · ${a.loc} · ${a.time}</span></div>`;
+   973→  $('#adBody').innerHTML=`
+   974→    <h3 class="d-title">${a.title}</h3>
+   975→    <p class="d-desc">${a.desc}</p>
+   976→    <div class="meta">
+   977→      <div class="mrow"><span class="ic">${I.user}</span><span class="ml">نقش موردنیاز</span><b>${a.need}</b></div>
+   978→      <div class="mrow"><span class="ic">${I.trend}</span><span class="ml">مرحلهٔ پروژه</span><b>${a.stage}</b></div>
+   979→      <div class="mrow"><span class="ic">${I.pie}</span><span class="ml">سهم پیشنهادی</span><b>${a.equity}</b></div>
+   980→      <div class="mrow"><span class="ic">${I.pin}</span><span class="ml">موقعیت</span><b>${a.loc}</b></div>
+   981→    </div>
+   982→    <div class="skchips">${a.skills.map(s=>`<span>${s}</span>`).join('')}</div>`;
+   983→  syncAdButtons(a);openSheet('#sheetAd');
+   984→}
+   985→ $('#adReqBtn').onclick=()=>{
+   986→  if(!curAd)return;
+   987→  if(curAd.req){toastMsg('قبلاً درخواستت را فرستادی');return}
+   988→  curAd.req=true;renderAds();syncAdButtons(curAd);
+   989→  toastMsg(`درخواست همکاری‌ات برای ${USERS[curAd.uid].name} ارسال شد ✉️`);
+   990→};
+   991→ $('#adSaveBtn').onclick=()=>{
+   992→  if(!curAd)return;
+   993→  curAd.saved=!curAd.saved;renderAds();syncAdButtons(curAd);
+   994→  toastMsg(curAd.saved?'آگهی در ذخیره‌شده‌ها ثبت شد':'آگهی از ذخیره‌شده‌ها حذف شد');
+   995→};
+   996→adsEl.addEventListener('click',e=>{
+   997→  const bm=e.target.closest('[data-bm]');
+   998→  if(bm){const a=ADS.find(x=>x.id==bm.dataset.bm);a.saved=!a.saved;renderAds();toastMsg(a.saved?'آگهی ذخیره شد':'از ذخیره‌شده‌ها حذف شد');return}
+   999→  const rq=e.target.closest('[data-req]');
+  1000→  if(rq){const a=ADS.find(x=>x.id==rq.dataset.req);if(a.req){toastMsg('قبلاً درخواستت را فرستادی');return}a.req=true;renderAds();toastMsg(`درخواست برای ${USERS[a.uid].name} ارسال شد ✉️`);return}
+  1001→  const card=e.target.closest('.ad');
+  1002→  if(card)openAd(card.dataset.id);
+  1003→});
+  1004→
+  1005→/* ---------- ساخت / ویرایش پروژه ---------- */
+  1006→let editId=null;
+  1007→ $('#btnNew').onclick=()=>{
+  1008→  editId=null;$('#npTitleH').textContent='پروژهٔ جدید';$('#fSubmit').textContent='ثبت پروژه';
+  1009→  $('#fTitle').value='';$('input[name=npst][value=ongoing]').checked=true;
+  1010→  $$('input[name=nprole]').forEach(r=>r.checked=false);$('#npHigh').checked=false;
+  1011→  openSheet('#sheetNew');setTimeout(()=>$('#fTitle').focus(),420);
+  1012→};
+  1013→function openEdit(id){
+  1014→  const p=PROJECTS.find(x=>x.id==id);editId=id;
+  1015→  $('#npTitleH').textContent='ویرایش پروژه';$('#fSubmit').textContent='ذخیرهٔ تغییرات';
+  1016→  $('#fTitle').value=p.title;$(`input[name=npst][value=${p.status}]`).checked=true;$('#npHigh').checked=p.priority;
+  1017→  openSheet('#sheetNew');
+  1018→}
+  1019→ $('#sheetNew').onsubmit=e=>{
+  1020→  e.preventDefault();
+  1021→  const title=$('#fTitle').value.trim();if(!title)return;
+  1022→  const status=$('input[name=npst]:checked').value;
+  1023→  const roleEl=$('input[name=nprole]:checked');
+  1024→  const role=roleEl?roleEl.value:'هم‌بنیان‌گذار';
+  1025→  if(editId){
+  1026→    Object.assign(PROJECTS.find(x=>x.id==editId),{title,role,status,priority:$('#npHigh').checked});
+  1027→    toastMsg('تغییرات پروژه ذخیره شد');
+  1028→  }else{
+  1029→    const icons=['code','cart','play','book','layers'];
+  1030→    PROJECTS.unshift({id:Date.now(),title,role,status,priority:$('#npHigh').checked,owner:'arman',progress:0,
+  1031→      desc:'توضیح پروژه را کامل بنویس تا شانس پیدا کردن هم‌بنیان‌گذار مناسب بیشتر شود؛ مشکل اصلی، مرحلهٔ فعلی و انتظارت از هم‌تیمی را روشن توضیح بده.',
+  1032→      stage:'تازه شروع شده',skills:[role],team:['arman'],req:false,saved:false,
+  1033→      thumb:{type:'icon',icon:icons[Math.floor(Math.random()*5)],bg:'linear-gradient(135deg,#EFE9DF,#DDD2BF)',fg:'#6E6250'}});
+  1034→    lastNew=PROJECTS[0].id;toastMsg('پروژه ثبت شد؛ حالا منتظر پیشنهادها بمان');
+  1035→  }
+  1036→  render();closeSheet();
+  1037→};
+  1038→
+  1039→/* ---------- اقدامات کارت (منوی ⋯) ---------- */
+  1040→let actId=null;
+  1041→ $('#asOpen').onclick=()=>{closeSheet();setTimeout(()=>openProj(actId),160)};
+  1042→ $('#asInvite').onclick=()=>{closeSheet();toastMsg('درخواست هم‌بنیان‌گذاری برای این پروژه ارسال شد')};
+  1043→ $('#asEdit').onclick=()=>{closeSheet();setTimeout(()=>openEdit(actId),160)};
+  1044→ $('#asDelete').onclick=()=>deleteProj(actId);
+  1045→
+  1046→/* ---------- فیلتر پیشرفته ---------- */
+  1047→ $('#btnFilter').onclick=()=>{
+  1048→  $(`input[name=fst][value=${state.status}]`).checked=true;
+  1049→  $(`input[name=fown][value=${state.owner}]`).checked=true;
+  1050→  $('#fHighF').checked=state.priority;openSheet('#sheetFilter');
+  1051→};
+  1052→ $('#sheetFilter').onsubmit=e=>{
+  1053→  e.preventDefault();
+  1054→  state.status=$('input[name=fst]:checked').value;
+  1055→  state.owner=$('input[name=fown]:checked').value;
+  1056→  state.priority=$('#fHighF').checked;
+  1057→  applyFilters();closeSheet();toastMsg('فیلترها اعمال شد');
+  1058→};
+  1059→
+  1060→/* ---------- اعلان‌ها ---------- */
+  1061→ $('#btnBell').onclick=e=>{e.stopPropagation();notifPanel.classList.toggle('show')};
+  1062→ $('#markRead').onclick=()=>{$$('.n-item').forEach(n=>n.classList.remove('unread'));$('#bellDot').style.display='none'};
+  1063→document.addEventListener('click',e=>{
+  1064→  if(!notifPanel.contains(e.target)&&!$('#btnBell').contains(e.target))notifPanel.classList.remove('show');
+  1065→});
+  1066→
+  1067→/* ---------- ناوبری ---------- */
+  1068→function setView(id){
+  1069→  $$('.view').forEach(v=>v.classList.toggle('active',v.id===id));
+  1070→  $$('[data-view]').forEach(b=>b.classList.toggle('active',b.dataset.view===id));
+  1071→  notifPanel.classList.remove('show');scrollTo({top:0,behavior:'smooth'});
+  1072→}
+  1073→ $$('[data-view]').forEach(b=>b.onclick=()=>setView(b.dataset.view));
+  1074→
+  1075→/* ---------- منو و پروفایل ---------- */
+  1076→ $('#btnMenu').onclick=()=>openSheet('#sheetMenu');
+  1077→ $$('.m-item').forEach(m=>m.onclick=()=>{
+  1078→  const g=m.dataset.goto;closeSheet();
+  1079→  if(g==='sched')setView('view-sched');
+  1080→  else if(g==='stats')setView('view-stats');
+  1081→  else if(g==='saved')setView('view-ads');
+  1082→  else if(g==='profile')openSheet('#sheetProfile');
+  1083→  else toastMsg('این بخش به‌زودی اضافه می‌شود');
+  1084→});
+  1085→ $('#btnProfile').onclick=()=>openSheet('#sheetProfile');
+  1086→ $('#btnEditProfile').onclick=()=>{closeSheet();toastMsg('ویرایش پروفایل به‌زودی فعال می‌شود')};
+  1087→ $$('.js-invite').forEach(b=>b.onclick=()=>{
+  1088→  b.classList.add('done');b.textContent='دعوت‌نامه رفت ✓';toastMsg('دعوت‌نامه برایش ارسال شد');
+  1089→});
+  1090→
+  1091→/* ---------- توست ---------- */
+  1092→let tt;function toastMsg(m){const t=$('#toast');t.textContent=m;t.classList.add('show');clearTimeout(tt);tt=setTimeout(()=>t.classList.remove('show'),2600)}
+  1093→
+  1094→/* ---------- بررسی بارگذاری فونت فرهنگ ---------- */
+  1095→if('fonts' in document){
+  1096→  document.fonts.ready.then(()=>{
+  1097→    const ok=document.fonts.check('16px Farhang');
+  1098→    if(ok){
+  1099→      console.info('%c✓ فونت فرهنگ با موفقیت فعال است','color:#2E7D43;font-weight:bold');
+  1100→    }else{
+  1101→      console.warn('⚠ فونت فرهنگ از سرور بارگذاری نشد (احتمالاً CORS). فایل‌های woff2 را در پوشهٔ fonts/ کنار همین فایل بگذار.');
+  1102→      toastMsg('فونت فرهنگ لود نشد — پوشهٔ fonts را کنار فایل بساز');
+  1103→    }
+  1104→  });
+  1105→}
+  1106→
+  1107→/* ---------- Escape ---------- */
+  1108→addEventListener('keydown',e=>{if(e.key==='Escape'){closeSheet();notifPanel.classList.remove('show')}});
+  1109→
+  1110→/* ---------- شروع ---------- */
+  1111→render();renderAds();
+  1112→</script>
+  1113→</body>
+  1114→</html>

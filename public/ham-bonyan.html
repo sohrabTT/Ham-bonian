@@ -408,8 +408,8 @@ body{
 
   <!-- ═══════ پروژه‌های من ═══════ -->
   <section class="view active" id="view-home">
-    <h1 class="greet">سلام، <b>آرمان</b>!</h1>
-    <p class="sub">۲ درخواست همکاری منتظر پاسخ توست؛ یک نگاه به پروژه‌هات بنداز.</p>
+    <h1 class="greet">ایده‌ات را <b>به تیم برسان.</b></h1>
+    <p class="sub">هم‌بنیان‌گذار فنی، طراح محصول یا متخصص رشدِ مناسب پروژه‌ات همین‌جا منتظر توست؛ فرصت‌ها را کاوش کن و همین حالا شروع کن.</p>
 
     <div class="pills">
       <button class="pill" id="pillAll">در جریان و آینده (<span id="countNum">۶</span>)</button>
@@ -701,6 +701,17 @@ const $=(s,c=document)=>c.querySelector(s);
 const $$=(s,c=document)=>[...c.querySelectorAll(s)];
 const toFa=n=>String(n).replace(/\d/g,d=>'۰۱۲۳۴۵۶۷۸۹'[d]);
 
+/* ---------- احراز هویت (سبک، مبتنی بر localStorage) ---------- */
+const HB_USER_KEY='hb_user';
+function getAuth(){try{return JSON.parse(localStorage.getItem(HB_USER_KEY)||'null')}catch(e){return null}}
+function isAuthed(){return !!getAuth()}
+function requireAuth(next,msg){
+  if(isAuthed())return true;
+  toastMsg(msg||'برای این کار باید وارد شوی');
+  setTimeout(function(){location.href='login.html?next='+(next||'ham-bonyan.html')},750);
+  return false;
+}
+
 /* ---------- آیکون‌ها ---------- */
 const I={
 hour:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6.5 3h11M6.5 21h11M8 3v2.3c0 2.6 4 3.7 4 6.7s-4 4.1-4 6.7V21M16 3v2.3c0 2.6-4 3.7-4 6.7s4 4.1 4 6.7V21"/></svg>',
@@ -742,7 +753,8 @@ const USERS={
   negar:{name:'نگار محمدی',initial:'ن',img:'https://i.pravatar.cc/96?img=44'},
   amir:{name:'امیر کاظمی',initial:'ا',img:'https://i.pravatar.cc/96?img=59'},
   soheil:{name:'سهیل راد',initial:'س',img:'https://i.pravatar.cc/96?img=68'},
-  maryam:{name:'مریم صالحی',initial:'م',img:'https://i.pravatar.cc/96?img=45'}
+  maryam:{name:'مریم صالحی',initial:'م',img:'https://i.pravatar.cc/96?img=45'},
+  arash:{name:'آرش کریمی',initial:'آ',img:'https://i.pravatar.cc/96?img=13'}
 };
 
 /* ---------- پروژه‌ها ---------- */
@@ -930,6 +942,7 @@ function openProj(id){
       <button type="button" class="btn-primary ${p.req?'done':''}" id="pjReq">${p.req?`<span class="ic">${I.check}</span>درخواست همکاری ارسال شد`:`<span class="ic">${I.send}</span>ارسال درخواست همکاری`}</button>
       <button type="button" class="btn-ghost ${p.saved?'saved':''}" id="pjSave">${p.saved?`<span class="ic">${I.bmarkF}</span>ذخیره شد`:`<span class="ic">${I.bmark}</span>ذخیرهٔ پروژه`}</button>`;
     $('#pjReq').onclick=()=>{
+      if(!requireAuth('ham-bonyan.html','برای ارسال درخواست همکاری باید وارد شوی'))return;
       if(p.req){toastMsg('قبلاً درخواستت را فرستادی');return}
       p.req=true;openProj(id);
       toastMsg(`درخواست همکاری‌ات برای ${o.name} ارسال شد ✉️`);
@@ -948,7 +961,7 @@ function deleteProj(id){
 }
 cardsEl.addEventListener('click',e=>{
   const inv=e.target.closest('[data-invite]');
-  if(inv){e.stopPropagation();toastMsg('لینک دعوت کپی شد؛ با دوستانت به اشتراک بگذار');return}
+  if(inv){e.stopPropagation();if(!requireAuth('ham-bonyan.html','برای دعوت هم‌بنیان‌گذار باید وارد شوی'))return;toastMsg('لینک دعوت کپی شد؛ با دوستانت به اشتراک بگذار');return}
   const m=e.target.closest('[data-menu]');
   if(m){e.stopPropagation();actId=+m.dataset.menu;const p=PROJECTS.find(x=>x.id==actId);$('#asTitle').textContent='«'+p.title+'»';openSheet('#sheetAction');return}
   const card=e.target.closest('.card');
@@ -984,6 +997,7 @@ function openAd(id){
 }
  $('#adReqBtn').onclick=()=>{
   if(!curAd)return;
+  if(!requireAuth('ham-bonyan.html','برای ارسال درخواست همکاری باید وارد شوی'))return;
   if(curAd.req){toastMsg('قبلاً درخواستت را فرستادی');return}
   curAd.req=true;renderAds();syncAdButtons(curAd);
   toastMsg(`درخواست همکاری‌ات برای ${USERS[curAd.uid].name} ارسال شد ✉️`);
@@ -997,7 +1011,7 @@ adsEl.addEventListener('click',e=>{
   const bm=e.target.closest('[data-bm]');
   if(bm){const a=ADS.find(x=>x.id==bm.dataset.bm);a.saved=!a.saved;renderAds();toastMsg(a.saved?'آگهی ذخیره شد':'از ذخیره‌شده‌ها حذف شد');return}
   const rq=e.target.closest('[data-req]');
-  if(rq){const a=ADS.find(x=>x.id==rq.dataset.req);if(a.req){toastMsg('قبلاً درخواستت را فرستادی');return}a.req=true;renderAds();toastMsg(`درخواست برای ${USERS[a.uid].name} ارسال شد ✉️`);return}
+  if(rq){const a=ADS.find(x=>x.id==rq.dataset.req);if(!requireAuth('ham-bonyan.html','برای ارسال درخواست همکاری باید وارد شوی'))return;if(a.req){toastMsg('قبلاً درخواستت را فرستادی');return}a.req=true;renderAds();toastMsg(`درخواست برای ${USERS[a.uid].name} ارسال شد ✉️`);return}
   const card=e.target.closest('.ad');
   if(card)openAd(card.dataset.id);
 });
@@ -1005,6 +1019,7 @@ adsEl.addEventListener('click',e=>{
 /* ---------- ساخت / ویرایش پروژه ---------- */
 let editId=null;
  $('#btnNew').onclick=()=>{
+  if(!requireAuth('ham-bonyan.html','برای ساخت پروژه باید وارد شوی'))return;
   editId=null;$('#npTitleH').textContent='پروژهٔ جدید';$('#fSubmit').textContent='ثبت پروژه';
   $('#fTitle').value='';$('input[name=npst][value=ongoing]').checked=true;
   $$('input[name=nprole]').forEach(r=>r.checked=false);$('#npHigh').checked=false;
@@ -1039,7 +1054,7 @@ function openEdit(id){
 /* ---------- اقدامات کارت (منوی ⋯) ---------- */
 let actId=null;
  $('#asOpen').onclick=()=>{closeSheet();setTimeout(()=>openProj(actId),160)};
- $('#asInvite').onclick=()=>{closeSheet();toastMsg('درخواست هم‌بنیان‌گذاری برای این پروژه ارسال شد')};
+ $('#asInvite').onclick=()=>{closeSheet();if(!requireAuth('ham-bonyan.html','برای دعوت هم‌بنیان‌گذار باید وارد شوی'))return;toastMsg('درخواست هم‌بنیان‌گذاری برای این پروژه ارسال شد')};
  $('#asEdit').onclick=()=>{closeSheet();setTimeout(()=>openEdit(actId),160)};
  $('#asDelete').onclick=()=>deleteProj(actId);
 
@@ -1079,36 +1094,35 @@ function setView(id){
   if(g==='sched')setView('view-sched');
   else if(g==='stats')setView('view-stats');
   else if(g==='saved')setView('view-ads');
-  else if(g==='profile')openSheet('#sheetProfile');
+  else if(g==='profile'){if(requireAuth('profile.html','برای دیدن پروفایلت باید وارد شوی'))location.href='profile.html'}
   else toastMsg('این بخش به‌زودی اضافه می‌شود');
 });
- $('#btnProfile').onclick=()=>openSheet('#sheetProfile');
+ $('#btnProfile').onclick=()=>{if(requireAuth('profile.html','برای دیدن پروفایلت باید وارد شوی'))location.href='profile.html'};
  $('#btnEditProfile').onclick=()=>{closeSheet();toastMsg('ویرایش پروفایل به‌زودی فعال می‌شود')};
  $$('.js-invite').forEach(b=>b.onclick=()=>{
+  if(!requireAuth('ham-bonyan.html','برای دعوت به گفتگو باید وارد شوی'))return;
   b.classList.add('done');b.textContent='دعوت‌نامه رفت ✓';toastMsg('دعوت‌نامه برایش ارسال شد');
 });
 
 /* ---------- توست ---------- */
 let tt;function toastMsg(m){const t=$('#toast');t.textContent=m;t.classList.add('show');clearTimeout(tt);tt=setTimeout(()=>t.classList.remove('show'),2600)}
 
-/* ---------- بررسی بارگذاری فونت فرهنگ ---------- */
-if('fonts' in document){
-  document.fonts.ready.then(()=>{
-    const ok=document.fonts.check('16px Farhang');
-    if(ok){
-      console.info('%c✓ فونت فرهنگ با موفقیت فعال است','color:#2E7D43;font-weight:bold');
-    }else{
-      console.warn('⚠ فونت فرهنگ از سرور بارگذاری نشد (احتمالاً CORS). فایل‌های woff2 را در پوشهٔ fonts/ کنار همین فایل بگذار.');
-      toastMsg('فونت فرهنگ لود نشد — پوشهٔ fonts را کنار فایل بساز');
-    }
-  });
-}
-
 /* ---------- Escape ---------- */
 addEventListener('keydown',e=>{if(e.key==='Escape'){closeSheet();notifPanel.classList.remove('show')}});
 
 /* ---------- شروع ---------- */
 render();renderAds();
+
+/* ---------- اعمال وضعیت کاربرِ واردشده ---------- */
+(function applyUser(){
+  const u=getAuth();if(!u)return;
+  const g=document.querySelector('#view-home .greet');
+  const s=document.querySelector('#view-home .sub');
+  const a=document.querySelector('#btnProfile .ava');
+  if(g)g.innerHTML='سلام، <b>'+u.name+'</b>!';
+  if(s)s.textContent='۲ درخواست همکاری منتظر پاسخ توست؛ یک نگاه به پروژه‌هات بنداز.';
+  if(a)a.setAttribute('data-initial',(u.name||'م').trim().charAt(0));
+})();
 </script>
 </body>
 </html>

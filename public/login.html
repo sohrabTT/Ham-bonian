@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"/>
+<meta name="theme-color" content="#F3F1ED"/>
+<title>ورود | هم‌بنیان</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+/* ═══════ فونت فرهنگ (با پشتیبان Vazirmatn از Google Fonts) ═══════ */
+@font-face{font-family:'Farhang';font-weight:400;font-display:swap;src:url('fonts/Farhang-RegularSharp.woff2') format('woff2')}
+@font-face{font-family:'Farhang';font-weight:600;font-display:swap;src:url('fonts/Farhang-DemiBoldSharp.woff2') format('woff2')}
+@font-face{font-family:'Farhang';font-weight:700;font-display:swap;src:url('fonts/Farhang-BoldSharp.woff2') format('woff2')}
+@font-face{font-family:'Farhang';font-weight:800;font-display:swap;src:url('fonts/Farhang-ExtraBoldSharp.woff2') format('woff2')}
+@font-face{font-family:'Farhang';font-weight:900;font-display:swap;src:url('fonts/Farhang-BlackSharp.woff2') format('woff2')}
+
+/* ---------- پایه ---------- */
+:root{
+  --bg:#F3F1ED; --card:#E8E5E0; --headL:#FAF9F6;
+  --dark:#2B2A27; --dark-head:#3A3833;
+  --line:#DBD7D0; --txt:#232220; --txt2:#8D897F;
+  --purple:#7A5AF8; --red:#F0435C; --green:#2E7D43;
+}
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+input,textarea{font:inherit}
+:focus-visible{outline:2px solid var(--purple);outline-offset:2px}
+body{
+  font-family:'Farhang','Vazirmatn',Tahoma,sans-serif;color:var(--txt);
+  min-height:100vh;min-height:100dvh;
+  background:radial-gradient(1100px 500px at 85% -5%,#F8F5F0,transparent 55%),
+             radial-gradient(900px 500px at 0% 100%,#ECE7DF,transparent 55%),var(--bg);
+}
+.ic{display:block}
+.ic svg{width:100%;height:100%;display:block}
+
+/* ---------- هدر ---------- */
+.hdr{position:sticky;top:0;z-index:50;background:rgba(243,241,237,.82);
+  backdrop-filter:blur(20px) saturate(1.4);-webkit-backdrop-filter:blur(20px) saturate(1.4);
+  box-shadow:0 1px 0 var(--line)}
+.hdr-in{max-width:1080px;margin:0 auto;padding:13px 20px;display:flex;align-items:center;gap:16px}
+.back-btn{width:44px;height:44px;border-radius:50%;display:grid;place-items:center;
+  background:#E8E4DE;box-shadow:none;color:#3A3833;transition:.2s;flex-shrink:0}
+.back-btn:active{transform:scale(.92)}
+.back-btn .ic{width:20px;height:20px}
+.brand{display:flex;align-items:center;gap:11px;margin-inline-start:auto}
+.logo{width:42px;height:42px;border-radius:50%;background:var(--dark);color:#F4F1ED;display:grid;place-items:center;box-shadow:0 8px 18px -6px rgba(25,22,18,.4)}
+.logo .ic{width:19px;height:19px}
+.brand-t b{display:block;font-size:17px;font-weight:900;line-height:1.4}
+.brand-t small{display:block;font-size:11px;color:var(--txt2);font-weight:600;margin-top:-2px}
+
+/* ---------- فرم ورود ---------- */
+.auth-wrap{max-width:440px;margin:0 auto;padding:30px 20px 80px;min-height:calc(100dvh - 70px);display:flex;flex-direction:column;justify-content:center}
+.auth-card{background:var(--headL);border-radius:34px;box-shadow:inset 0 0 0 1px var(--line),0 30px 60px -30px rgba(25,22,18,.25);padding:30px 24px 26px;animation:cardIn .55s backwards}
+@keyframes cardIn{from{opacity:0;transform:translateY(16px)}}
+.auth-head{text-align:center;margin-bottom:22px}
+.auth-head .ava{width:64px;height:64px;margin:0 auto 14px;font-size:24px;
+  background:linear-gradient(135deg,#D8CBBB,#B39F83);color:#fff;font-weight:800;
+  position:relative;display:grid;place-items:center;overflow:hidden;border-radius:50%;
+  box-shadow:0 0 0 4px #fff,0 8px 20px rgba(40,35,28,.15)}
+.auth-head .ava::before{content:"ه"}
+.auth-head h1{font-size:23px;font-weight:900;letter-spacing:-.3px}
+.auth-head p{font-size:13px;color:var(--txt2);margin-top:6px;line-height:1.9}
+
+.field{margin-bottom:15px}
+.field>label{display:block;font-size:13px;font-weight:700;color:#55524C;margin-bottom:8px}
+.input{width:100%;background:#F1EDE7;border:1.5px solid transparent;border-radius:16px;padding:13px 15px;font-size:14.5px;outline:none;transition:.2s;color:var(--txt)}
+.input:focus{border-color:var(--dark);background:#fff}
+.input::placeholder{color:#A9A49A}
+.pw-wrap{position:relative}
+.pw-wrap .input{padding-inline-start:46px}
+.pw-lead{position:absolute;top:50%;transform:translateY(-50%);inset-inline-start:14px;color:var(--txt2);width:18px;height:18px;pointer-events:none}
+.pw-toggle{position:absolute;top:50%;transform:translateY(-50%);inset-inline-end:10px;width:34px;height:34px;border-radius:50%;display:grid;place-items:center;color:var(--txt2);transition:.2s}
+.pw-toggle:active{transform:translateY(-50%) scale(.9)}
+.pw-toggle .ic{width:18px;height:18px}
+
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip input{display:none}
+.chip span{display:inline-block;padding:9.5px 15px;border-radius:999px;background:#F1EDE7;font-size:13px;font-weight:600;color:#57534B;cursor:pointer;transition:.2s}
+.chip input:checked+span{background:var(--dark);color:#F4F1ED}
+
+.btn-primary{width:100%;padding:15px;border-radius:18px;background:var(--dark);color:#F4F1ED;font-weight:800;font-size:15px;transition:.2s;margin-top:4px;display:inline-flex;align-items:center;justify-content:center;gap:8px}
+.btn-primary .ic{width:16px;height:16px}
+.btn-primary:active{transform:scale(.98)}
+.btn-ghost{width:100%;padding:14px;border-radius:18px;background:#F1EDE7;color:#3B3934;font-weight:800;font-size:14px;margin-top:10px;display:inline-flex;align-items:center;justify-content:center;gap:8px;transition:.2s}
+.btn-ghost .ic{width:16px;height:16px}
+.btn-ghost:active{transform:scale(.98)}
+.auth-foot{text-align:center;margin-top:18px;font-size:12px;color:var(--txt2);line-height:1.9}
+.auth-foot b{color:var(--purple);font-weight:800}
+.divider{display:flex;align-items:center;gap:12px;margin:18px 0 4px;color:var(--txt2);font-size:12px;font-weight:600}
+.divider::before,.divider::after{content:"";flex:1;height:1px;background:var(--line)}
+
+/* توست */
+.toast{position:fixed;bottom:30px;left:50%;transform:translate(-50%,16px);z-index:95;
+  background:var(--dark);color:#F4F1ED;padding:12px 22px;border-radius:999px;font-size:13.5px;font-weight:700;
+  opacity:0;transition:.3s;pointer-events:none;white-space:nowrap;box-shadow:0 14px 30px rgba(0,0,0,.28);max-width:calc(100vw - 32px);overflow:hidden;text-overflow:ellipsis}
+.toast.show{opacity:1;transform:translate(-50%,0)}
+</style>
+</head>
+<body>
+
+<!-- ═══════ هدر ═══════ -->
+<header class="hdr">
+  <div class="hdr-in">
+    <button class="back-btn" id="backBtn" aria-label="بازگشت"><span class="ic" data-icon="arrowR"></span></button>
+    <div class="brand">
+      <span class="logo"><span class="ic" data-icon="handshake"></span></span>
+      <div class="brand-t"><b>هم‌بنیان</b><small>ورود به حساب کاربری</small></div>
+    </div>
+  </div>
+</header>
+
+<main class="auth-wrap">
+  <div class="auth-card">
+    <div class="auth-head">
+      <span class="ava"></span>
+      <h1>خوش آمدی!</h1>
+      <p>برای ساخت پروژه، دعوت هم‌بنیان‌گذار و ارسال درخواست همکاری وارد شو.</p>
+    </div>
+
+    <form id="loginForm" novalidate>
+      <div class="field">
+        <label for="fName">نام و نام خانوادگی</label>
+        <input class="input" id="fName" type="text" autocomplete="name" placeholder="مثلاً: نگار محمدی" required>
+      </div>
+      <div class="field">
+        <label for="fEmail">ایمیل یا موبایل</label>
+        <input class="input" id="fEmail" type="text" inputmode="email" autocomplete="username" placeholder="name@example.com" required>
+      </div>
+      <div class="field">
+        <label for="fPass">رمز عبور</label>
+        <div class="pw-wrap">
+          <span class="ic pw-lead" data-icon="lock"></span>
+          <input class="input" id="fPass" type="password" autocomplete="current-password" placeholder="حداقل ۶ کاراکتر" required minlength="6">
+          <button type="button" class="pw-toggle" id="pwToggle" aria-label="نمایش رمز"><span class="ic" data-icon="eye"></span></button>
+        </div>
+      </div>
+      <div class="field">
+        <label>نقش شما (برای پروفایل)</label>
+        <div class="chips" id="roleChips">
+          <label class="chip"><input type="radio" name="role" value="هم‌بنیان‌گذار فنی" checked><span>هم‌بنیان‌گذار فنی</span></label>
+          <label class="chip"><input type="radio" name="role" value="طراح محصول"><span>طراح محصول</span></label>
+          <label class="chip"><input type="radio" name="role" value="متخصص رشد و فروش"><span>متخصص رشد و فروش</span></label>
+          <label class="chip"><input type="radio" name="role" value="مدیر محصول"><span>مدیر محصول</span></label>
+          <label class="chip"><input type="radio" name="role" value="سرمایه‌گذار"><span>سرمایه‌گذار</span></label>
+        </div>
+      </div>
+      <button class="btn-primary" type="submit"><span class="ic" data-icon="arrowL"></span>ورود به هم‌بنیان</button>
+    </form>
+
+    <div class="divider">یا</div>
+    <button class="btn-ghost" type="button" id="guestBtn"><span class="ic" data-icon="folder"></span>ادامه به‌عنوان مهمان</button>
+
+    <p class="auth-foot">با ورود، <b>قوانین و حریم خصوصی</b> هم‌بنیان را می‌پذیری.</p>
+  </div>
+</main>
+
+<div class="toast" id="toast"></div>
+
+<script>
+const $=(s,c=document)=>c.querySelector(s);
+const params=new URLSearchParams(location.search);
+const next=params.get('next')||'ham-bonyan.html';
+
+/* ---------- آیکون‌ها ---------- */
+const I={
+  handshake:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 17.5l-2 2a2.1 2.1 0 01-3-3l4.5-4.5a2.5 2.5 0 013.5 0l1.5 1.5a2.1 2.1 0 003-3l-4-4"/><path d="M3 8l4-4 4 3.5"/><path d="M17 4.5L21 8.5l-2.5 2.5"/><path d="M13.5 19l2 2a2.1 2.1 0 003-3l-.8-.8"/></svg>',
+  arrowR:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>',
+  arrowL:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M11 18l-6-6 6-6"/></svg>',
+  lock:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4.5" y="10.5" width="15" height="10" rx="2.6"/><path d="M7.5 10.5V7.5a4.5 4.5 0 019 0v3"/></svg>',
+  eye:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7z"/><circle cx="12" cy="12" r="3"/></svg>',
+  eyeOff:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3l18 18M10.6 10.6a3 3 0 004.2 4.2M9.9 5.1A10 10 0 0112 5c6.5 0 10 7 10 7a17.6 17.6 0 01-3.2 4M6.2 6.2A17.6 17.6 0 002 12s3.5 7 10 7a10 10 0 003.3-.5"/></svg>',
+  folder:'<svg viewBox="0 0 24 24" fill="currentColor"><path d="M3.2 7.1c0-1.6 1.2-2.8 2.8-2.8h3.2c.8 0 1.5.3 2 .9l1 1.1h5.8c1.6 0 2.8 1.2 2.8 2.8v7.6c0 1.6-1.2 2.8-2.8 2.8H6c-1.6 0-2.8-1.2-2.8-2.8V7.1z"/></svg>'
+};
+const $$=(s,c=document)=>[...c.querySelectorAll(s)];
+$$('[data-icon]').forEach(el=>el.innerHTML=I[el.dataset.icon]);
+
+/* ---------- توست ---------- */
+let tt;function toastMsg(m){const t=$('#toast');t.textContent=m;t.classList.add('show');clearTimeout(tt);tt=setTimeout(()=>t.classList.remove('show'),2600)}
+
+/* ---------- نمایش رمز ---------- */
+$('#pwToggle').onclick=()=>{
+  const inp=$('#fPass');const ico=$('#pwToggle .ic');
+  if(inp.type==='password'){inp.type='text';ico.innerHTML=I.eyeOff}
+  else{inp.type='password';ico.innerHTML=I.eye}
+};
+
+/* ---------- ارسال فرم ---------- */
+$('#loginForm').addEventListener('submit',e=>{
+  e.preventDefault();
+  const name=$('#fName').value.trim();
+  const email=$('#fEmail').value.trim();
+  const pass=$('#fPass').value;
+  if(!name){toastMsg('نام خود را وارد کن');$('#fName').focus();return}
+  if(!email){toastMsg('ایمیل یا موبایل را وارد کن');$('#fEmail').focus();return}
+  if(pass.length<6){toastMsg('رمز باید حداقل ۶ کاراکتر باشد');$('#fPass').focus();return}
+  const roleEl=document.querySelector('input[name=role]:checked');
+  const user={name,email,role:roleEl?roleEl.value:'هم‌بنیان‌گذار',joined:Date.now()};
+  try{localStorage.setItem('hb_user',JSON.stringify(user))}catch(err){}
+  toastMsg('خوش آمدی، '+name+'! 🎉');
+  setTimeout(()=>{location.href=next},850);
+});
+
+/* ---------- ادامه به‌عنوان مهمان ---------- */
+$('#guestBtn').onclick=()=>{location.href='ham-bonyan.html'};
+$('#backBtn').onclick=()=>{location.href='ham-bonyan.html'};
+
+/* ---------- اگر از قبل وارد شده، مستقیم به مقصد ---------- */
+try{
+  const u=JSON.parse(localStorage.getItem('hb_user')||'null');
+  if(u){location.replace(next)}
+}catch(e){}
+</script>
+</body>
+</html>

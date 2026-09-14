@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"/>
+<meta name="theme-color" content="#F3F1ED"/>
+<title>پروفایل من | هم‌بنیان</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+/* ═══════ فونت فرهنگ (با پشتیبان Vazirmatn از Google Fonts) ═══════ */
+@font-face{font-family:'Farhang';font-weight:400;font-display:swap;src:url('fonts/Farhang-RegularSharp.woff2') format('woff2')}
+@font-face{font-family:'Farhang';font-weight:600;font-display:swap;src:url('fonts/Farhang-DemiBoldSharp.woff2') format('woff2')}
+@font-face{font-family:'Farhang';font-weight:700;font-display:swap;src:url('fonts/Farhang-BoldSharp.woff2') format('woff2')}
+@font-face{font-family:'Farhang';font-weight:800;font-display:swap;src:url('fonts/Farhang-ExtraBoldSharp.woff2') format('woff2')}
+@font-face{font-family:'Farhang';font-weight:900;font-display:swap;src:url('fonts/Farhang-BlackSharp.woff2') format('woff2')}
+
+/* ---------- پایه ---------- */
+:root{
+  --bg:#F3F1ED; --card:#E8E5E0; --headL:#FAF9F6;
+  --dark:#2B2A27; --dark-head:#3A3833;
+  --line:#DBD7D0; --txt:#232220; --txt2:#8D897F;
+  --purple:#7A5AF8; --red:#F0435C; --green:#2E7D43;
+}
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+input,textarea{font:inherit}
+:focus-visible{outline:2px solid var(--purple);outline-offset:2px}
+body{
+  font-family:'Farhang','Vazirmatn',Tahoma,sans-serif;color:var(--txt);
+  min-height:100vh;min-height:100dvh;
+  background:radial-gradient(1100px 500px at 85% -5%,#F8F5F0,transparent 55%),
+             radial-gradient(900px 500px at 0% 100%,#ECE7DF,transparent 55%),var(--bg);
+}
+.ic{display:block}
+.ic svg{width:100%;height:100%;display:block}
+
+/* ---------- هدر ---------- */
+.hdr{position:sticky;top:0;z-index:50;background:rgba(243,241,237,.82);
+  backdrop-filter:blur(20px) saturate(1.4);-webkit-backdrop-filter:blur(20px) saturate(1.4);
+  box-shadow:0 1px 0 var(--line)}
+.hdr-in{max-width:1080px;margin:0 auto;padding:13px 20px;display:flex;align-items:center;gap:16px}
+.back-btn{width:44px;height:44px;border-radius:50%;display:grid;place-items:center;
+  background:#E8E4DE;box-shadow:none;color:#3A3833;transition:.2s;flex-shrink:0}
+.back-btn:active{transform:scale(.92)}
+.back-btn .ic{width:20px;height:20px}
+.brand{display:flex;align-items:center;gap:11px;margin-inline-start:auto}
+.logo{width:42px;height:42px;border-radius:50%;background:var(--dark);color:#F4F1ED;display:grid;place-items:center;box-shadow:0 8px 18px -6px rgba(25,22,18,.4)}
+.logo .ic{width:19px;height:19px}
+.brand-t b{display:block;font-size:17px;font-weight:900;line-height:1.4}
+.brand-t small{display:block;font-size:11px;color:var(--txt2);font-weight:600;margin-top:-2px}
+
+/* ---------- بدنه ---------- */
+.wrap{max-width:680px;margin:0 auto;padding:26px 20px 80px}
+@keyframes viewIn{from{opacity:0;transform:translateY(8px)}}
+.view{animation:viewIn .35s}
+
+/* ---------- کارت پروفایل ---------- */
+.prof-card{background:var(--headL);border-radius:30px;box-shadow:inset 0 0 0 1px var(--line),0 20px 44px -28px rgba(25,22,18,.22);padding:26px 22px 22px}
+.prof-top{display:flex;flex-direction:column;align-items:center;gap:8px;padding:4px 0 6px;text-align:center}
+.ava{position:relative;display:grid;place-items:center;overflow:hidden;border-radius:50%;
+  background:linear-gradient(135deg,#D8CBBB,#B39F83);color:#fff;font-weight:800;flex-shrink:0}
+.ava::before{content:attr(data-initial);position:absolute}
+.prof-top .ava{width:96px;height:96px;box-shadow:0 0 0 4px #fff,0 8px 20px rgba(40,35,28,.15);font-size:34px}
+.prof-name{font-size:21px;font-weight:900;margin-top:6px;letter-spacing:-.2px}
+.prof-sub{font-size:13px;color:var(--txt2);margin-top:-3px;font-weight:600}
+.prof-bio{font-size:13px;color:#6E6A62;line-height:2;max-width:340px;margin-top:6px}
+.prof-stats{display:flex;gap:10px;margin:18px 0 4px}
+.pstat{flex:1;text-align:center;background:#F3EFE9;border-radius:18px;padding:14px 6px}
+.pstat b{display:block;font-size:20px;font-weight:900}
+.pstat span{font-size:11.5px;color:var(--txt2);font-weight:600}
+
+/* ---------- دکمه‌ها ---------- */
+.btn-primary{width:100%;padding:15px;border-radius:18px;background:var(--dark);color:#F4F1ED;font-weight:800;font-size:15px;transition:.2s;margin-top:14px;display:inline-flex;align-items:center;justify-content:center;gap:8px}
+.btn-primary .ic{width:16px;height:16px}
+.btn-primary:active{transform:scale(.98)}
+.btn-ghost{width:100%;padding:14px;border-radius:18px;background:#F1EDE7;color:#3B3934;font-weight:800;font-size:14px;margin-top:10px;display:inline-flex;align-items:center;justify-content:center;gap:8px;transition:.2s}
+.btn-ghost .ic{width:16px;height:16px}
+.btn-ghost.danger{color:#E5484D}
+.btn-ghost.danger .ic{color:#E5484D}
+.btn-ghost:active{transform:scale(.98)}
+
+/* ---------- لیست تنظیمات ---------- */
+.set-list{margin-top:16px;background:var(--headL);border-radius:26px;box-shadow:inset 0 0 0 1px var(--line);overflow:hidden}
+.set-item{display:flex;align-items:center;gap:12px;padding:16px;width:100%;font-size:14.5px;font-weight:700;color:#3B3934;border-bottom:1px solid var(--line);text-align:start}
+.set-item:last-child{border:0}
+.set-item .ic-lead{width:38px;height:38px;border-radius:12px;background:#F1EDE7;display:grid;place-items:center;color:#57534B;flex-shrink:0}
+.set-item .ic-lead .ic{width:18px;height:18px}
+.set-item .ic-chev{margin-inline-start:auto;color:var(--txt2);width:18px;height:18px;flex-shrink:0}
+.set-item.danger{color:#E5484D}
+.set-item.danger .ic-lead{background:#FBE9EB;color:#E5484D}
+.set-item:active{background:#F6F2EC}
+
+/* توست */
+.toast{position:fixed;bottom:30px;left:50%;transform:translate(-50%,16px);z-index:95;
+  background:var(--dark);color:#F4F1ED;padding:12px 22px;border-radius:999px;font-size:13.5px;font-weight:700;
+  opacity:0;transition:.3s;pointer-events:none;white-space:nowrap;box-shadow:0 14px 30px rgba(0,0,0,.28);max-width:calc(100vw - 32px);overflow:hidden;text-overflow:ellipsis}
+.toast.show{opacity:1;transform:translate(-50%,0)}
+
+/* شیت ویرایش */
+.backdrop{position:fixed;inset:0;background:rgba(28,26,22,.4);z-index:80;opacity:0;pointer-events:none;transition:.3s}
+.backdrop.show{opacity:1;pointer-events:auto}
+.sheet{position:fixed;left:0;right:0;bottom:0;margin:0 auto;z-index:85;background:var(--headL);
+  width:100%;max-width:560px;border-radius:34px 34px 0 0;padding:14px 22px 24px;max-height:86vh;overflow-y:auto;scrollbar-width:none;
+  transform:translateY(calc(100% + 24px));transition:transform .4s cubic-bezier(.32,.72,.24,1);
+  box-shadow:0 -12px 44px rgba(25,22,18,.22)}
+.sheet::-webkit-scrollbar{display:none}
+.sheet.show{transform:none}
+.grabber{width:44px;height:5px;border-radius:99px;background:#DEDAD3;margin:0 auto 14px}
+.sheet-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;gap:10px}
+.sheet-head h3{font-size:18px;font-weight:800}
+.x-btn{width:34px;height:34px;border-radius:50%;background:#EFEAE3;display:grid;place-items:center;color:#55524C;flex-shrink:0}
+.x-btn .ic{width:14px;height:14px}
+.field{margin-bottom:15px}
+.field>label{display:block;font-size:13px;font-weight:700;color:#55524C;margin-bottom:8px}
+.input{width:100%;background:#F1EDE7;border:1.5px solid transparent;border-radius:16px;padding:13px 15px;font-size:14.5px;outline:none;transition:.2s;color:var(--txt)}
+.input:focus{border-color:var(--dark);background:#fff}
+.input::placeholder{color:#A9A49A}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip input{display:none}
+.chip span{display:inline-block;padding:9.5px 15px;border-radius:999px;background:#F1EDE7;font-size:13px;font-weight:600;color:#57534B;cursor:pointer;transition:.2s}
+.chip input:checked+span{background:var(--dark);color:#F4F1ED}
+</style>
+</head>
+<body>
+
+<!-- ═══════ هدر ═══════ -->
+<header class="hdr">
+  <div class="hdr-in">
+    <button class="back-btn" id="backBtn" aria-label="بازگشت"><span class="ic" data-icon="arrowR"></span></button>
+    <div class="brand">
+      <span class="logo"><span class="ic" data-icon="handshake"></span></span>
+      <div class="brand-t"><b>هم‌بنیان</b><small>پروفایل من</small></div>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+  <section class="view">
+    <div class="prof-card">
+      <div class="prof-top">
+        <span class="ava" id="pAva" data-initial="م"></span>
+        <div class="prof-name" id="pName">کاربر هم‌بنیان</div>
+        <div class="prof-sub" id="pRole">هم‌بنیان‌گذار · تهران</div>
+        <p class="prof-bio" id="pBio">عضو هم‌بنیان؛ دنبال پروژه‌هایی که یک مشکل واقعی را حل می‌کنند و تیمی که با هم رشد می‌کنند.</p>
+      </div>
+      <div class="prof-stats">
+        <div class="pstat"><b>۶</b><span>پروژهٔ فعال</span></div>
+        <div class="pstat"><b>۳</b><span>هم‌تیمی</span></div>
+        <div class="pstat"><b>۱۲</b><span>درخواست</span></div>
+      </div>
+      <button class="btn-primary" type="button" id="editBtn"><span class="ic" data-icon="pen"></span>ویرایش پروفایل</button>
+      <button class="btn-ghost danger" type="button" id="logoutBtn"><span class="ic" data-icon="logout"></span>خروج از حساب</button>
+    </div>
+
+    <div class="set-list">
+      <button class="set-item" data-act="projects"><span class="ic-lead"><span class="ic" data-icon="folder"></span></span>پروژه‌های من<span class="ic ic-chev" data-icon="chevL"></span></button>
+      <button class="set-item" data-act="saved"><span class="ic-lead"><span class="ic" data-icon="bmark"></span></span>ذخیره‌شده‌ها<span class="ic ic-chev" data-icon="chevL"></span></button>
+      <button class="set-item" data-act="sched"><span class="ic-lead"><span class="ic" data-icon="cal"></span></span>قرارها<span class="ic ic-chev" data-icon="chevL"></span></button>
+      <button class="set-item" data-act="settings"><span class="ic-lead"><span class="ic" data-icon="sliders"></span></span>تنظیمات<span class="ic ic-chev" data-icon="chevL"></span></button>
+      <button class="set-item" data-act="support"><span class="ic-lead"><span class="ic" data-icon="headset"></span></span>پشتیبانی<span class="ic ic-chev" data-icon="chevL"></span></button>
+    </div>
+  </section>
+</main>
+
+<!-- شیت ویرایش پروفایل -->
+<div class="backdrop" id="backdrop"></div>
+<form class="sheet" id="sheetEdit">
+  <div class="grabber"></div>
+  <div class="sheet-head"><h3>ویرایش پروفایل</h3><button type="button" class="x-btn js-close" id="closeEdit"><span class="ic" data-icon="x"></span></button></div>
+  <div class="field">
+    <label for="eName">نام و نام خانوادگی</label>
+    <input class="input" id="eName" type="text" required>
+  </div>
+  <div class="field">
+    <label for="eRole">نقش</label>
+    <div class="chips" id="eRoleChips">
+      <label class="chip"><input type="radio" name="erole" value="هم‌بنیان‌گذار فنی"><span>هم‌بنیان‌گذار فنی</span></label>
+      <label class="chip"><input type="radio" name="erole" value="طراح محصول"><span>طراح محصول</span></label>
+      <label class="chip"><input type="radio" name="erole" value="متخصص رشد و فروش"><span>متخصص رشد و فروش</span></label>
+      <label class="chip"><input type="radio" name="erole" value="مدیر محصول"><span>مدیر محصول</span></label>
+      <label class="chip"><input type="radio" name="erole" value="سرمایه‌گذار"><span>سرمایه‌گذار</span></label>
+    </div>
+  </div>
+  <div class="field">
+    <label for="eBio">دربارهٔ من</label>
+    <input class="input" id="eBio" type="text" placeholder="یک جمله دربارهٔ خودت بنویس">
+  </div>
+  <button class="btn-primary" type="submit"><span class="ic" data-icon="check"></span>ذخیرهٔ تغییرات</button>
+</form>
+
+<div class="toast" id="toast"></div>
+
+<script>
+const $=(s,c=document)=>c.querySelector(s);
+const $$=(s,c=document)=>[...c.querySelectorAll(s)];
+const HB_USER_KEY='hb_user';
+
+/* ---------- آیکون‌ها ---------- */
+const I={
+  handshake:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 17.5l-2 2a2.1 2.1 0 01-3-3l4.5-4.5a2.5 2.5 0 013.5 0l1.5 1.5a2.1 2.1 0 003-3l-4-4"/><path d="M3 8l4-4 4 3.5"/><path d="M17 4.5L21 8.5l-2.5 2.5"/><path d="M13.5 19l2 2a2.1 2.1 0 003-3l-.8-.8"/></svg>',
+  arrowR:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>',
+  chevL:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 6l-6 6 6 6"/></svg>',
+  pen:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12.5 20h8"/><path d="M16.6 3.6a2.4 2.4 0 013.4 3.4L7.6 19.4 3 20.6l1.2-4.6L16.6 3.6z"/></svg>',
+  logout:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 21H5.5A2.5 2.5 0 013 18.5v-13A2.5 2.5 0 015.5 3H9M16 17l5-5-5-5M21 12H9"/></svg>',
+  folder:'<svg viewBox="0 0 24 24" fill="currentColor"><path d="M3.2 7.1c0-1.6 1.2-2.8 2.8-2.8h3.2c.8 0 1.5.3 2 .9l1 1.1h5.8c1.6 0 2.8 1.2 2.8 2.8v7.6c0 1.6-1.2 2.8-2.8 2.8H6c-1.6 0-2.8-1.2-2.8-2.8V7.1z"/></svg>',
+  bmark:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6.5 4.5h11V21l-5.5-3.8L6.5 21V4.5z"/></svg>',
+  cal:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3.8" y="5.3" width="16.4" height="15" rx="3.2"/><path d="M3.8 10h16.4M8.3 3.3v3.4M15.7 3.3v3.4"/></svg>',
+  sliders:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 8h8.5M17 8h3M4 16h3M11.5 16h8.5"/><circle cx="14.7" cy="8" r="2.2"/><circle cx="8.7" cy="16" r="2.2"/></svg>',
+  headset:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 13.5a7.5 7.5 0 0115 0"/><rect x="3.2" y="13.2" width="4.2" height="6" rx="2.1"/><rect x="16.6" y="13.2" width="4.2" height="6" rx="2.1"/></svg>',
+  x:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M6.5 6.5l11 11M17.5 6.5l-11 11"/></svg>',
+  check:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.8l4.3 4.3L19 7.5"/></svg>'
+};
+$$('[data-icon]').forEach(el=>el.innerHTML=I[el.dataset.icon]);
+
+/* ---------- توست ---------- */
+let tt;function toastMsg(m){const t=$('#toast');t.textContent=m;t.classList.add('show');clearTimeout(tt);tt=setTimeout(()=>t.classList.remove('show'),2600)}
+
+/* ---------- خواندن کاربر ---------- */
+function getAuth(){try{return JSON.parse(localStorage.getItem(HB_USER_KEY)||'null')}catch(e){return null}}
+let user=getAuth();
+if(!user){location.replace('login.html?next=profile.html')}
+
+/* ---------- رندر پروفایل ---------- */
+function faInit(name){return (name||'م').trim().charAt(0)}
+function renderProfile(){
+  if(!user)return;
+  $('#pName').textContent=user.name||'کاربر هم‌بنیان';
+  $('#pRole').textContent=(user.role||'هم‌بنیان‌گذار')+' · تهران';
+  $('#pBio').textContent=user.bio||'عضو هم‌بنیان؛ دنبال پروژه‌هایی که یک مشکل واقعی را حل می‌کنند و تیمی که با هم رشد می‌کنند.';
+  $('#pAva').setAttribute('data-initial',faInit(user.name));
+}
+renderProfile();
+
+/* ---------- ناوبری ---------- */
+$('#backBtn').onclick=()=>{location.href='ham-bonyan.html'};
+$$('.set-item').forEach(b=>b.onclick=()=>{
+  const a=b.dataset.act;
+  if(a==='projects'||a==='saved'||a==='sched')location.href='ham-bonyan.html';
+  else toastMsg('این بخش به‌زودی فعال می‌شود');
+});
+
+/* ---------- خروج ---------- */
+$('#logoutBtn').onclick=()=>{
+  localStorage.removeItem(HB_USER_KEY);
+  toastMsg('از حساب خارج شدی');
+  setTimeout(()=>{location.href='ham-bonyan.html'},700);
+};
+
+/* ---------- شیت ویرایش ---------- */
+const backdrop=$('#backdrop'),sheet=$('#sheetEdit');
+function openSheet(){backdrop.classList.add('show');sheet.classList.add('show');
+  $('#eName').value=user.name||'';
+  $$('input[name=erole]').forEach(r=>r.checked=(r.value===user.role));
+  $('#eBio').value=user.bio||'';
+  setTimeout(()=>$('#eName').focus(),420);
+}
+function closeSheet(){sheet.classList.remove('show');backdrop.classList.remove('show')}
+$('#editBtn').onclick=openSheet;
+$('#closeEdit').onclick=closeSheet;
+backdrop.onclick=closeSheet;
+$('#sheetEdit').addEventListener('submit',e=>{
+  e.preventDefault();
+  const name=$('#eName').value.trim();if(!name){toastMsg('نام را وارد کن');return}
+  const roleEl=document.querySelector('input[name=erole]:checked');
+  user.name=name;user.role=roleEl?roleEl.value:user.role;user.bio=$('#eBio').value.trim();
+  localStorage.setItem(HB_USER_KEY,JSON.stringify(user));
+  renderProfile();closeSheet();toastMsg('پروفایل به‌روز شد ✓');
+});
+
+/* ---------- Escape ---------- */
+addEventListener('keydown',e=>{if(e.key==='Escape')closeSheet()});
+</script>
+</body>
+</html>
