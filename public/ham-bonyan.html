@@ -81,7 +81,10 @@ body{
   background:linear-gradient(135deg,#D8CBBB,#B39F83);color:#fff;font-weight:800;flex-shrink:0}
 .ava::before{content:attr(data-initial);position:absolute}
 .ava img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.ava .ava-ic{color:#57534B}
+.ava[data-initial]:not([data-initial=""]) .ava-ic{display:none}
 .avatar-btn .ava{width:44px;height:44px;box-shadow:0 0 0 2.5px #fff,0 4px 10px rgba(40,35,28,.12)}
+.avatar-btn .ava[data-initial=""]{background:#E8E4DE}
 
 /* ---------- بدنه ---------- */
 .wrap{max-width:680px;margin:0 auto;padding:0 20px 60px}
@@ -298,6 +301,7 @@ body{
 .field>label{display:block;font-size:13px;font-weight:700;color:#55524C;margin-bottom:8px}
 .input{width:100%;background:#F1EDE7;border:1.5px solid transparent;border-radius:16px;padding:13px 15px;font-size:14.5px;outline:none;transition:.2s;color:var(--txt)}
 .input:focus{border-color:var(--dark);background:#fff}
+textarea.input{resize:vertical;min-height:84px;line-height:1.9;font-family:inherit}
 .chips{display:flex;flex-wrap:wrap;gap:8px}
 .chip input{display:none}
 .chip span{display:inline-block;padding:9.5px 15px;border-radius:999px;background:#F1EDE7;font-size:13px;font-weight:600;color:#57534B;cursor:pointer;transition:.2s}
@@ -341,6 +345,7 @@ body{
 /* پروفایل */
 .prof-top{display:flex;flex-direction:column;align-items:center;gap:10px;padding:4px 0 6px;text-align:center}
 .prof-top .ava{width:84px;height:84px;box-shadow:0 0 0 4px #fff,0 8px 20px rgba(40,35,28,.15);font-size:30px}
+.prof-top .ava[data-initial=""]{background:#E8E4DE}
 .prof-name{font-size:19px;font-weight:800;margin-top:4px}
 .prof-sub{font-size:13px;color:var(--txt2);margin-top:-5px}
 .prof-bio{font-size:12.5px;color:#6E6A62;line-height:2;max-width:280px}
@@ -395,7 +400,7 @@ body{
         <span class="ic" data-icon="bell" style="width:20px;height:20px"></span><i class="bell-dot" id="bellDot"></i>
       </button>
       <button class="avatar-btn" id="btnProfile" aria-label="پروفایل">
-        <span class="ava" data-initial="آ"><img src="https://i.pravatar.cc/96?img=12" alt="آرمان" onerror="this.remove()"></span>
+        <span class="ava" id="hdrAva" data-initial=""><span class="ic ava-ic" data-icon="user" style="width:20px;height:20px"></span></span>
       </button>
       <button class="icon-btn ghost" id="btnMenu" aria-label="منو">
         <span class="ic" data-icon="grid" style="width:19px;height:19px"></span>
@@ -599,6 +604,10 @@ body{
     <input class="input" id="fTitle" placeholder="مثلاً: مارکت‌پلیس تجهیزات کافه‌ها" required>
   </div>
   <div class="field">
+    <label for="fDesc">توضیحات پروژه</label>
+    <textarea class="input" id="fDesc" rows="3" placeholder="مشکل اصلی، مرحلهٔ فعلی و انتظارت از هم‌تیمی را اینجا بنویس…"></textarea>
+  </div>
+  <div class="field">
     <label>به چه نقشی نیاز داری؟</label>
     <div class="chips">
       <label class="chip"><input type="radio" name="nprole" value="هم‌بنیان‌گذار فنی"><span>هم‌بنیان‌گذار فنی</span></label>
@@ -680,10 +689,10 @@ body{
   <div class="grabber"></div>
   <div class="sheet-head"><h3>پروفایل من</h3><button type="button" class="x-btn js-close"><span class="ic" data-icon="x"></span></button></div>
   <div class="prof-top">
-    <span class="ava" data-initial="آ"><img src="https://i.pravatar.cc/168?img=12" alt="" onerror="this.remove()"></span>
-    <div class="prof-name">آرمان رضایی</div>
-    <div class="prof-sub">بنیان‌گذار محصول · تهران</div>
-    <p class="prof-bio">سه سال تجربهٔ محصول؛ دنبال پروژه‌هایی هستم که یک مشکل واقعی را حل می‌کنند. فعلاً روی دو پروژهٔ فین‌تک و مارکت‌پلیس کار می‌کنم.</p>
+    <span class="ava" id="profAva" data-initial="م"><span class="ic ava-ic" data-icon="user" style="width:34px;height:34px"></span></span>
+    <div class="prof-name" id="profName">کاربر هم‌بنیان</div>
+    <div class="prof-sub" id="profSub">عضو هم‌بنیان · تهران</div>
+    <p class="prof-bio" id="profBio">دنبال پروژه‌هایی که یک مشکل واقعی را حل می‌کنند و تیمی که با هم رشد می‌کنند.</p>
   </div>
   <div class="prof-stats">
     <div class="pstat"><b>۶</b><span>پروژهٔ فعال</span></div>
@@ -1021,14 +1030,16 @@ let editId=null;
  $('#btnNew').onclick=()=>{
   if(!requireAuth('ham-bonyan.html','برای ساخت پروژه باید وارد شوی'))return;
   editId=null;$('#npTitleH').textContent='پروژهٔ جدید';$('#fSubmit').textContent='ثبت پروژه';
-  $('#fTitle').value='';$('input[name=npst][value=ongoing]').checked=true;
+  $('#fTitle').value='';$('#fDesc').value='';
+  $('input[name=npst][value=ongoing]').checked=true;
   $$('input[name=nprole]').forEach(r=>r.checked=false);$('#npHigh').checked=false;
   openSheet('#sheetNew');setTimeout(()=>$('#fTitle').focus(),420);
 };
 function openEdit(id){
   const p=PROJECTS.find(x=>x.id==id);editId=id;
   $('#npTitleH').textContent='ویرایش پروژه';$('#fSubmit').textContent='ذخیرهٔ تغییرات';
-  $('#fTitle').value=p.title;$(`input[name=npst][value=${p.status}]`).checked=true;$('#npHigh').checked=p.priority;
+  $('#fTitle').value=p.title;$('#fDesc').value=p.desc||'';
+  $(`input[name=npst][value=${p.status}]`).checked=true;$('#npHigh').checked=p.priority;
   openSheet('#sheetNew');
 }
  $('#sheetNew').onsubmit=e=>{
@@ -1037,13 +1048,13 @@ function openEdit(id){
   const status=$('input[name=npst]:checked').value;
   const roleEl=$('input[name=nprole]:checked');
   const role=roleEl?roleEl.value:'هم‌بنیان‌گذار';
+  const desc=$('#fDesc').value.trim();
   if(editId){
-    Object.assign(PROJECTS.find(x=>x.id==editId),{title,role,status,priority:$('#npHigh').checked});
+    Object.assign(PROJECTS.find(x=>x.id==editId),{title,role,status,desc,priority:$('#npHigh').checked});
     toastMsg('تغییرات پروژه ذخیره شد');
   }else{
     const icons=['code','cart','play','book','layers'];
-    PROJECTS.unshift({id:Date.now(),title,role,status,priority:$('#npHigh').checked,owner:'arman',progress:0,
-      desc:'توضیح پروژه را کامل بنویس تا شانس پیدا کردن هم‌بنیان‌گذار مناسب بیشتر شود؛ مشکل اصلی، مرحلهٔ فعلی و انتظارت از هم‌تیمی را روشن توضیح بده.',
+    PROJECTS.unshift({id:Date.now(),title,role,status,desc,priority:$('#npHigh').checked,owner:'arman',progress:0,
       stage:'تازه شروع شده',skills:[role],team:['arman'],req:false,saved:false,
       thumb:{type:'icon',icon:icons[Math.floor(Math.random()*5)],bg:'linear-gradient(135deg,#EFE9DF,#DDD2BF)',fg:'#6E6250'}});
     lastNew=PROJECTS[0].id;toastMsg('پروژه ثبت شد؛ حالا منتظر پیشنهادها بمان');
@@ -1122,6 +1133,12 @@ render();renderAds();
   if(g)g.innerHTML='سلام، <b>'+u.name+'</b>!';
   if(s)s.textContent='۲ درخواست همکاری منتظر پاسخ توست؛ یک نگاه به پروژه‌هات بنداز.';
   if(a)a.setAttribute('data-initial',(u.name||'م').trim().charAt(0));
+  const pn=document.getElementById('profName'),ps=document.getElementById('profSub'),
+        pb=document.getElementById('profBio'),pa=document.getElementById('profAva');
+  if(pn)pn.textContent=u.name||'کاربر هم‌بنیان';
+  if(ps)ps.textContent=(u.role||'هم‌بنیان‌گذار')+' · تهران';
+  if(pb)pb.textContent=u.bio||'دنبال پروژه‌هایی که یک مشکل واقعی را حل می‌کنند و تیمی که با هم رشد می‌کنند.';
+  if(pa)pa.setAttribute('data-initial',(u.name||'م').trim().charAt(0));
 })();
 </script>
 </body>
