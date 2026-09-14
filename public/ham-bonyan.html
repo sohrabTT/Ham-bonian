@@ -87,7 +87,7 @@ body{
 .avatar-btn .ava[data-initial=""]{background:#E8E4DE}
 
 /* ---------- بدنه ---------- */
-.wrap{max-width:680px;margin:0 auto;padding:0 20px 60px}
+.wrap{max-width:680px;margin:0 auto;padding:0 20px 120px}
 @media (max-width:759px){.wrap{padding-bottom:140px}}
 .view{display:none;padding-top:26px}
 .view.active{display:block;animation:viewIn .35s}
@@ -169,6 +169,12 @@ body{
 .card.dark .progress i{background:#F4F1ED}
 .empty{display:none;text-align:center;padding:44px 20px;color:var(--txt2);font-weight:600;font-size:14px}
 .empty.show{display:block;animation:viewIn .3s}
+
+/* جداکنندهٔ بخش فرصت‌ها در خانه */
+.feed-divider{display:flex;align-items:center;gap:14px;margin:34px 0 18px}
+.feed-divider::before{content:"";flex:0 0 28px;height:1px;background:var(--line)}
+.feed-divider h2{font-size:18px;font-weight:900;letter-spacing:-.2px}
+.feed-divider .fd-count{margin-inline-start:auto;background:var(--headL);box-shadow:inset 0 0 0 1px var(--line);border-radius:999px;padding:6px 13px;font-size:11.5px;font-weight:800;color:#57534B}
 
 /* ---------- عنوان بخش ---------- */
 .vhead{display:flex;align-items:flex-start;justify-content:space-between;gap:12px}
@@ -265,7 +271,7 @@ body{
 .nbtn.active{background:#fff;color:#232220;box-shadow:0 6px 16px rgba(30,26,20,.14)}
 .nbtn.primary{width:60px;height:60px;background:var(--dark);color:#F4F1ED;box-shadow:0 12px 26px -6px rgba(20,18,15,.5)}
 .nbtn.primary .ic{width:25px;height:25px}
-@media (min-width:760px){.dock{display:none}.tabs{display:flex}}
+/* داک همیشه (موبایل و دسکتاپ) visible است — ناوبری اصلی */
 
 /* ---------- اعلان‌ها ---------- */
 .notif{position:fixed;top:72px;left:20px;width:min(360px,calc(100vw - 40px));z-index:70;
@@ -389,21 +395,12 @@ textarea.input{resize:vertical;min-height:84px;line-height:1.9;font-family:inher
       <span class="logo"><span class="ic" data-icon="handshake"></span></span>
       <div class="brand-t"><b>هم‌بنیان</b><small>هم‌بنیان‌گذار پروژه‌ات را پیدا کن</small></div>
     </div>
-    <nav class="tabs">
-      <button class="tab active" data-view="view-home">پروژه‌های من</button>
-      <button class="tab" data-view="view-ads">فرصت‌ها</button>
-      <button class="tab" data-view="view-stats">عملکرد</button>
-      <button class="tab" data-view="view-sched">قرارها</button>
-    </nav>
     <div class="hdr-actions">
       <button class="icon-btn" id="btnBell" aria-label="اعلان‌ها">
         <span class="ic" data-icon="bell" style="width:20px;height:20px"></span><i class="bell-dot" id="bellDot"></i>
       </button>
       <button class="avatar-btn" id="btnProfile" aria-label="پروفایل">
         <span class="ava" id="hdrAva" data-initial=""><span class="ic ava-ic" data-icon="user" style="width:20px;height:20px"></span></span>
-      </button>
-      <button class="icon-btn ghost" id="btnMenu" aria-label="منو">
-        <span class="ic" data-icon="grid" style="width:19px;height:19px"></span>
       </button>
     </div>
   </div>
@@ -435,22 +432,17 @@ textarea.input{resize:vertical;min-height:84px;line-height:1.9;font-family:inher
 
     <section class="cards" id="cards"></section>
     <div class="empty" id="noProj">پروژه‌ای با این فیلترها پیدا نشد؛ فیلترها را ساده‌تر کن.</div>
-  </section>
-
-  <!-- ═══════ فرصت‌ها ═══════ -->
-  <section class="view" id="view-ads">
-    <div class="vhead">
-      <div>
-        <h2 class="vtitle">فرصت‌های هم‌بنیانی</h2>
-        <p class="vsub">آدم‌هایی که همین حالا دنبال هم‌تیمی برای پروژه‌شان هستند.</p>
-      </div>
-      <span class="vcount"><span id="adsCount">۵</span> آگهی فعال</span>
+  
+    <div class="feed-divider" id="oppsHead">
+      <h2>فرصت‌های هم‌بنیانی</h2>
+      <span class="fd-count"><span id="adsCount">۵</span> آگهی فعال</span>
     </div>
+
 
     <div class="ads-tools">
       <div class="searchbox">
         <span class="ic" data-icon="search"></span>
-        <input type="text" id="adSearch" placeholder="جستجو در آگهی‌ها؛ مثلاً «فین‌تک» یا «فلاتر»…">
+        <input type="text" id="adSearch" placeholder="جستجو در فرصت‌ها؛ مثلاً «فین‌تک» یا «فلاتر»…">
       </div>
     </div>
     <div class="fchips" id="adCats">
@@ -460,9 +452,7 @@ textarea.input{resize:vertical;min-height:84px;line-height:1.9;font-family:inher
       <button class="fchip" data-cat="product">محصول</button>
       <button class="fchip" data-cat="growth">رشد و فروش</button>
     </div>
-
-    <section id="adsList"></section>
-    <div class="empty" id="noAds">آگهی‌ای مطابق جستجوی تو پیدا نشد؛ عبارت دیگری را امتحان کن.</div>
+    <section id="adsList"></section><div class="empty" id="noAds">آگهی‌ای مطابق جستجوی تو پیدا نشد؛ عبارت دیگری را امتحان کن.</div>
   </section>
 
   <!-- ═══════ عملکرد ═══════ -->
@@ -510,44 +500,13 @@ textarea.input{resize:vertical;min-height:84px;line-height:1.9;font-family:inher
       </div>
     </div>
   </section>
-
-  <!-- ═══════ قرارها ═══════ -->
-  <section class="view" id="view-sched">
-    <div class="vhead">
-      <div>
-        <h2 class="vtitle">قرارهای هفته</h2>
-        <p class="vsub">کال‌های آشنایی و جلسات هم‌تیمی‌هایت را از دست نده.</p>
-      </div>
-    </div>
-    <div class="week">
-      <div class="day">ش<b>۱۲</b></div><div class="day">ی<b>۱۳</b></div>
-      <div class="day active">د<b>۱۴</b></div><div class="day">س<b>۱۵</b></div>
-      <div class="day">چ<b>۱۶</b></div><div class="day">پ<b>۱۷</b></div><div class="day">ج<b>۱۸</b></div>
-    </div>
-    <div class="meet">
-      <div class="time-chip"><b>۱۸:۳۰</b><span>امروز</span></div>
-      <div class="meet-info"><b>کال آشنایی با نگار محمدی</b><span>درباره آگهی «هم‌درسی»</span></div>
-      <span class="ava" data-initial="ن"><img src="https://i.pravatar.cc/76?img=44" alt="" onerror="this.remove()"></span>
-    </div>
-    <div class="meet">
-      <div class="time-chip"><b>۱۰:۰۰</b><span>فردا</span></div>
-      <div class="meet-info"><b>جلسه محصول با سارا</b><span>بررسی نقشه راه فصل پیش‌رو</span></div>
-      <span class="ava" data-initial="س"><img src="https://i.pravatar.cc/76?img=47" alt="" onerror="this.remove()"></span>
-    </div>
-    <div class="meet">
-      <div class="time-chip"><b>۲۱:۰۰</b><span>پنج‌شنبه</span></div>
-      <div class="meet-info"><b>دموی هفتگی تیم</b><span>مرور پیشرفت هر سه پروژه</span></div>
-      <span class="ava" data-initial="ا"><img src="https://i.pravatar.cc/76?img=59" alt="" onerror="this.remove()"></span>
-    </div>
-  </section>
 </main>
 
-<!-- ═══════ داک پایین ═══════ -->
+<!-- ═══════ داک پایین (همیشه visible) ═══════ -->
 <nav class="dock">
   <button class="nbtn" data-view="view-stats" aria-label="عملکرد"><span class="ic" data-icon="bars"></span></button>
-  <button class="nbtn" data-view="view-ads" aria-label="فرصت‌ها"><span class="ic" data-icon="search"></span></button>
-  <button class="nbtn primary active" data-view="view-home" aria-label="پروژه‌ها"><span class="ic" data-icon="folder"></span></button>
-  <button class="nbtn" data-view="view-sched" aria-label="قرارها"><span class="ic" data-icon="cal"></span></button>
+  <button class="nbtn primary active" data-view="view-home" aria-label="پروژه‌ها و فرصت‌ها"><span class="ic" data-icon="folder"></span></button>
+  <button class="nbtn" id="dockMenu" aria-label="منو"><span class="ic" data-icon="grid"></span></button>
 </nav>
 
 <!-- ═══════ اعلان‌ها ═══════ -->
@@ -677,7 +636,6 @@ textarea.input{resize:vertical;min-height:84px;line-height:1.9;font-family:inher
   <div class="menu-grid">
     <button class="m-item" data-goto="profile"><span class="ic" data-icon="user"></span>پروفایل</button>
     <button class="m-item" data-goto="saved"><span class="ic" data-icon="bmark"></span>ذخیره‌شده‌ها</button>
-    <button class="m-item" data-goto="sched"><span class="ic" data-icon="cal"></span>قرارها</button>
     <button class="m-item" data-goto="stats"><span class="ic" data-icon="bars"></span>عملکرد</button>
     <button class="m-item" data-goto="settings"><span class="ic" data-icon="sliders"></span>تنظیمات</button>
     <button class="m-item" data-goto="support"><span class="ic" data-icon="headset"></span>پشتیبانی</button>
@@ -1099,12 +1057,12 @@ function setView(id){
  $$('[data-view]').forEach(b=>b.onclick=()=>setView(b.dataset.view));
 
 /* ---------- منو و پروفایل ---------- */
- $('#btnMenu').onclick=()=>openSheet('#sheetMenu');
+ const btnMenu=$('#btnMenu');if(btnMenu)btnMenu.onclick=()=>openSheet('#sheetMenu');
+ const dockMenu=$('#dockMenu');if(dockMenu)dockMenu.onclick=()=>openSheet('#sheetMenu');
  $$('.m-item').forEach(m=>m.onclick=()=>{
   const g=m.dataset.goto;closeSheet();
-  if(g==='sched')setView('view-sched');
-  else if(g==='stats')setView('view-stats');
-  else if(g==='saved')setView('view-ads');
+  if(g==='stats')setView('view-stats');
+  else if(g==='saved'){setView('view-home');setTimeout(()=>{const h=$('#oppsHead');if(h)h.scrollIntoView({behavior:'smooth',block:'start'})},120)}
   else if(g==='profile'){if(requireAuth('profile.html','برای دیدن پروفایلت باید وارد شوی'))location.href='profile.html'}
   else toastMsg('این بخش به‌زودی اضافه می‌شود');
 });
